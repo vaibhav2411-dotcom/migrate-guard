@@ -3,7 +3,12 @@ import { JobService, RunService } from '../src/services/domainServices';
 import { StoragePort, StorageSnapshot } from '../src/models';
 
 class InMemoryStorage implements StoragePort {
-  private snapshot: StorageSnapshot = { jobs: [], runs: [], artifacts: [] };
+  private snapshot: StorageSnapshot = {
+    version: '2.0',
+    comparisonJobs: [],
+    runs: [],
+    artifacts: [],
+  };
 
   async load(): Promise<StorageSnapshot> {
     return this.snapshot;

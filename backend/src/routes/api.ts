@@ -1,21 +1,52 @@
 import { FastifyInstance, FastifyPluginOptions } from 'fastify';
 import fp from 'fastify-plugin';
-import { JobService, RunService } from '../services/domainServices';
+import { ComparisonJobService, RunService } from '../services/domainServices';
 import { FileStorage } from '../services/fileStorage';
+import { CrawlConfig, TestMatrix, PageMap } from '../models';
 
 const storage = new FileStorage();
-const jobService = new JobService(storage);
+const jobService = new ComparisonJobService(storage);
 const runService = new RunService(storage);
 
 // Request/Response schemas for validation
 const createJobSchema = {
   type: 'object',
-  required: ['name', 'sourceUrl', 'targetUrl'],
+  required: ['name', 'baselineUrl', 'candidateUrl'],
   properties: {
     name: { type: 'string', minLength: 1 },
     description: { type: 'string' },
-    sourceUrl: { type: 'string', format: 'uri' },
-    targetUrl: { type: 'string', format: 'uri' },
+    baselineUrl: { type: 'string', format: 'uri' },
+    candidateUrl: { type: 'string', format: 'uri' },
+    crawlConfig: {
+      type: 'object',
+      properties: {
+        depth: { type: 'number', minimum: 0 },
+        includePaths: { type: 'array', items: { type: 'string' } },
+        excludePaths: { type: 'array', items: { type: 'string' } },
+        maxPages: { type: 'number', minimum: 1 },
+        followExternalLinks: { type: 'boolean' },
+      },
+    },
+    pageMap: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          baselinePath: { type: 'string' },
+          candidatePath: { type: 'string' },
+          notes: { type: 'string' },
+        },
+      },
+    },
+    testMatrix: {
+      type: 'object',
+      properties: {
+        visual: { type: 'boolean' },
+        functional: { type: 'boolean' },
+        data: { type: 'boolean' },
+        seo: { type: 'boolean' },
+      },
+    },
   },
 };
 
@@ -24,8 +55,38 @@ const updateJobSchema = {
   properties: {
     name: { type: 'string', minLength: 1 },
     description: { type: 'string' },
-    sourceUrl: { type: 'string', format: 'uri' },
-    targetUrl: { type: 'string', format: 'uri' },
+    baselineUrl: { type: 'string', format: 'uri' },
+    candidateUrl: { type: 'string', format: 'uri' },
+    crawlConfig: {
+      type: 'object',
+      properties: {
+        depth: { type: 'number', minimum: 0 },
+        includePaths: { type: 'array', items: { type: 'string' } },
+        excludePaths: { type: 'array', items: { type: 'string' } },
+        maxPages: { type: 'number', minimum: 1 },
+        followExternalLinks: { type: 'boolean' },
+      },
+    },
+    pageMap: {
+      type: 'array',
+      items: {
+        type: 'object',
+        properties: {
+          baselinePath: { type: 'string' },
+          candidatePath: { type: 'string' },
+          notes: { type: 'string' },
+        },
+      },
+    },
+    testMatrix: {
+      type: 'object',
+      properties: {
+        visual: { type: 'boolean' },
+        functional: { type: 'boolean' },
+        data: { type: 'boolean' },
+        seo: { type: 'boolean' },
+      },
+    },
     status: { type: 'string', enum: ['pending', 'active', 'completed', 'failed'] },
   },
 };
@@ -40,15 +101,21 @@ const triggerRunSchema = {
 interface CreateJobBody {
   name: string;
   description?: string;
-  sourceUrl: string;
-  targetUrl: string;
+  baselineUrl: string;
+  candidateUrl: string;
+  crawlConfig?: CrawlConfig;
+  pageMap?: PageMap[];
+  testMatrix?: TestMatrix;
 }
 
 interface UpdateJobBody {
   name?: string;
   description?: string;
-  sourceUrl?: string;
-  targetUrl?: string;
+  baselineUrl?: string;
+  candidateUrl?: string;
+  crawlConfig?: CrawlConfig;
+  pageMap?: PageMap[];
+  testMatrix?: TestMatrix;
   status?: 'pending' | 'active' | 'completed' | 'failed';
 }
 
@@ -57,21 +124,51 @@ interface TriggerRunBody {
 }
 
 async function apiRoutes(fastify: FastifyInstance, _opts: FastifyPluginOptions) {
-  // Jobs - CRUD operations
+  // ComparisonJobs - CRUD operations
   fastify.post<{ Body: CreateJobBody }>(
     '/api/jobs',
     { schema: { body: createJobSchema } },
     async (request, reply) => {
       const body = request.body;
 
-      const job = await jobService.createJob({
-        name: body.name,
-        description: body.description,
-        sourceUrl: body.sourceUrl,
-        targetUrl: body.targetUrl,
-      });
+      try {
+        const createInput: {
+          name: string;
+          description?: string;
+          baselineUrl: string;
+          candidateUrl: string;
+          crawlConfig?: CrawlConfig;
+          pageMap?: PageMap[];
+          testMatrix?: TestMatrix;
+        } = {
+          name: body.name,
+          description: body.description,
+          baselineUrl: body.baselineUrl,
+          candidateUrl: body.candidateUrl,
+        };
 
-      reply.code(201).send(job);
+        if (body.crawlConfig) {
+          createInput.crawlConfig = body.crawlConfig;
+        }
+        if (body.pageMap) {
+          createInput.pageMap = body.pageMap;
+        }
+        if (body.testMatrix) {
+          createInput.testMatrix = body.testMatrix;
+        }
+
+        const job = await jobService.createJob(createInput);
+
+        reply.code(201).send(job);
+      } catch (err) {
+        if (err instanceof Error) {
+          if (err.message.includes('required') || err.message.includes('different')) {
+            reply.code(400).send({ message: err.message });
+            return;
+          }
+        }
+        throw err;
+      }
     }
   );
 
@@ -101,9 +198,15 @@ async function apiRoutes(fastify: FastifyInstance, _opts: FastifyPluginOptions) 
         const job = await jobService.updateJob(id, body);
         reply.send(job);
       } catch (err) {
-        if (err instanceof Error && err.message.includes('not found')) {
-          reply.code(404).send({ message: 'Job not found' });
-          return;
+        if (err instanceof Error) {
+          if (err.message.includes('not found')) {
+            reply.code(404).send({ message: 'Job not found' });
+            return;
+          }
+          if (err.message.includes('required') || err.message.includes('different')) {
+            reply.code(400).send({ message: err.message });
+            return;
+          }
         }
         throw err;
       }
@@ -120,6 +223,21 @@ async function apiRoutes(fastify: FastifyInstance, _opts: FastifyPluginOptions) 
     reply.code(204).send();
   });
 
+  // Migration endpoint (optional, for manual migration)
+  fastify.post('/api/jobs/migrate', async (_request, reply) => {
+    try {
+      const count = await jobService.migrateLegacyJobs();
+      reply.send({ message: `Migrated ${count} legacy jobs to ComparisonJob format`, count });
+    } catch (err) {
+      if (err instanceof Error) {
+        reply.code(500).send({ message: err.message });
+        return;
+      }
+      throw err;
+    }
+  });
+
+  // Trigger comparison run (enforces dual-site comparison)
   fastify.post<{ Params: { id: string }; Body?: TriggerRunBody }>(
     '/api/jobs/:id/run',
     { schema: { body: triggerRunSchema } },
@@ -129,12 +247,18 @@ async function apiRoutes(fastify: FastifyInstance, _opts: FastifyPluginOptions) 
       const triggeredBy = body?.triggeredBy ?? 'system';
 
       try {
-        const run = await runService.triggerRun(id, triggeredBy);
+        const run = await runService.triggerComparisonRun(id, triggeredBy);
         reply.code(202).send(run);
       } catch (err) {
-        if (err instanceof Error && err.message.includes('not found')) {
-          reply.code(404).send({ message: 'Job not found' });
-          return;
+        if (err instanceof Error) {
+          if (err.message.includes('not found')) {
+            reply.code(404).send({ message: 'Job not found' });
+            return;
+          }
+          if (err.message.includes('required') || err.message.includes('different')) {
+            reply.code(400).send({ message: err.message });
+            return;
+          }
         }
         throw err;
       }
