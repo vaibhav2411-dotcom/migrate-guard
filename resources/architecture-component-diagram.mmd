@@ -1,15 +1,19 @@
+---
+config:
+  layout: elk
+---
 flowchart TD
-  subgraph Frontend [React 18 + Vite]
-    UI[UI Components / Pages]
-    APIClient[API Client (src/lib/api.ts)]
+  subgraph Frontend ["React 18 + Vite"]
+    UI["UI Components / Pages"]
+    APIClient["API Client (src/lib/api.ts)"]
     UI --> APIClient
   end
-  subgraph Backend [Node.js Fastify API]
-    APIRouter[REST API (routes/api.ts)]
-    Agents[Agents/Services (src/services/)]
-    Models[Types/Models (src/models.ts)]
-    Config[Config (src/config/)]
-    Artifacts[Artifacts (data/artifacts/{runId})]
+  subgraph Backend ["Node.js Fastify API"]
+    APIRouter["REST API (routes/api.ts)"]
+    Agents["Agents/Services (src/services/)"]
+    Models["Types/Models (src/models.ts)"]
+    Config["Config (src/config/)"]
+    Artifacts["Artifacts (data/artifacts/{runId})"]
     APIRouter --> Agents
     Agents --> Artifacts
     Agents --> Models
@@ -17,7 +21,7 @@ flowchart TD
   end
   APIClient -- HTTP/JSON --> APIRouter
   Artifacts -.->|Download/View| UI
-  subgraph AI[AI Integration]
-    AIReasoning[AI Reasoning Service (Azure OpenAI)]
+  subgraph AI ["AI Integration"]
+    AIReasoning["AI Reasoning Service (Azure OpenAI)"]
   end
   Agents -- Risk/Analysis --> AIReasoning
