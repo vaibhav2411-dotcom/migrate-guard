@@ -16,6 +16,7 @@ import {
 } from '../models';
 import { CrawlAgent, MatchedPage } from './crawlAgent';
 import { PlaywrightExecutionService } from './playwrightExecutionService';
+import runTwoSiteCapture from '../runner/playwrightRunner';
 import { VisualDiffService, VisualDiffResult } from './visualDiffService';
 import { FunctionalQaAgent, FunctionalQAResult } from './functionalQaAgent';
 import { DataIntegrityAgent, DataIntegrityResult } from './dataIntegrityAgent';
@@ -52,6 +53,80 @@ export class ComparisonJobService implements ComparisonJobServicePort {
   async listJobs(): Promise<ComparisonJob[]> {
     const snapshot = await this.storage.load();
     return snapshot.comparisonJobs || [];
+  }
+
+  /**
+   * Execute a deterministic Playwright capture for the two job URLs (baseline & candidate)
+   * - Updates run status to 'running' -> 'completed'|'failed'
+   * - Persists artifacts under `data/artifacts/{runId}` and registers them in storage
+   */
+  private async executePlaywrightRun(runId: string, job: ComparisonJob): Promise<void> {
+    const snapshot = await this.storage.load();
+    const run = snapshot.runs.find((r) => r.id === runId);
+    if (!run) return;
+
+    // Mark running
+    const runningRun: Run = { ...run, status: 'running' };
+    const runningSnapshot: typeof snapshot = {
+      ...snapshot,
+      runs: snapshot.runs.map((r) => (r.id === runId ? runningRun : r)),
+    };
+    await this.storage.save(runningSnapshot);
+
+    const now = new Date().toISOString();
+    const artifacts: RunArtifact[] = [];
+
+    try {
+      // Use the lightweight runner to capture baseline and candidate pages
+      const artifactPaths = await runTwoSiteCapture(job.baselineUrl, job.candidateUrl, runId);
+
+      for (const p of artifactPaths) {
+        const relativePath = p.replace(/^.*[\\\/]data[\\\/]/, 'data/');
+        artifacts.push({
+          id: randomUUID(),
+          runId,
+          type: p.endsWith('.png') ? 'screenshot' : p.endsWith('.log') ? 'log' : 'report',
+          label: this.getArtifactLabel(p),
+          path: relativePath,
+          createdAt: now,
+        });
+      }
+
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : String(err);
+      const errorPath = `data/artifacts/${runId}/playwright-error.log`;
+      try {
+        await fs.mkdir(path.dirname(path.join(DATA_DIR, 'artifacts', runId)), { recursive: true });
+        await fs.writeFile(path.join(DATA_DIR, 'artifacts', runId, 'playwright-error.log'), errorMessage, 'utf-8');
+      } catch {}
+
+      artifacts.push({
+        id: randomUUID(),
+        runId,
+        type: 'log',
+        label: 'Playwright Error',
+        path: errorPath,
+        createdAt: now,
+      });
+
+      const failedRun: Run = { ...runningRun, status: 'failed', completedAt: new Date().toISOString() };
+      const failedSnapshot: typeof snapshot = {
+        ...runningSnapshot,
+        runs: runningSnapshot.runs.map((r) => (r.id === runId ? failedRun : r)),
+        artifacts: [...runningSnapshot.artifacts, ...artifacts],
+      };
+      await this.storage.save(failedSnapshot);
+      return;
+    }
+
+    // Completed
+    const completedRun: Run = { ...runningRun, status: 'completed', completedAt: new Date().toISOString() };
+    const finalSnapshot: typeof snapshot = {
+      ...runningSnapshot,
+      runs: runningSnapshot.runs.map((r) => (r.id === runId ? completedRun : r)),
+      artifacts: [...runningSnapshot.artifacts, ...artifacts],
+    };
+    await this.storage.save(finalSnapshot);
   }
 
   async getJobById(id: string): Promise<ComparisonJob | undefined> {
@@ -377,19 +452,9 @@ export class RunService implements RunServicePort {
     };
     await this.storage.save(next);
 
-    // Simulate async execution with dual-site comparison
-    // TODO: Phase 2 - Replace this placeholder with actual test execution:
-    // 1. Initialize Playwright MCP connection
-    // 2. Use Crawl4AI to crawl both baselineUrl and candidateUrl
-    // 3. Apply crawlConfig (depth, include/exclude paths)
-    // 4. Use pageMap for explicit baseline ↔ candidate mappings
-    // 5. Execute testMatrix (visual, functional, data, seo)
-    // 6. Compare results using Azure OpenAI for intelligent diff analysis
-    // 7. Use MS Agent Framework for orchestration
-    // 8. Generate screenshots, logs, and reports as artifacts
-    // 9. Update run status to 'completed' or 'failed' based on results
-    this.simulateComparisonRunExecution(run.id, comparisonJob).catch((err) => {
-      console.error(`Error simulating comparison run execution for run ${run.id}:`, err);
+    // Start deterministic Playwright-based capture (baseline then candidate)
+    this.executePlaywrightRun(run.id, comparisonJob).catch((err) => {
+      console.error(`Error executing Playwright run for run ${run.id}:`, err);
     });
 
     return run;
