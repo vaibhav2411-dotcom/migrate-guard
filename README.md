@@ -126,14 +126,87 @@ See [backend/README.md](./backend/README.md) for full setup & CLI options.
 
 ---
 
-## 🏁 Roadmap / Phase 2
-- [ ] 🚧 **Playwright MCP / distributed execution** — Next: adapt local runner to MCP remote workers for scale.
-- [ ] 🧠 **AI-powered diff explanations** — Planned; will integrate after core artifact-first pipeline stabilizes (no AI in current implementation).
-- [ ] 🧮 **SEO & accessibility agents** — Planned agent implementations to add SEO/accessibility checks per page.
-- [ ] 🧩 **Pluggable pipeline orchestration (Agent Framework)** — Add orchestration layer to coordinate crawls, execution, and analysis workflows.
-- [ ] 📈 **Historical run analysis & dashboard** — Persisted run histories and analytics dashboards.
-- [ ] 🛡️ **Role-based access control, multi-user** — AuthZ/AuthN and multi-tenant controls for production deployments.
-- [ ] 🌍 **Production deployment guides** — CI/CD, secrets, scaling, and infra hardening guidance.
+## 🏁 Phase 2 Roadmap – Comparison Agents & Intelligence
+
+### 📋 What's Next (Work Estimation & Cost Analysis)
+
+**Full Phase 2 Scope:** 10–14 days dev work · $50–270/month infrastructure (optional) · $1–10/month AI credits (scales with usage)
+
+#### ✅ **Phase 2a: Core Comparison** (4–5 days, $0 infra) — **RECOMMENDED FIRST**
+- [ ] **Visual Diff** (1.5 days) — Pixel-level & layout comparison, heatmaps, severity scoring
+  - Uses existing pixelmatch, VisualDiffService skeleton
+- [ ] **Functional QA** (1.5 days) — Form testing, link validation, JS error detection, HAR analysis
+  - Uses existing FunctionalQaAgent skeleton, PlaywrightExecutionService
+- [ ] **Data Integrity** (1 day) — Table/text/API diffing, field-level similarity scoring
+  - Uses existing DataIntegrityAgent skeleton
+- [ ] **Basic Report Gen** (0.5 day) — Markdown summaries, artifact links, Go/No-Go criteria
+  - Uses existing ReportAgent skeleton
+
+**Output:** Side-by-side comparison reports with visual & functional diffs (no AI cost)
+
+#### 🤖 **Phase 2b: AI-Enhanced** (+2–3 days, $50–150/month) — **PRIORITY 2**
+- [ ] **Azure OpenAI Integration** (1.5 days) — Severity classification, business impact analysis, recommendations
+  - Cost: ~$0.05/run (~$5/month for 100 runs)
+- [ ] **Smart Report Gen** (0.5 day) — LLM-powered insights, false positive filtering, confidence scoring
+
+**Output:** Executive summaries with AI-driven risk analysis & recommendations
+
+#### 🎯 **Phase 2c: Polish & Analytics** (+3–4 days, $0 infra) — **PRIORITY 3**
+- [ ] **SEO Validation** (0.5 day) — Meta tags, Open Graph, structured data, canonicals
+- [ ] **Accessibility Checks** (0.5 day) — WCAG 2.1 compliance (axe-core), contrast & heading hierarchy
+- [ ] **Historical Trends** (1.5 days) — Run history, regression detection, trend charts
+  - Frontend dashboard for analytics
+- [ ] **Test Matrix Wiring** (0.25 day) — Conditional execution per test type
+- [ ] **E2E Tests & Docs** (1 day) — Validation, examples, troubleshooting
+
+**Output:** SEO/a11y insights, historical analytics, full test coverage
+
+### 💰 **Cost Breakdown**
+
+| Component | Cost | Notes |
+|-----------|------|-------|
+| File-based storage (current) | $0/mo | JSON snapshots, no DB needed |
+| Azure OpenAI API | $1–10/mo | Usage-based; 100 runs = ~$5/mo |
+| Optional: Cloud DB (PostgreSQL) | $15–50/mo | Only if scaling >1000 runs/mo |
+| Optional: Blob storage (images) | $5–20/mo | Only if cloud-hosting artifacts |
+| **Total (lean start)** | **$0–1/mo** | File storage + minimal AI |
+| **Total (standard)** | **$50–70/mo** | All features, growth-ready |
+
+### 🎯 **Recommended Execution Path**
+
+```
+Week 1: Phase 2a — Visual Diff + Functional QA (high-value, zero cost)
+        ✓ Screenshot comparison
+        ✓ Link/form validation
+        ✓ JS error detection
+        ✓ Basic HTML report
+        
+Week 2: Phase 2a continued — Data Integrity + Report Gen v1
+        ✓ Table/text diffing
+        ✓ Markdown summaries
+        ✓ Artifact linking
+        
+Week 3: Phase 2b — Azure OpenAI integration
+        ✓ Severity classification
+        ✓ Risk scoring
+        ✓ AI recommendations
+        
+Week 4: Phase 2c — SEO/Accessibility + Historical Trends
+        ✓ Meta tag validation
+        ✓ WCAG compliance
+        ✓ Trend dashboards
+```
+
+**Go Live Option:** End of Week 2 with Phase 2a (full visual & functional diffs, no AI costs)
+
+---
+
+## 🏗️ Other Planned Features
+
+- 🚧 **Playwright MCP / distributed execution** — Phase 3: Remote worker scaling
+- 🧩 **Pluggable pipeline orchestration** — Phase 3: Agent framework integration
+- 🛡️ **Role-based access control** — Phase 3: Multi-tenant & AuthZ/AuthN
+- 🌍 **Production deployment guides** — Phase 3: CI/CD, secrets, scaling
 
 ---
 
