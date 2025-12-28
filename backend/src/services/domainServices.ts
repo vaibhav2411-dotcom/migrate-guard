@@ -78,12 +78,22 @@ export class RunService implements RunServicePort {
       triggeredAt: now,
     };
 
+    // Placeholder artifact metadata for Phase 1.
     // TODO: Integrate Playwright MCP, Crawl4AI, Azure OpenAI, and MS Agent Framework here
-    // to actually execute the migration comparison and update the run status + artifacts.
+    // to actually execute the migration comparison and populate real artifacts.
+    const placeholderArtifact: RunArtifact = {
+      id: randomUUID(),
+      runId: run.id,
+      type: 'log',
+      label: 'Execution log (placeholder)',
+      path: '',
+      createdAt: now,
+    };
 
     const next: typeof snapshot = {
       ...snapshot,
       runs: [run, ...snapshot.runs],
+      artifacts: [placeholderArtifact, ...snapshot.artifacts],
     };
 
     await this.storage.save(next);

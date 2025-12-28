@@ -1,9 +1,6 @@
 import { promises as fs } from 'fs';
-import path from 'path';
+import { SNAPSHOT_FILE, DATA_DIR } from '../config/config';
 import { StoragePort, StorageSnapshot } from '../models';
-
-const DATA_DIR = path.resolve(process.cwd(), 'backend', 'data');
-const SNAPSHOT_FILE = path.join(DATA_DIR, 'snapshot.json');
 
 const emptySnapshot: StorageSnapshot = {
   jobs: [],
