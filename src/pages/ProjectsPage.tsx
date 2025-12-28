@@ -36,6 +36,8 @@ import {
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { ProjectStatus } from '@/lib/types';
+import { createJob } from '@/lib/api';
+import { toast } from '@/hooks/use-toast';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -80,9 +82,30 @@ export default function ProjectsPage() {
       p.description.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const handleCreateProject = () => {
+  const handleCreateProject = async () => {
     if (newProject.name && newProject.sourceUrl && newProject.targetUrl) {
       addProject(newProject);
+
+      try {
+        await createJob({
+          name: newProject.name,
+          description: newProject.description || undefined,
+          sourceUrl: newProject.sourceUrl,
+          targetUrl: newProject.targetUrl,
+        });
+        toast({
+          title: 'Backend job created',
+          description: 'Control plane received this migration project.',
+        });
+      } catch (error) {
+        // Frontend state is already updated; surfacing a non-blocking error is enough.
+        toast({
+          title: 'Backend sync failed',
+          description: 'Project was created locally, but backend job creation failed.',
+          variant: 'destructive',
+        });
+      }
+
       setIsDialogOpen(false);
       setNewProject({
         name: '',

@@ -7,10 +7,21 @@ const storage = new FileStorage();
 const jobService = new JobService(storage);
 const runService = new RunService(storage);
 
+interface CreateJobBody {
+  name: string;
+  description?: string;
+  sourceUrl: string;
+  targetUrl: string;
+}
+
+interface TriggerRunBody {
+  triggeredBy?: string;
+}
+
 async function apiRoutes(fastify: FastifyInstance, _opts: FastifyPluginOptions) {
   // Jobs
   fastify.post('/api/jobs', async (request, reply) => {
-    const body = request.body as any;
+    const body = request.body as CreateJobBody;
 
     const job = await jobService.createJob({
       name: body.name,
@@ -39,14 +50,14 @@ async function apiRoutes(fastify: FastifyInstance, _opts: FastifyPluginOptions) 
 
   fastify.post('/api/jobs/:id/run', async (request, reply) => {
     const { id } = request.params as { id: string };
-    const body = request.body as any | undefined;
+    const body = request.body as TriggerRunBody | undefined;
     const triggeredBy = body?.triggeredBy ?? 'system';
 
     try {
       const run = await runService.triggerRun(id, triggeredBy);
       reply.code(202).send(run);
-    } catch (err: any) {
-      if (err.message?.includes('not found')) {
+    } catch (err) {
+      if (err instanceof Error && err.message.includes('not found')) {
         reply.code(404).send({ message: 'Job not found' });
         return;
       }

@@ -27,7 +27,7 @@ describe('API routes', () => {
     });
 
     expect(createRes.statusCode).toBe(201);
-    const created = createRes.json() as any;
+    const created = createRes.json() as { id: string };
     expect(created.id).toBeDefined();
 
     const getRes = await app.inject({
@@ -36,7 +36,7 @@ describe('API routes', () => {
     });
 
     expect(getRes.statusCode).toBe(200);
-    const fetched = getRes.json() as any;
+    const fetched = getRes.json() as { id: string };
     expect(fetched.id).toBe(created.id);
   });
 

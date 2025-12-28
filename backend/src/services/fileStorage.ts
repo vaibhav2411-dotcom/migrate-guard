@@ -16,8 +16,8 @@ export class FileStorage implements StoragePort {
     try {
       const buf = await fs.readFile(SNAPSHOT_FILE, 'utf-8');
       return JSON.parse(buf) as StorageSnapshot;
-    } catch (err: any) {
-      if (err.code === 'ENOENT') {
+    } catch (err) {
+      if ((err as NodeJS.ErrnoException).code === 'ENOENT') {
         await this.ensureDir();
         await this.save(emptySnapshot);
         return emptySnapshot;
