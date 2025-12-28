@@ -186,28 +186,30 @@ Pull requests and issues are always welcome!
 ## 🏗️ Architecture
 
 ```mermaid
-flowchart TD
-    subgraph Frontend [React 18 + Vite]
-      UI[UI Components / Pages]
-      APIClient[API Client (src/lib/api.ts)]
-      UI --> APIClient
-    end
-    subgraph Backend [Node.js Fastify API]
-      APIRouter[REST API (routes/api.ts)]
-      Agents[Agents/Services (src/services/)]
-      Models[Types/Models (src/models.ts)]
-      Config[Config (src/config/)]
-      Artifacts[Artifacts (data/artifacts/{runId})]
-      APIRouter --> Agents
-      Agents --> Artifacts
-      Agents --> Models
-      APIRouter --> Config
-    end
+---
+config:
+  layout: elk
+---
+flowchart TB
+ subgraph Frontend["React 18 + Vite"]
+        UI["UI Components / Pages"]
+        APIClient["API Client (src/lib/api.ts)"]
+  end
+ subgraph Backend["Node.js Fastify API"]
+        APIRouter["REST API (routes/api.ts)"]
+        Agents["Agents/Services (src/services/)"]
+        Models["Types/Models (src/models.ts)"]
+        Config["Config (src/config/)"]
+        Artifacts["Artifacts (data/artifacts/{runId})"]
+  end
+ subgraph AI["AI Integration"]
+        AIReasoning["AI Reasoning Service (Azure OpenAI)"]
+  end
+    UI --> APIClient
+    APIRouter --> Agents & Config
+    Agents --> Artifacts & Models
     APIClient -- HTTP/JSON --> APIRouter
-    Artifacts -.->|Download/View| UI
-    subgraph AI[AI Integration]
-      AIReasoning[AI Reasoning Service (Azure OpenAI)]
-    end
+    Artifacts -. Download/View .-> UI
     Agents -- Risk/Analysis --> AIReasoning
 ```
 
