@@ -1,0 +1,17 @@
+sequenceDiagram
+  participant User
+  participant Frontend as React App
+  participant API as Fastify API
+  participant Agent as Service Agent
+  participant Artifact as Artifact Store
+  participant AI as AI Reasoning
+
+  User->>Frontend: Initiate migration test
+  Frontend->>API: POST /api/jobs
+  API->>Agent: Start crawl/QA/diff
+  Agent->>Artifact: Store run outputs
+  Agent->>AI: Analyze results (optional)
+  AI-->>Agent: Risk/Recommendation
+  Agent->>API: Report status/results
+  API->>Frontend: Respond with run status/artifacts
+  Frontend->>User: Show results, download artifacts

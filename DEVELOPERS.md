@@ -7,7 +7,7 @@ Welcome to the Migrate Guard Dev Team! This guide will help you set up, understa
 ## 📚 Index
 - [Backend Overview & Setup](#-backend-overview--setup)
 - [API Reference & Testing](#-api-reference--testing)
-- [Warp/Lovable & Workflow Automation](#-warp--lovable--workflow-automation)
+
 - [Advanced Dev Instructions & Scripting](#-advanced-dev-scripting)
 - [Developer Conventions & Extending](#-developer-conventions--best-practices)
 
@@ -67,35 +67,7 @@ See [backend/API.md](backend/API.md) for **complete, detailed API endpoint docs*
 
 ---
 
-## ⚡ Warp, Lovable & Workflow Automation
 
-WARP.md & onboarding scripts enable **fast local/dev/prod workflow**:
-
-- **CLI:** All npm/yarn/bun scripts ready, cross-platform (PowerShell, bash, WARP terminal, etc.)
-- **Lovable Integration:**
-  - Code sync with [lovable.dev](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID)
-  - Live edits, auto-commit, and click-to-deploy to test/stage/prod
-- **Project root:**
-  - `vite.config.ts` for frontend, port 8080
-  - All frontend scripts (`npm run dev`, `build`, `lint`, etc.)
-  - [WARP.md](WARP.md) documents commands for install, preview, build (dev/prod), linting, test, and Lovable backwards integration
-
-### 🛠️ Sample Local Dev
-```sh
-npm install              # Install deps (supports Bun too)
-npm run dev              # Start dev (Vite frontend OR backend)
-npm run build            # Production build
-npx playwright install   # For backend test/crawls
-npm run lint             # Lint with flat config
-```
-
-### 🔗 Advanced Scripting
-See [warp-instructions.md](warp-instructions.md) for:
-- Custom scripts/setups
-- Integrating CLI workflows with CI/CD
-- Additional developer onboarding
-
----
 
 ## ⛓️ Advanced Dev Scripting
 
@@ -128,5 +100,5 @@ See [warp-instructions.md](warp-instructions.md) for:
 
 ## 🌟 Welcome! Now go build awesome migration assurance 🚀
 
-For code review/CI/merge workflow, see [WARP.md](WARP.md) and [README.md](README.md).
+For code review/CI/merge workflow, see [README.md](README.md).
 

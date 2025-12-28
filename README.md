@@ -45,9 +45,8 @@ migrate-guard/
 │   ├── lib/          # Types, store, API, utils
 │   └── hooks/        # Custom hooks
 ├── API.md            # Full backend OpenAPI
-├── WARP.md           # Warp/Lovable/dev workflow
-├── warp-instructions.md # Dev onboarding
-└── README.md         # 👈 You are here!
+├── DEVELOPERS.md     # Developer onboarding & conventions
+├── README.md         # 👈 You are here!
 ```
 
 
@@ -125,13 +124,6 @@ See [backend/README.md](./backend/README.md) for full setup & CLI options.
 - TODOs in code for Playwright MCP, Crawl4AI, further AI & agent orchestration
 
 
-## 💻 Developer & Onboarding Resources
-
-- [backend/README.md](./backend/README.md) — Backend dev guide
-- [API.md](./API.md) — Full documented API
-- [WARP.md](./WARP.md) — CLI, project automation, and Lovable/warp integration
-- [warp-instructions.md](./warp-instructions.md) — Additional onboarding & scripting
-
 ---
 
 ## 🏁 Roadmap / Phase 2
@@ -156,3 +148,93 @@ Pull requests and issues are always welcome!
 ---
 
 **Migrate Guard** – Secure your migrations, delight your users, and sleep better at night. 🚀🛡️
+
+## 🧪 Testing
+
+- **Backend tests:**
+  - Run all backend tests: `cd backend && npm test` (see `backend/tests/` for entry points)
+- **Frontend tests:**
+  - Add or run tests in `src/pages/` as needed (see project conventions)
+
+## 🧹 Linting & Formatting
+
+- Lint all code: `npm run lint` (uses flat config)
+- TypeScript strict mode is enforced throughout the project.
+
+## 🛠️ Extending & Contributing
+
+- Add new agents/services in `backend/src/services/` and models in `backend/src/models/`
+- Extend the API in `backend/src/routes/api.ts` using strong schema validation
+- Follow conventions in `DEVELOPERS.md` for testability, feature flags, and separation of concerns
+
+## 📦 Artifacts & Outputs
+
+- All run outputs (screenshots, HAR, logs, reports) are stored under `backend/data/artifacts/{runId}`
+- Artifacts are organized per run and available for download via the API
+
+## 🧩 Feature Flags & Test Matrix
+
+- Feature flags and test matrices are used to enable/disable AI, diff, QA, and other features
+- Configure these in the relevant config or test files as described in `DEVELOPERS.md`
+
+## 📚 References
+
+- [DEVELOPERS.md](./DEVELOPERS.md): Developer onboarding, conventions, and extending
+- [API.md](./API.md): Full backend API documentation
+- [.github/copilot-instructions.md](.github/copilot-instructions.md): AI agent and codegen guidance
+
+## 🏗️ Architecture
+
+```mermaid
+flowchart TD
+    subgraph Frontend [React 18 + Vite]
+      UI[UI Components / Pages]
+      APIClient[API Client (src/lib/api.ts)]
+      UI --> APIClient
+    end
+    subgraph Backend [Node.js Fastify API]
+      APIRouter[REST API (routes/api.ts)]
+      Agents[Agents/Services (src/services/)]
+      Models[Types/Models (src/models.ts)]
+      Config[Config (src/config/)]
+      Artifacts[Artifacts (data/artifacts/{runId})]
+      APIRouter --> Agents
+      Agents --> Artifacts
+      Agents --> Models
+      APIRouter --> Config
+    end
+    APIClient -- HTTP/JSON --> APIRouter
+    Artifacts -.->|Download/View| UI
+    subgraph AI[AI Integration]
+      AIReasoning[AI Reasoning Service (Azure OpenAI)]
+    end
+    Agents -- Risk/Analysis --> AIReasoning
+```
+
+**Migrate Guard** is structured as a strict TypeScript monorepo with clear backend/frontend separation:
+
+- **Backend (Node.js, Fastify, TypeScript):**
+  - Modular "agents" in `backend/src/services/` for crawling, QA, visual diff, data validation, and AI-powered reporting.
+  - RESTful API in `backend/src/routes/api.ts` exposes all core operations.
+  - Strongly typed models in `backend/src/models.ts`.
+  - All persistent data and artifacts (screenshots, HAR, logs, reports) are stored under `backend/data/artifacts/{runId}`.
+  - Configurable via files in `backend/src/config/`.
+  - Feature flags and test matrices enable/disable AI, diff, QA, etc.
+
+- **Frontend (React 18, Vite, TypeScript):**
+  - UI components in `src/components/`, page views in `src/pages/`, and shared types in `src/lib/types.ts`.
+  - State management and API logic in `src/lib/store.ts` and `src/lib/api.ts`.
+  - Connects to backend API for job/runs management, artifact viewing, and reporting.
+
+- **Extensibility:**
+  - Add new agents/services in `backend/src/services/` and extend models in `backend/src/models/`.
+  - API endpoints are added in `backend/src/routes/api.ts` with strong schema validation.
+  - All config is JSON or TypeScript—no hardcoded values.
+
+- **Data Flow:**
+  - Jobs and runs are created via the API, triggering agents to process sites and generate artifacts.
+  - Artifacts are stored per run and accessed via the API and frontend dashboard.
+
+- **AI Integration:**
+  - `AiReasoningService` uses Azure OpenAI for risk analysis and recommendations.
+  - AI features are controlled via feature flags and test matrices.
