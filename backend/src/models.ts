@@ -45,6 +45,8 @@ export interface JobServicePort {
   listJobs(): Promise<Job[]>;
   getJobById(id: string): Promise<Job | undefined>;
   createJob(input: Omit<Job, 'id' | 'createdAt' | 'updatedAt' | 'status'>): Promise<Job>;
+  updateJob(id: string, input: Partial<Omit<Job, 'id' | 'createdAt'>>): Promise<Job>;
+  deleteJob(id: string): Promise<boolean>;
 }
 
 export interface RunServicePort {

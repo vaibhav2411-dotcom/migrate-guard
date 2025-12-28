@@ -1,4 +1,5 @@
 import Fastify from 'fastify';
+import cors from '@fastify/cors';
 import apiRoutes from './routes/api';
 import { DEFAULT_PORT } from './config/config';
 
@@ -7,7 +8,18 @@ export async function buildServer() {
     logger: true,
   });
 
+  // Enable CORS for frontend integration
+  await fastify.register(cors, {
+    origin: true, // Allow all origins in development
+    credentials: true,
+  });
+
   await fastify.register(apiRoutes);
+
+  // Health check endpoint
+  fastify.get('/health', async (_request, reply) => {
+    return reply.send({ status: 'ok', timestamp: new Date().toISOString() });
+  });
 
   return fastify;
 }
