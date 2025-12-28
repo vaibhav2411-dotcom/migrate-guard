@@ -7,6 +7,7 @@ import {
   Link2,
   Database,
   FileText,
+  Activity,
   Settings,
   Shield,
   ChevronLeft,
@@ -22,6 +23,7 @@ const navItems = [
   { path: '/urls', icon: Link2, label: 'URL Inventory' },
   { path: '/data', icon: Database, label: 'Data Validation' },
   { path: '/reports', icon: FileText, label: 'Reports' },
+  { path: '/runs', icon: Activity, label: 'Runs' },
 ];
 
 const bottomNavItems = [

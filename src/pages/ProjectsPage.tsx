@@ -36,7 +36,7 @@ import {
 import { format } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { ProjectStatus } from '@/lib/types';
-import { createJob } from '@/lib/api';
+import { createJob, listJobs, triggerRun } from '@/lib/api';
 import { toast } from '@/hooks/use-toast';
 import {
   DropdownMenu,
@@ -115,6 +115,43 @@ export default function ProjectsPage() {
         status: 'planning',
         startDate: '',
         cutoverDate: '',
+      });
+    }
+  };
+
+  const handleTriggerRun = async (projectId: string) => {
+    const project = projects.find((p) => p.id === projectId);
+    if (!project) return;
+
+    try {
+      const jobs = await listJobs();
+      let job = jobs.find(
+        (j) =>
+          j.name === project.name &&
+          j.sourceUrl === project.sourceUrl &&
+          j.targetUrl === project.targetUrl,
+      );
+
+      if (!job) {
+        job = await createJob({
+          name: project.name,
+          description: project.description,
+          sourceUrl: project.sourceUrl,
+          targetUrl: project.targetUrl,
+        });
+      }
+
+      const run = await triggerRun(job.id, 'ui');
+
+      toast({
+        title: 'Run triggered',
+        description: `Run ${run.id} queued for job ${job.id}.`,
+      });
+    } catch (error) {
+      toast({
+        title: 'Failed to trigger run',
+        description: 'An error occurred while triggering a backend run.',
+        variant: 'destructive',
       });
     }
   };
@@ -305,18 +342,27 @@ export default function ProjectsPage() {
               <span>{project.testsPassed}/{project.testsTotal} tests</span>
             </div>
 
-            <div className="pt-4 border-t border-border flex items-center justify-between">
+            <div className="pt-4 border-t border-border flex items-center justify-between gap-2">
               <div className="text-xs font-mono text-muted-foreground truncate max-w-[150px]">
                 {project.targetUrl}
               </div>
-              <Button 
-                variant="ghost" 
-                size="sm"
-                onClick={() => navigate(`/projects/${project.id}`)}
-              >
-                View Details
-                <ExternalLink className="w-3 h-3 ml-1" />
-              </Button>
+              <div className="flex items-center gap-2">
+                <Button 
+                  variant="outline" 
+                  size="sm"
+                  onClick={() => handleTriggerRun(project.id)}
+                >
+                  Trigger Run
+                </Button>
+                <Button 
+                  variant="ghost" 
+                  size="sm"
+                  onClick={() => navigate(`/projects/${project.id}`)}
+                >
+                  View Details
+                  <ExternalLink className="w-3 h-3 ml-1" />
+                </Button>
+              </div>
             </div>
           </motion.div>
         ))}

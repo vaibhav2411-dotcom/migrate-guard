@@ -11,6 +11,7 @@ import URLInventoryPage from "./pages/URLInventoryPage";
 import DataValidationPage from "./pages/DataValidationPage";
 import ReportsPage from "./pages/ReportsPage";
 import SettingsPage from "./pages/SettingsPage";
+import RunsPage from "./pages/RunsPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
             <Route path="/urls" element={<URLInventoryPage />} />
             <Route path="/data" element={<DataValidationPage />} />
             <Route path="/reports" element={<ReportsPage />} />
+            <Route path="/runs" element={<RunsPage />} />
             <Route path="/settings" element={<SettingsPage />} />
           </Route>
           <Route path="*" element={<NotFound />} />
