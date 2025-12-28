@@ -183,37 +183,7 @@ Pull requests and issues are always welcome!
 - [API.md](./API.md): Full backend API documentation
 - [.github/copilot-instructions.md](.github/copilot-instructions.md): AI agent and codegen guidance
 
-## 🏗️ Architecture
-
-```mermaid
----
-config:
-  layout: elk
----
-flowchart TB
- subgraph Frontend["React 18 + Vite"]
-        UI["UI Components / Pages"]
-        APIClient["API Client (src/lib/api.ts)"]
-  end
- subgraph Backend["Node.js Fastify API"]
-        APIRouter["REST API (routes/api.ts)"]
-        Agents["Agents/Services (src/services/)"]
-        Models["Types/Models (src/models.ts)"]
-        Config["Config (src/config/)"]
-        Artifacts["Artifacts (data/artifacts/{runId})"]
-  end
- subgraph AI["AI Integration"]
-        AIReasoning["AI Reasoning Service (Azure OpenAI)"]
-  end
-    UI --> APIClient
-    APIRouter --> Agents & Config
-    Agents --> Artifacts & Models
-    APIClient -- HTTP/JSON --> APIRouter
-    Artifacts -. Download/View .-> UI
-    Agents -- Risk/Analysis --> AIReasoning
-```
-
-## 🖼️ Architecture Diagrams
+## 🏗️ Architecture Details
 
 Below are the maintained Mermaid diagrams (also available in `resources/`) to help visualize the system. Click the link to view the raw `.mmd` sources.
 
@@ -224,62 +194,12 @@ Below are the maintained Mermaid diagrams (also available in `resources/`) to he
 
 *What's shown:* logical components and their primary relationships (frontend, API router, agents/services, artifacts, and AI reasoning).
 
-```mermaid
----
-config:
-  layout: elk
----
-flowchart TD
-  subgraph Frontend ["React 18 + Vite"]
-    UI["UI Components / Pages"]
-    APIClient["API Client (src/lib/api.ts)"]
-    UI --> APIClient
-  end
-  subgraph Backend ["Node.js Fastify API"]
-    APIRouter["REST API (routes/api.ts)"]
-    Agents["Agents/Services (src/services/)"]
-    Models["Types/Models (src/models.ts)"]
-    Config["Config (src/config/)"]
-    Artifacts["Artifacts (data/artifacts/{runId})"]
-    APIRouter --> Agents
-    Agents --> Artifacts
-    Agents --> Models
-    APIRouter --> Config
-  end
-  APIClient -- HTTP/JSON --> APIRouter
-  Artifacts -.->|Download/View| UI
-  subgraph AI["AI Integration"]
-    AIReasoning["AI Reasoning Service (Azure OpenAI)"]
-  end
-  Agents -- Risk/Analysis --> AIReasoning
-```
-
 ### Sequence Diagram ✅
 - Source: `resources/architecture-sequence-diagram.mmd`
 
 ![Sequence Diagram](resources/images/architecture-sequence-diagram.png)
 
 *What's shown:* high-level interaction flow between user, frontend, API, agents, artifact store, and AI reasoning service.
-
-```mermaid
-sequenceDiagram
-  participant User
-  participant Frontend as React App
-  participant API as Fastify API
-  participant Agent as Service Agent
-  participant Artifact as Artifact Store
-  participant AI as AI Reasoning
-
-  User->>Frontend: Initiate migration test
-  Frontend->>API: POST /api/jobs
-  API->>Agent: Start crawl/QA/diff
-  Agent->>Artifact: Store run outputs
-  Agent->>AI: Analyze results (optional)
-  AI-->>Agent: Risk/Recommendation
-  Agent->>API: Report status/results
-  API->>Frontend: Respond with run status/artifacts
-  Frontend->>User: Show results, download artifacts
-```
 
 ### Tech Stack (Overview) ✅
 - Source: `resources/architecture-tech-stack.mmd`
