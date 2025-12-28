@@ -127,13 +127,14 @@ See [backend/README.md](./backend/README.md) for full setup & CLI options.
 ---
 
 ## 🏁 Roadmap / Phase 2
-- [ ] 🚦 **Full end-to-end browser automation** (Playwright MCP, Crawl4AI)
-- [ ] 🧠 **AI-powered diff explanations** (Azure OpenAI everywhere)
-- [ ] 🧮 **SEO & accessibility agents**
-- [ ] 🧩 **Pluggable pipeline orchestration (Agent Framework)**
-- [ ] 📈 **Historical run analysis & dashboard**
-- [ ] 🛡️ **Role-based access control, multi-user**
-- [ ] 🌍 **Production deployment guides**
+- [x] 🚦 **Local Playwright two-site capture** — Baseline / Candidate capture implemented (screenshots, HTML, console, network). See `backend/src/runner/playwrightRunner.ts` and run lifecycle in `backend/src/services/domainServices.ts`.
+- [ ] 🚧 **Playwright MCP / distributed execution** — Next: adapt local runner to MCP remote workers for scale.
+- [ ] 🧠 **AI-powered diff explanations** — Planned; will integrate after core artifact-first pipeline stabilizes (no AI in current implementation).
+- [ ] 🧮 **SEO & accessibility agents** — Planned agent implementations to add SEO/accessibility checks per page.
+- [ ] 🧩 **Pluggable pipeline orchestration (Agent Framework)** — Add orchestration layer to coordinate crawls, execution, and analysis workflows.
+- [ ] 📈 **Historical run analysis & dashboard** — Persisted run histories and analytics dashboards.
+- [ ] 🛡️ **Role-based access control, multi-user** — AuthZ/AuthN and multi-tenant controls for production deployments.
+- [ ] 🌍 **Production deployment guides** — CI/CD, secrets, scaling, and infra hardening guidance.
 
 ---
 
