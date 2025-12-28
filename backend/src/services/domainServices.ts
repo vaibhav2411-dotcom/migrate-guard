@@ -55,80 +55,6 @@ export class ComparisonJobService implements ComparisonJobServicePort {
     return snapshot.comparisonJobs || [];
   }
 
-  /**
-   * Execute a deterministic Playwright capture for the two job URLs (baseline & candidate)
-   * - Updates run status to 'running' -> 'completed'|'failed'
-   * - Persists artifacts under `data/artifacts/{runId}` and registers them in storage
-   */
-  private async executePlaywrightRun(runId: string, job: ComparisonJob): Promise<void> {
-    const snapshot = await this.storage.load();
-    const run = snapshot.runs.find((r) => r.id === runId);
-    if (!run) return;
-
-    // Mark running
-    const runningRun: Run = { ...run, status: 'running' };
-    const runningSnapshot: typeof snapshot = {
-      ...snapshot,
-      runs: snapshot.runs.map((r) => (r.id === runId ? runningRun : r)),
-    };
-    await this.storage.save(runningSnapshot);
-
-    const now = new Date().toISOString();
-    const artifacts: RunArtifact[] = [];
-
-    try {
-      // Use the lightweight runner to capture baseline and candidate pages
-      const artifactPaths = await runTwoSiteCapture(job.baselineUrl, job.candidateUrl, runId);
-
-      for (const p of artifactPaths) {
-        const relativePath = p.replace(/^.*[\\\/]data[\\\/]/, 'data/');
-        artifacts.push({
-          id: randomUUID(),
-          runId,
-          type: p.endsWith('.png') ? 'screenshot' : p.endsWith('.log') ? 'log' : 'report',
-          label: this.getArtifactLabel(p),
-          path: relativePath,
-          createdAt: now,
-        });
-      }
-
-    } catch (err) {
-      const errorMessage = err instanceof Error ? err.message : String(err);
-      const errorPath = `data/artifacts/${runId}/playwright-error.log`;
-      try {
-        await fs.mkdir(path.dirname(path.join(DATA_DIR, 'artifacts', runId)), { recursive: true });
-        await fs.writeFile(path.join(DATA_DIR, 'artifacts', runId, 'playwright-error.log'), errorMessage, 'utf-8');
-      } catch {}
-
-      artifacts.push({
-        id: randomUUID(),
-        runId,
-        type: 'log',
-        label: 'Playwright Error',
-        path: errorPath,
-        createdAt: now,
-      });
-
-      const failedRun: Run = { ...runningRun, status: 'failed', completedAt: new Date().toISOString() };
-      const failedSnapshot: typeof snapshot = {
-        ...runningSnapshot,
-        runs: runningSnapshot.runs.map((r) => (r.id === runId ? failedRun : r)),
-        artifacts: [...runningSnapshot.artifacts, ...artifacts],
-      };
-      await this.storage.save(failedSnapshot);
-      return;
-    }
-
-    // Completed
-    const completedRun: Run = { ...runningRun, status: 'completed', completedAt: new Date().toISOString() };
-    const finalSnapshot: typeof snapshot = {
-      ...runningSnapshot,
-      runs: runningSnapshot.runs.map((r) => (r.id === runId ? completedRun : r)),
-      artifacts: [...runningSnapshot.artifacts, ...artifacts],
-    };
-    await this.storage.save(finalSnapshot);
-  }
-
   async getJobById(id: string): Promise<ComparisonJob | undefined> {
     const snapshot = await this.storage.load();
     return snapshot.comparisonJobs?.find((j) => j.id === id);
@@ -458,6 +384,80 @@ export class RunService implements RunServicePort {
     });
 
     return run;
+  }
+
+  /**
+   * Execute a deterministic Playwright capture for the two job URLs (baseline & candidate)
+   * - Updates run status to 'running' -> 'completed'|'failed'
+   * - Persists artifacts under `data/artifacts/{runId}` and registers them in storage
+   */
+  private async executePlaywrightRun(runId: string, job: ComparisonJob): Promise<void> {
+    const snapshot = await this.storage.load();
+    const run = snapshot.runs.find((r) => r.id === runId);
+    if (!run) return;
+
+    // Mark running
+    const runningRun: Run = { ...run, status: 'running' };
+    const runningSnapshot: typeof snapshot = {
+      ...snapshot,
+      runs: snapshot.runs.map((r) => (r.id === runId ? runningRun : r)),
+    };
+    await this.storage.save(runningSnapshot);
+
+    const now = new Date().toISOString();
+    const artifacts: RunArtifact[] = [];
+
+    try {
+      // Use the lightweight runner to capture baseline and candidate pages
+      const artifactPaths = await runTwoSiteCapture(job.baselineUrl, job.candidateUrl, runId);
+
+      for (const p of artifactPaths) {
+        const relativePath = p.replace(/^.*[\\\/]data[\\\/]/, 'data/');
+        artifacts.push({
+          id: randomUUID(),
+          runId,
+          type: p.endsWith('.png') ? 'screenshot' : p.endsWith('.log') ? 'log' : 'report',
+          label: this.getArtifactLabel(p),
+          path: relativePath,
+          createdAt: now,
+        });
+      }
+
+    } catch (err) {
+      const errorMessage = err instanceof Error ? err.message : String(err);
+      const errorPath = `data/artifacts/${runId}/playwright-error.log`;
+      try {
+        await fs.mkdir(path.dirname(path.join(DATA_DIR, 'artifacts', runId)), { recursive: true });
+        await fs.writeFile(path.join(DATA_DIR, 'artifacts', runId, 'playwright-error.log'), errorMessage, 'utf-8');
+      } catch {}
+
+      artifacts.push({
+        id: randomUUID(),
+        runId,
+        type: 'log',
+        label: 'Playwright Error',
+        path: errorPath,
+        createdAt: now,
+      });
+
+      const failedRun: Run = { ...runningRun, status: 'failed', completedAt: new Date().toISOString() };
+      const failedSnapshot: typeof snapshot = {
+        ...runningSnapshot,
+        runs: runningSnapshot.runs.map((r) => (r.id === runId ? failedRun : r)),
+        artifacts: [...runningSnapshot.artifacts, ...artifacts],
+      };
+      await this.storage.save(failedSnapshot);
+      return;
+    }
+
+    // Completed
+    const completedRun: Run = { ...runningRun, status: 'completed', completedAt: new Date().toISOString() };
+    const finalSnapshot: typeof snapshot = {
+      ...runningSnapshot,
+      runs: runningSnapshot.runs.map((r) => (r.id === runId ? completedRun : r)),
+      artifacts: [...runningSnapshot.artifacts, ...artifacts],
+    };
+    await this.storage.save(finalSnapshot);
   }
 
   /**
