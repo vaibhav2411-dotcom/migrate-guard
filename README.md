@@ -213,6 +213,79 @@ flowchart TB
     Agents -- Risk/Analysis --> AIReasoning
 ```
 
+## 🖼️ Architecture Diagrams
+
+Below are the maintained Mermaid diagrams (also available in `resources/`) to help visualize the system. Click the link to view the raw `.mmd` sources.
+
+### Component Diagram ✅
+- Source: `resources/architecture-component-diagram.mmd`
+
+```mermaid
+---
+config:
+  layout: elk
+---
+flowchart TD
+  subgraph Frontend ["React 18 + Vite"]
+    UI["UI Components / Pages"]
+    APIClient["API Client (src/lib/api.ts)"]
+    UI --> APIClient
+  end
+  subgraph Backend ["Node.js Fastify API"]
+    APIRouter["REST API (routes/api.ts)"]
+    Agents["Agents/Services (src/services/)"]
+    Models["Types/Models (src/models.ts)"]
+    Config["Config (src/config/)"]
+    Artifacts["Artifacts (data/artifacts/{runId})"]
+    APIRouter --> Agents
+    Agents --> Artifacts
+    Agents --> Models
+    APIRouter --> Config
+  end
+  APIClient -- HTTP/JSON --> APIRouter
+  Artifacts -.->|Download/View| UI
+  subgraph AI["AI Integration"]
+    AIReasoning["AI Reasoning Service (Azure OpenAI)"]
+  end
+  Agents -- Risk/Analysis --> AIReasoning
+```
+
+### Sequence Diagram ✅
+- Source: `resources/architecture-sequence-diagram.mmd`
+
+```mermaid
+sequenceDiagram
+  participant User
+  participant Frontend as React App
+  participant API as Fastify API
+  participant Agent as Service Agent
+  participant Artifact as Artifact Store
+  participant AI as AI Reasoning
+
+  User->>Frontend: Initiate migration test
+  Frontend->>API: POST /api/jobs
+  API->>Agent: Start crawl/QA/diff
+  Agent->>Artifact: Store run outputs
+  Agent->>AI: Analyze results (optional)
+  AI-->>Agent: Risk/Recommendation
+  Agent->>API: Report status/results
+  API->>Frontend: Respond with run status/artifacts
+  Frontend->>User: Show results, download artifacts
+```
+
+### Tech Stack (Overview) ✅
+- Source: `resources/architecture-tech-stack.mmd`
+
+```mermaid
+pie
+  title Tech Stack Distribution
+  "React 18 + Vite (Frontend)" : 30
+  "Fastify + TypeScript (Backend)" : 30
+  "Playwright, pixelmatch, pngjs" : 15
+  "Azure OpenAI" : 10
+  "Zustand, TanStack Query, TailwindCSS, shadcn-ui" : 15
+```
+
 **Migrate Guard** is structured as a strict TypeScript monorepo with clear backend/frontend separation:
 
 - **Backend (Node.js, Fastify, TypeScript):**
