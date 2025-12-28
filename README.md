@@ -220,6 +220,10 @@ Below are the maintained Mermaid diagrams (also available in `resources/`) to he
 ### Component Diagram ✅
 - Source: `resources/architecture-component-diagram.mmd`
 
+![Component Diagram](resources/images/architecture-component-diagram.png)
+
+*What's shown:* logical components and their primary relationships (frontend, API router, agents/services, artifacts, and AI reasoning).
+
 ```mermaid
 ---
 config:
@@ -253,6 +257,10 @@ flowchart TD
 ### Sequence Diagram ✅
 - Source: `resources/architecture-sequence-diagram.mmd`
 
+![Sequence Diagram](resources/images/architecture-sequence-diagram.png)
+
+*What's shown:* high-level interaction flow between user, frontend, API, agents, artifact store, and AI reasoning service.
+
 ```mermaid
 sequenceDiagram
   participant User
@@ -276,15 +284,9 @@ sequenceDiagram
 ### Tech Stack (Overview) ✅
 - Source: `resources/architecture-tech-stack.mmd`
 
-```mermaid
-pie
-  title Tech Stack Distribution
-  "React 18 + Vite (Frontend)" : 30
-  "Fastify + TypeScript (Backend)" : 30
-  "Playwright, pixelmatch, pngjs" : 15
-  "Azure OpenAI" : 10
-  "Zustand, TanStack Query, TailwindCSS, shadcn-ui" : 15
-```
+![Tech Stack](resources/images/architecture-tech-stack.png)
+
+*What’s shown:* relative weight of the major stacks used in the project (frontend, backend, automation, AI, UI libs).
 
 **Migrate Guard** is structured as a strict TypeScript monorepo with clear backend/frontend separation:
 
