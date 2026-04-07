@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { listRuns, listRunArtifacts, RunDto, RunArtifactDto } from '@/lib/api';
+import { Link } from 'react-router-dom';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -25,6 +26,12 @@ export default function RunsPage() {
   const runsQuery = useQuery({
     queryKey: ['runs'],
     queryFn: () => listRuns(),
+    refetchInterval: (data) => {
+      // Poll every 3s while any run is running
+      if (!data) return false;
+      const hasRunning = data.some((r: RunDto) => r.status === 'running' || r.status === 'queued');
+      return hasRunning ? 3000 : false;
+    },
   });
 
   const artifactsQuery = useQuery({
@@ -72,9 +79,10 @@ export default function RunsPage() {
               {runs.map((run) => {
                 const artifacts = artifactsByRun[run.id] ?? [];
                 return (
-                  <div
+                  <Link
                     key={run.id}
-                    className="border border-border rounded-lg p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+                    to={`/runs/${run.id}`}
+                    className="border border-border rounded-lg p-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 block"
                   >
                     <div className="space-y-1">
                       <div className="flex items-center gap-2">
@@ -110,7 +118,7 @@ export default function RunsPage() {
                         </div>
                       )}
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
             </div>

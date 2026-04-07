@@ -12,6 +12,7 @@ import DataValidationPage from "./pages/DataValidationPage";
 import ReportsPage from "./pages/ReportsPage";
 import SettingsPage from "./pages/SettingsPage";
 import RunsPage from "./pages/RunsPage";
+import RunView from "./pages/RunView";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -31,6 +32,7 @@ const App = () => (
             <Route path="/data" element={<DataValidationPage />} />
             <Route path="/reports" element={<ReportsPage />} />
             <Route path="/runs" element={<RunsPage />} />
+            <Route path="/runs/:id" element={<RunView />} />
             <Route path="/settings" element={<SettingsPage />} />
           </Route>
           <Route path="*" element={<NotFound />} />

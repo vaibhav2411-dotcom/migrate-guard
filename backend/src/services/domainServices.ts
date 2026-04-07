@@ -22,7 +22,7 @@ import { FunctionalQaAgent, FunctionalQAResult } from './functionalQaAgent';
 import { DataIntegrityAgent, DataIntegrityResult } from './dataIntegrityAgent';
 import { AiReasoningService } from './aiReasoningService';
 import { ReportAgent } from './reportAgent';
-import { DATA_DIR } from '../config/config';
+import { DATA_DIR, config } from '../config/config';
 
 /**
  * Default crawl configuration
@@ -564,6 +564,8 @@ export class RunService implements RunServicePort {
       let visualDiffResult: VisualDiffResult | undefined;
       let functionalQaResult: FunctionalQAResult | undefined;
       let dataIntegrityResult: DataIntegrityResult | undefined;
+      let seoResults: any[] | undefined;
+      let perfResults: any[] | undefined;
 
       // Execute Playwright tests on matched pages
       if (crawlResult.matchedPages.length > 0) {
@@ -694,6 +696,65 @@ export class RunService implements RunServicePort {
           }
         }
 
+        // SEO & Performance checks (run before closing contexts)
+        let seoResults: any[] | undefined;
+        let perfResults: any[] | undefined;
+
+        if (config.features.seoValidation && executionResult.baselineContext && executionResult.candidateContext) {
+          try {
+            const { SeoAgent } = await import('./seoAgent');
+            const seoAgent = new SeoAgent();
+            seoResults = [];
+            for (const mp of crawlResult.matchedPages) {
+              const bPage = await executionResult.baselineContext.newPage();
+              const cPage = await executionResult.candidateContext.newPage();
+              try {
+                await bPage.goto(mp.baseline.url, { waitUntil: 'networkidle' });
+                await cPage.goto(mp.candidate.url, { waitUntil: 'networkidle' });
+                const baselineSeo = await seoAgent.extractFromPageHandle(bPage, mp.baseline.normalizedPath);
+                const candidateSeo = await seoAgent.extractFromPageHandle(cPage, mp.candidate.normalizedPath);
+                const res = seoAgent.compareSnapshots(mp.baseline.normalizedPath, baselineSeo, candidateSeo);
+                const saved = await seoAgent.saveResult(res, runId);
+                artifacts.push({ id: randomUUID(), runId, type: 'report', label: `SEO: ${mp.baseline.normalizedPath}`, path: saved, createdAt: now });
+                seoResults.push(res);
+              } finally {
+                try { await bPage.close(); } catch {}
+                try { await cPage.close(); } catch {}
+              }
+            }
+          } catch (err) {
+            // continue on SEO errors
+            console.error('SEO agent error', err);
+          }
+        }
+
+        if (config.features.performanceMetrics && executionResult.baselineContext && executionResult.candidateContext) {
+          try {
+            const { PerformanceAgent } = await import('./performanceAgent');
+            const performanceAgent = new PerformanceAgent();
+            perfResults = [];
+            for (const mp of crawlResult.matchedPages) {
+              const bPage = await executionResult.baselineContext.newPage();
+              const cPage = await executionResult.candidateContext.newPage();
+              try {
+                await bPage.goto(mp.baseline.url, { waitUntil: 'networkidle' });
+                await cPage.goto(mp.candidate.url, { waitUntil: 'networkidle' });
+                const baselinePerf = await performanceAgent.extractFromPageHandle(bPage);
+                const candidatePerf = await performanceAgent.extractFromPageHandle(cPage);
+                const res = performanceAgent.compareSnapshots(mp.baseline.normalizedPath, baselinePerf, candidatePerf);
+                const saved = await performanceAgent.saveResult(res, runId);
+                artifacts.push({ id: randomUUID(), runId, type: 'report', label: `Performance: ${mp.baseline.normalizedPath}`, path: saved, createdAt: now });
+                perfResults.push(res);
+              } finally {
+                try { await bPage.close(); } catch {}
+                try { await cPage.close(); } catch {}
+              }
+            }
+          } catch (err) {
+            console.error('Performance agent error', err);
+          }
+        }
+
         // Cleanup browser contexts after all tests
         if (executionResult.baselineContext) {
           await executionResult.baselineContext.close();
@@ -757,7 +818,9 @@ export class RunService implements RunServicePort {
         visualDiffResult,
         functionalQaResult,
         dataIntegrityResult,
-        runId
+        runId,
+        seoResults,
+        perfResults
       );
 
       // Save AI reasoning results

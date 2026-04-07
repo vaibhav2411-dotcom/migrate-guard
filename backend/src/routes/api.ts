@@ -1,6 +1,7 @@
 import { FastifyInstance, FastifyPluginOptions } from 'fastify';
 import fp from 'fastify-plugin';
 import { ComparisonJobService, RunService } from '../services/domainServices';
+import path from 'path';
 import { FileStorage } from '../services/fileStorage';
 import { CrawlConfig, TestMatrix, PageMap } from '../models';
 
@@ -11,12 +12,15 @@ const runService = new RunService(storage);
 // Request/Response schemas for validation
 const createJobSchema = {
   type: 'object',
-  required: ['name', 'baselineUrl', 'candidateUrl'],
+  required: ['name'],
   properties: {
     name: { type: 'string', minLength: 1 },
     description: { type: 'string' },
     baselineUrl: { type: 'string', format: 'uri' },
     candidateUrl: { type: 'string', format: 'uri' },
+    // legacy fields
+    sourceUrl: { type: 'string', format: 'uri' },
+    targetUrl: { type: 'string', format: 'uri' },
     crawlConfig: {
       type: 'object',
       properties: {
@@ -157,6 +161,10 @@ async function apiRoutes(fastify: FastifyInstance, _opts: FastifyPluginOptions) 
           createInput.testMatrix = body.testMatrix;
         }
 
+            // Support legacy field names `sourceUrl`/`targetUrl`
+            createInput.baselineUrl = body.baselineUrl ?? (body as any).sourceUrl;
+            createInput.candidateUrl = body.candidateUrl ?? (body as any).targetUrl;
+
         const job = await jobService.createJob(createInput);
 
         reply.code(201).send(job);
@@ -285,6 +293,65 @@ async function apiRoutes(fastify: FastifyInstance, _opts: FastifyPluginOptions) 
     const { id } = request.params;
     const artifacts = await runService.listArtifactsByRun(id);
     reply.send(artifacts);
+  });
+
+  // Report endpoints
+  fastify.get<{ Params: { id: string } }>('/api/runs/:id/report/executive', async (request, reply) => {
+    const { id } = request.params;
+    const artifacts = await runService.listArtifactsByRun(id);
+    const exec = artifacts.find((a) => a.label && a.label.toLowerCase().includes('migration test report (markdown)')) || artifacts.find((a) => a.path && a.path.endsWith('report.md'));
+    if (!exec) {
+      reply.code(404).send({ message: 'Executive report not found' });
+      return;
+    }
+    const fs = await import('fs/promises');
+    try {
+      const content = await fs.readFile(exec.path.replace(/^data\//, path.join(__dirname, '..', '..', 'data') + '/'), 'utf-8');
+      reply.type('text/markdown').send(content);
+    } catch (err) {
+      reply.code(500).send({ message: 'Failed to read report' });
+    }
+  });
+
+  fastify.get<{ Params: { id: string } }>('/api/runs/:id/report/technical', async (request, reply) => {
+    const { id } = request.params;
+    const artifacts = await runService.listArtifactsByRun(id);
+    const tech = artifacts.find((a) => a.path && a.path.endsWith('report.json'));
+    if (!tech) {
+      reply.code(404).send({ message: 'Technical report not found' });
+      return;
+    }
+    const fs = await import('fs/promises');
+    try {
+      const content = await fs.readFile(tech.path.replace(/^data\//, path.join(__dirname, '..', '..', 'data') + '/'), 'utf-8');
+      reply.type('application/json').send(JSON.parse(content));
+    } catch (err) {
+      reply.code(500).send({ message: 'Failed to read technical report' });
+    }
+  });
+
+  fastify.get<{ Params: { id: string } }>('/api/runs/:id/summary', async (request, reply) => {
+    const { id } = request.params;
+    const artifacts = await runService.listArtifactsByRun(id);
+    // Try to find ai-reasoning-results.json or report.json
+    const ai = artifacts.find((a) => a.path && a.path.includes('ai-reasoning-results.json')) || artifacts.find((a) => a.path && a.path.endsWith('report.json'));
+    if (!ai) {
+      reply.code(404).send({ message: 'Summary not found' });
+      return;
+    }
+    const fs = await import('fs/promises');
+    try {
+      const content = await fs.readFile(ai.path.replace(/^data\//, path.join(__dirname, '..', '..', 'data') + '/'), 'utf-8');
+      const parsed = JSON.parse(content);
+      // Derive a compact summary
+      if (parsed.executiveSummary) {
+        reply.send({ executive: parsed.executiveSummary, riskScore: parsed.riskScore });
+      } else {
+        reply.send(parsed);
+      }
+    } catch (err) {
+      reply.code(500).send({ message: 'Failed to read summary' });
+    }
   });
 }
 

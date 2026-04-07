@@ -2,6 +2,9 @@ import Fastify from 'fastify';
 import cors from '@fastify/cors';
 import apiRoutes from './routes/api';
 import { DEFAULT_PORT } from './config/config';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import fastifyStatic from '@fastify/static';
 
 export async function buildServer() {
   const fastify = Fastify({
@@ -13,6 +16,20 @@ export async function buildServer() {
     origin: true, // Allow all origins in development
     credentials: true,
   });
+
+  // Serve artifacts under /data/* so frontend can load images and reports
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+  const dataDir = path.join(__dirname, '..', 'data');
+  try {
+    await fastify.register(fastifyStatic, {
+      root: dataDir,
+      prefix: '/data/',
+      decorateReply: false,
+    });
+  } catch (err) {
+    // ignore static registration errors in some environments
+  }
 
   await fastify.register(apiRoutes);
 

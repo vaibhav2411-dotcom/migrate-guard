@@ -71,10 +71,18 @@ export async function runTwoSiteCapture(
     try {
       const resp = await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 });
 
-      // Screenshot (full page)
-      const screenshotPath = path.join(siteDir, 'screenshot-full.png');
-      await page.screenshot({ path: screenshotPath, fullPage: true });
-      artifactPaths.push(screenshotPath);
+      // Multi-viewport screenshots
+      const viewports = [375, 768, 1280, 1920];
+      for (const width of viewports) {
+        try {
+          await page.setViewportSize({ width, height: 900 });
+          const screenshotPath = path.join(siteDir, `screenshot-${width}.png`);
+          await page.screenshot({ path: screenshotPath, fullPage: true });
+          artifactPaths.push(screenshotPath);
+        } catch (e) {
+          // continue on screenshot errors
+        }
+      }
 
       // HTML snapshot
       const html = await page.content();

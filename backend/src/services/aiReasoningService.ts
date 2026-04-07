@@ -154,7 +154,9 @@ export class AiReasoningService {
     visualDiffResult: VisualDiffResult | undefined,
     functionalQaResult: FunctionalQAResult | undefined,
     dataIntegrityResult: DataIntegrityResult | undefined,
-    runId: string
+    runId: string,
+    seoResults?: any[],
+    perfResults?: any[]
   ): Promise<AIReasoningResult> {
     if (!this.isConfigured()) {
       // Fallback: Generate basic analysis without AI

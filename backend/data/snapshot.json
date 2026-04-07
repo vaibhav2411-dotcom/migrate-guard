@@ -1,0 +1,77 @@
+{
+  "version": "2.0",
+  "comparisonJobs": [
+    {
+      "id": "7975f47d-1287-4f12-b952-0b1688dd4ebc",
+      "status": "pending",
+      "createdAt": "2026-04-07T11:40:20.031Z",
+      "updatedAt": "2026-04-07T11:40:20.031Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "API Job",
+      "description": "Created via API test",
+      "baselineUrl": "https://old.example.com",
+      "candidateUrl": "https://new.example.com"
+    },
+    {
+      "id": "f85c0285-b7cb-4302-9367-9d2dc4d86224",
+      "status": "pending",
+      "createdAt": "2026-04-07T11:45:42.791Z",
+      "updatedAt": "2026-04-07T11:45:42.791Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "API Job",
+      "description": "Created via API test",
+      "baselineUrl": "https://old.example.com",
+      "candidateUrl": "https://new.example.com"
+    },
+    {
+      "id": "681d610d-63fa-48cc-88ed-4eee861a22dd",
+      "status": "pending",
+      "createdAt": "2026-04-07T11:46:09.046Z",
+      "updatedAt": "2026-04-07T11:46:09.046Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "API Job",
+      "description": "Created via API test",
+      "baselineUrl": "https://old.example.com",
+      "candidateUrl": "https://new.example.com"
+    }
+  ],
+  "runs": [],
+  "artifacts": [],
+  "metadata": {}
+}

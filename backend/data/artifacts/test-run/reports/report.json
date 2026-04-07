@@ -1,0 +1,52 @@
+{
+  "executiveSummary": {
+    "jobName": "Test Job",
+    "baselineUrl": "https://a",
+    "candidateUrl": "https://b",
+    "runDate": "2026-04-07T11:46:08.260Z",
+    "overallStatus": "pass",
+    "riskScore": 25,
+    "goNoGo": "go",
+    "summary": "Testing completed with minor issues. 0 issues found across 0 pages. Most issues are non-critical and can be addressed post-deployment.",
+    "keyMetrics": {
+      "pagesTested": 0,
+      "issuesFound": 0,
+      "criticalIssues": 0,
+      "passRate": 100
+    },
+    "topFindings": []
+  },
+  "riskScore": {
+    "overall": 25,
+    "visual": 0,
+    "functional": 0,
+    "data": 0,
+    "seo": 0,
+    "breakdown": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "none": 0
+    }
+  },
+  "technicalFindings": [],
+  "aiAnalysis": {
+    "overallSeverity": "low",
+    "overallConfidence": 0.8,
+    "overallPass": true,
+    "overallExplanation": "All good",
+    "categoryAnalyses": [],
+    "falsePositives": [],
+    "expectedChanges": [],
+    "recommendations": [],
+    "artifactPaths": []
+  },
+  "recommendations": [],
+  "metadata": {
+    "jobId": "c551f1be-93df-44e2-860e-2f1464ca8429",
+    "runId": "test-run",
+    "generatedAt": "2026-04-07T11:46:08.261Z",
+    "version": "1.0"
+  }
+}
