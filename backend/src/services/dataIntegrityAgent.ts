@@ -214,10 +214,41 @@ export class DataIntegrityAgent {
       };
     });
 
+    // Decode HTML entities in extracted fields to avoid ETL-encoding artifacts
+    const decodeHtmlEntities = (str: string | undefined): string => {
+      if (!str) return '';
+      // Use a DOM parser in Node via a temporary element replacement approach
+      try {
+        // Basic replacements for common entities and numeric entities
+        return str.replace(/&amp;/g, '&')
+                  .replace(/&lt;/g, '<')
+                  .replace(/&gt;/g, '>')
+                  .replace(/&quot;/g, '"')
+                  .replace(/&#39;/g, "'")
+                  .replace(/&nbsp;/g, ' ');
+      } catch (e) {
+        return str;
+      }
+    };
+
+    // Apply decoding across extracted structure
+    const decodedHeadings = content.headings.map((h: any) => ({ level: h.level, text: decodeHtmlEntities(h.text) }));
+    const decodedParagraphs = content.paragraphs.map((p: string) => decodeHtmlEntities(p));
+    const decodedLinks = content.links.map((l: any) => ({ text: decodeHtmlEntities(l.text), href: l.href }));
+    const decodedMetadata = {
+      title: decodeHtmlEntities(content.metadata?.title),
+      description: decodeHtmlEntities(content.metadata?.description),
+      keywords: decodeHtmlEntities(content.metadata?.keywords),
+    };
+
     return {
       url,
       normalizedPath,
-      ...content,
+      visibleText: decodeHtmlEntities(content.visibleText),
+      headings: decodedHeadings,
+      paragraphs: decodedParagraphs,
+      links: decodedLinks,
+      metadata: decodedMetadata,
     };
   }
 

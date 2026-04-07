@@ -137,9 +137,360 @@
       "description": "Created via API test",
       "baselineUrl": "https://old.example.com",
       "candidateUrl": "https://new.example.com"
+    },
+    {
+      "id": "6f539d72-109f-4dd3-adf8-5d06207c8626",
+      "status": "pending",
+      "createdAt": "2026-04-07T12:03:40.749Z",
+      "updatedAt": "2026-04-07T12:03:40.749Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "BBC Benelux test",
+      "baselineUrl": "https://www.bbcbenelux.com",
+      "candidateUrl": "https://stage.beta.bbcbenelux.com"
+    },
+    {
+      "id": "b8ef00cb-9ec5-4a6f-8e65-2bf4763c8f03",
+      "status": "pending",
+      "createdAt": "2026-04-07T12:05:43.884Z",
+      "updatedAt": "2026-04-07T12:05:43.884Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "BBC Benelux test 2",
+      "baselineUrl": "https://www.bbcbenelux.com",
+      "candidateUrl": "https://stage.beta.bbcbenelux.com"
+    },
+    {
+      "id": "9d3b9025-373c-4027-af37-ed19ccc0e639",
+      "status": "pending",
+      "createdAt": "2026-04-07T12:07:42.348Z",
+      "updatedAt": "2026-04-07T12:07:42.348Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "BBC Benelux test 3",
+      "baselineUrl": "https://www.bbcbenelux.com",
+      "candidateUrl": "https://stage.beta.bbcbenelux.com"
+    },
+    {
+      "id": "9a55b38c-efc7-4945-878a-90f90d8af1ea",
+      "status": "pending",
+      "createdAt": "2026-04-07T12:09:01.100Z",
+      "updatedAt": "2026-04-07T12:09:01.100Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "BBC Benelux debug",
+      "baselineUrl": "https://www.bbcbenelux.com",
+      "candidateUrl": "https://stage.beta.bbcbenelux.com"
+    },
+    {
+      "id": "16225ab3-bf07-4db3-91b0-88a0baa5c147",
+      "status": "pending",
+      "createdAt": "2026-04-07T12:09:56.622Z",
+      "updatedAt": "2026-04-07T12:09:56.622Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "BBC Benelux fallback",
+      "baselineUrl": "https://www.bbcbenelux.com",
+      "candidateUrl": "https://stage.beta.bbcbenelux.com"
+    },
+    {
+      "id": "7eb8fcb0-a552-4c90-be26-4b15882a90a7",
+      "status": "pending",
+      "createdAt": "2026-04-07T12:12:04.242Z",
+      "updatedAt": "2026-04-07T12:12:04.242Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "API Job",
+      "description": "Created via API test",
+      "baselineUrl": "https://old.example.com",
+      "candidateUrl": "https://new.example.com"
+    },
+    {
+      "id": "cdfad7e8-9a12-434a-aa80-c1747df86f27",
+      "status": "pending",
+      "createdAt": "2026-04-07T12:12:15.093Z",
+      "updatedAt": "2026-04-07T12:12:15.093Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 8
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "BBC Benelux thorough",
+      "baselineUrl": "https://www.bbcbenelux.com",
+      "candidateUrl": "https://stage.beta.bbcbenelux.com"
+    },
+    {
+      "id": "ca53d7a8-c69c-4de3-a8a7-44cc42b4b419",
+      "status": "pending",
+      "createdAt": "2026-04-07T12:14:07.014Z",
+      "updatedAt": "2026-04-07T12:14:07.014Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 2,
+        "maxPages": 20,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "BBC Benelux full-test",
+      "baselineUrl": "https://www.bbcbenelux.com",
+      "candidateUrl": "https://stage.beta.bbcbenelux.com"
+    },
+    {
+      "id": "ffdd2062-a63f-4252-b86f-e887fef9e11a",
+      "status": "pending",
+      "createdAt": "2026-04-07T12:15:40.383Z",
+      "updatedAt": "2026-04-07T12:15:40.383Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 2,
+        "maxPages": 12,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "BBC Benelux final",
+      "baselineUrl": "https://www.bbcbenelux.com",
+      "candidateUrl": "https://stage.beta.bbcbenelux.com"
+    },
+    {
+      "id": "82a6e4c5-d1b4-49d2-a41c-a073f61c80ee",
+      "status": "pending",
+      "createdAt": "2026-04-07T12:15:46.762Z",
+      "updatedAt": "2026-04-07T12:15:46.762Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 2,
+        "maxPages": 12,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "BBC Benelux final2",
+      "baselineUrl": "https://www.bbcbenelux.com",
+      "candidateUrl": "https://stage.beta.bbcbenelux.com"
+    },
+    {
+      "id": "95ce9e96-58dd-4182-b6b1-be0f54f93072",
+      "status": "pending",
+      "createdAt": "2026-04-07T12:16:42.808Z",
+      "updatedAt": "2026-04-07T12:16:42.808Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 2,
+        "maxPages": 12,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "BBC Benelux final-2",
+      "baselineUrl": "https://www.bbcbenelux.com",
+      "candidateUrl": "https://stage.beta.bbcbenelux.com"
+    },
+    {
+      "id": "8f274793-6323-457c-8106-a546032a247f",
+      "status": "pending",
+      "createdAt": "2026-04-07T13:15:14.061Z",
+      "updatedAt": "2026-04-07T13:15:14.061Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 6,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "Automated Admin Simulation",
+      "baselineUrl": "https://www.bbcbenelux.com",
+      "candidateUrl": "https://stage.beta.bbcbenelux.com"
     }
   ],
   "runs": [
+    {
+      "id": "dc266f23-5468-4dce-86cf-4c8f287eda26",
+      "jobId": "8f274793-6323-457c-8106-a546032a247f",
+      "status": "completed",
+      "triggeredBy": "automated-sim",
+      "triggeredAt": "2026-04-07T13:15:14.079Z",
+      "completedAt": "2026-04-07T13:15:26.821Z"
+    },
+    {
+      "id": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
+      "jobId": "95ce9e96-58dd-4182-b6b1-be0f54f93072",
+      "status": "completed",
+      "triggeredBy": "final-agent-2",
+      "triggeredAt": "2026-04-07T12:16:42.823Z",
+      "completedAt": "2026-04-07T12:16:48.826Z"
+    },
+    {
+      "id": "530ba959-812b-4cca-861a-a7d2e93dbd68",
+      "jobId": "82a6e4c5-d1b4-49d2-a41c-a073f61c80ee",
+      "status": "completed",
+      "triggeredBy": "final-agent",
+      "triggeredAt": "2026-04-07T12:15:46.774Z",
+      "completedAt": "2026-04-07T12:15:53.671Z"
+    },
+    {
+      "id": "676adb2f-4694-4713-bbe3-257c977edec9",
+      "jobId": "ffdd2062-a63f-4252-b86f-e887fef9e11a",
+      "status": "running",
+      "triggeredBy": "final-agent",
+      "triggeredAt": "2026-04-07T12:15:40.401Z"
+    },
+    {
+      "id": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
+      "jobId": "ca53d7a8-c69c-4de3-a8a7-44cc42b4b419",
+      "status": "completed",
+      "triggeredBy": "agent-full-run",
+      "triggeredAt": "2026-04-07T12:14:07.034Z",
+      "completedAt": "2026-04-07T12:14:13.550Z"
+    },
+    {
+      "id": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "jobId": "cdfad7e8-9a12-434a-aa80-c1747df86f27",
+      "status": "completed",
+      "triggeredBy": "thorough-agent",
+      "triggeredAt": "2026-04-07T12:12:15.106Z",
+      "completedAt": "2026-04-07T12:12:21.941Z"
+    },
+    {
+      "id": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
+      "jobId": "16225ab3-bf07-4db3-91b0-88a0baa5c147",
+      "status": "completed",
+      "triggeredBy": "agent-run",
+      "triggeredAt": "2026-04-07T12:09:56.642Z",
+      "completedAt": "2026-04-07T12:10:02.251Z"
+    },
+    {
+      "id": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "jobId": "9a55b38c-efc7-4945-878a-90f90d8af1ea",
+      "status": "completed",
+      "triggeredBy": "agent-run",
+      "triggeredAt": "2026-04-07T12:09:01.135Z",
+      "completedAt": "2026-04-07T12:09:07.647Z"
+    },
+    {
+      "id": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "jobId": "9d3b9025-373c-4027-af37-ed19ccc0e639",
+      "status": "completed",
+      "triggeredBy": "agent-run",
+      "triggeredAt": "2026-04-07T12:07:42.361Z",
+      "completedAt": "2026-04-07T12:07:51.648Z"
+    },
+    {
+      "id": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "jobId": "b8ef00cb-9ec5-4a6f-8e65-2bf4763c8f03",
+      "status": "completed",
+      "triggeredBy": "agent-run",
+      "triggeredAt": "2026-04-07T12:05:43.909Z",
+      "completedAt": "2026-04-07T12:05:54.986Z"
+    },
+    {
+      "id": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "jobId": "6f539d72-109f-4dd3-adf8-5d06207c8626",
+      "status": "completed",
+      "triggeredBy": "agent-run",
+      "triggeredAt": "2026-04-07T12:03:40.774Z",
+      "completedAt": "2026-04-07T12:03:51.668Z"
+    },
     {
       "id": "04bd35c1-600a-48e4-899f-7878851a6590",
       "jobId": "fe0476de-59e8-46be-903c-edd1e46d4a78",
@@ -221,6 +572,726 @@
       "label": "Migration Test Report (Markdown)",
       "path": "data/artifacts\\04bd35c1-600a-48e4-899f-7878851a6590\\reports\\report.md",
       "createdAt": "2026-04-07T11:52:23.277Z"
+    },
+    {
+      "id": "130c3e76-51cc-4c5c-a924-1dd1a936688c",
+      "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "type": "report",
+      "label": "Baseline Crawl Results",
+      "path": "data/artifacts\\f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee\\baseline-crawl.json",
+      "createdAt": "2026-04-07T12:03:40.783Z"
+    },
+    {
+      "id": "8bf2ca01-3d1c-4a6b-a8bf-a7c106163b1e",
+      "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "type": "report",
+      "label": "Candidate Crawl Results",
+      "path": "data/artifacts\\f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee\\candidate-crawl.json",
+      "createdAt": "2026-04-07T12:03:40.783Z"
+    },
+    {
+      "id": "7202d4a8-5d94-427e-af94-38de8310164f",
+      "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "type": "report",
+      "label": "Matched Pages",
+      "path": "data/artifacts\\f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee\\matched-pages.json",
+      "createdAt": "2026-04-07T12:03:40.783Z"
+    },
+    {
+      "id": "a88a4cb9-a0c6-4a0b-8411-8b0d66686463",
+      "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "type": "report",
+      "label": "Generated Page Map",
+      "path": "data/artifacts\\f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee\\generated-pageMap.json",
+      "createdAt": "2026-04-07T12:03:40.783Z"
+    },
+    {
+      "id": "63cef8b5-9d9a-4ffa-878a-50b42c20bf20",
+      "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "type": "log",
+      "label": "Crawl Log",
+      "path": "data/artifacts\\f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee\\crawl.log",
+      "createdAt": "2026-04-07T12:03:40.783Z"
+    },
+    {
+      "id": "a0439ba2-e12e-485f-86ad-4abc8eebbbb7",
+      "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "type": "report",
+      "label": "Crawl Summary",
+      "path": "data/artifacts/f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee/crawl-summary.json",
+      "createdAt": "2026-04-07T12:03:40.783Z"
+    },
+    {
+      "id": "abccaa56-263a-4510-bd43-d7bd951c3edc",
+      "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "type": "report",
+      "label": "AI Reasoning Results",
+      "path": "data/artifacts\\f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee\\ai-reasoning-results.json",
+      "createdAt": "2026-04-07T12:03:40.783Z"
+    },
+    {
+      "id": "a773ee12-6f35-4b5b-bd69-4f700d65d777",
+      "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "type": "report",
+      "label": "Migration Test Report (JSON)",
+      "path": "data/artifacts\\f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee\\reports\\report.json",
+      "createdAt": "2026-04-07T12:03:40.783Z"
+    },
+    {
+      "id": "7209801d-b955-42bf-947f-5a63443e2aa6",
+      "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "type": "report",
+      "label": "Migration Test Report (Markdown)",
+      "path": "data/artifacts\\f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee\\reports\\report.md",
+      "createdAt": "2026-04-07T12:03:40.783Z"
+    },
+    {
+      "id": "0395f028-5893-473a-92fc-6ecc8f94f547",
+      "runId": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "type": "report",
+      "label": "Baseline Crawl Results",
+      "path": "data/artifacts\\a7fe7adb-475a-4a3c-8ad9-148039a7e843\\baseline-crawl.json",
+      "createdAt": "2026-04-07T12:05:43.917Z"
+    },
+    {
+      "id": "8530fe40-b2ae-45ae-b157-4019c1d43027",
+      "runId": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "type": "report",
+      "label": "Candidate Crawl Results",
+      "path": "data/artifacts\\a7fe7adb-475a-4a3c-8ad9-148039a7e843\\candidate-crawl.json",
+      "createdAt": "2026-04-07T12:05:43.917Z"
+    },
+    {
+      "id": "8ce0accb-06a4-4d95-bb2b-b5e4e65328ab",
+      "runId": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "type": "report",
+      "label": "Matched Pages",
+      "path": "data/artifacts\\a7fe7adb-475a-4a3c-8ad9-148039a7e843\\matched-pages.json",
+      "createdAt": "2026-04-07T12:05:43.917Z"
+    },
+    {
+      "id": "16b194cf-ad96-49d5-acbe-572e1c0da984",
+      "runId": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "type": "report",
+      "label": "Generated Page Map",
+      "path": "data/artifacts\\a7fe7adb-475a-4a3c-8ad9-148039a7e843\\generated-pageMap.json",
+      "createdAt": "2026-04-07T12:05:43.917Z"
+    },
+    {
+      "id": "33945d4a-63ac-4fcc-b876-8e41131083b6",
+      "runId": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "type": "log",
+      "label": "Crawl Log",
+      "path": "data/artifacts\\a7fe7adb-475a-4a3c-8ad9-148039a7e843\\crawl.log",
+      "createdAt": "2026-04-07T12:05:43.917Z"
+    },
+    {
+      "id": "d2e20413-3431-45e4-8f05-fb78c4bcecc8",
+      "runId": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "type": "report",
+      "label": "Crawl Summary",
+      "path": "data/artifacts/a7fe7adb-475a-4a3c-8ad9-148039a7e843/crawl-summary.json",
+      "createdAt": "2026-04-07T12:05:43.917Z"
+    },
+    {
+      "id": "3bd79944-ae12-4c9c-8660-eaedf21c34f8",
+      "runId": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "type": "report",
+      "label": "AI Reasoning Results",
+      "path": "data/artifacts\\a7fe7adb-475a-4a3c-8ad9-148039a7e843\\ai-reasoning-results.json",
+      "createdAt": "2026-04-07T12:05:43.917Z"
+    },
+    {
+      "id": "a70799a4-6d2e-4871-9b39-30e96a1b1102",
+      "runId": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "type": "report",
+      "label": "Migration Test Report (JSON)",
+      "path": "data/artifacts\\a7fe7adb-475a-4a3c-8ad9-148039a7e843\\reports\\report.json",
+      "createdAt": "2026-04-07T12:05:43.917Z"
+    },
+    {
+      "id": "5c7ba1f2-3edd-443f-87dd-0b45807ca621",
+      "runId": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "type": "report",
+      "label": "Migration Test Report (Markdown)",
+      "path": "data/artifacts\\a7fe7adb-475a-4a3c-8ad9-148039a7e843\\reports\\report.md",
+      "createdAt": "2026-04-07T12:05:43.917Z"
+    },
+    {
+      "id": "c56323ed-616d-48bc-ab63-a0e4f50eb016",
+      "runId": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "type": "report",
+      "label": "Baseline Crawl Results",
+      "path": "data/artifacts\\7db065b0-87e1-4666-84f7-0afc749387c9\\baseline-crawl.json",
+      "createdAt": "2026-04-07T12:07:42.369Z"
+    },
+    {
+      "id": "872d6add-e9c6-4989-bb91-64893546c761",
+      "runId": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "type": "report",
+      "label": "Candidate Crawl Results",
+      "path": "data/artifacts\\7db065b0-87e1-4666-84f7-0afc749387c9\\candidate-crawl.json",
+      "createdAt": "2026-04-07T12:07:42.369Z"
+    },
+    {
+      "id": "10d499d0-e970-48e0-99ca-6046819b462d",
+      "runId": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "type": "report",
+      "label": "Matched Pages",
+      "path": "data/artifacts\\7db065b0-87e1-4666-84f7-0afc749387c9\\matched-pages.json",
+      "createdAt": "2026-04-07T12:07:42.369Z"
+    },
+    {
+      "id": "c61565c8-2fee-4236-96bc-195d707f2d63",
+      "runId": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "type": "report",
+      "label": "Generated Page Map",
+      "path": "data/artifacts\\7db065b0-87e1-4666-84f7-0afc749387c9\\generated-pageMap.json",
+      "createdAt": "2026-04-07T12:07:42.369Z"
+    },
+    {
+      "id": "13843987-838c-474c-99b5-c0150ab06674",
+      "runId": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "type": "log",
+      "label": "Crawl Log",
+      "path": "data/artifacts\\7db065b0-87e1-4666-84f7-0afc749387c9\\crawl.log",
+      "createdAt": "2026-04-07T12:07:42.369Z"
+    },
+    {
+      "id": "ce86b673-e42f-4114-a270-0d2aa9b8b279",
+      "runId": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "type": "report",
+      "label": "Crawl Summary",
+      "path": "data/artifacts/7db065b0-87e1-4666-84f7-0afc749387c9/crawl-summary.json",
+      "createdAt": "2026-04-07T12:07:42.369Z"
+    },
+    {
+      "id": "6a4551de-9b37-462a-b0b4-3de21fb62ea9",
+      "runId": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "type": "report",
+      "label": "AI Reasoning Results",
+      "path": "data/artifacts\\7db065b0-87e1-4666-84f7-0afc749387c9\\ai-reasoning-results.json",
+      "createdAt": "2026-04-07T12:07:42.369Z"
+    },
+    {
+      "id": "6de7e160-e9dc-4a38-8de7-a0a4868a40a3",
+      "runId": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "type": "report",
+      "label": "Migration Test Report (JSON)",
+      "path": "data/artifacts\\7db065b0-87e1-4666-84f7-0afc749387c9\\reports\\report.json",
+      "createdAt": "2026-04-07T12:07:42.369Z"
+    },
+    {
+      "id": "bfe640b6-22bb-421f-8223-4cb4e44a1738",
+      "runId": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "type": "report",
+      "label": "Migration Test Report (Markdown)",
+      "path": "data/artifacts\\7db065b0-87e1-4666-84f7-0afc749387c9\\reports\\report.md",
+      "createdAt": "2026-04-07T12:07:42.369Z"
+    },
+    {
+      "id": "ceb7d634-e4a4-4b85-8228-27c6ed19c9ab",
+      "runId": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "type": "report",
+      "label": "Baseline Crawl Results",
+      "path": "data/artifacts\\081097d5-4922-474f-bbb4-c1628f8a3847\\baseline-crawl.json",
+      "createdAt": "2026-04-07T12:09:01.146Z"
+    },
+    {
+      "id": "a4f11250-fcd3-4828-a83f-336c36337745",
+      "runId": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "type": "report",
+      "label": "Candidate Crawl Results",
+      "path": "data/artifacts\\081097d5-4922-474f-bbb4-c1628f8a3847\\candidate-crawl.json",
+      "createdAt": "2026-04-07T12:09:01.146Z"
+    },
+    {
+      "id": "66103596-9ffc-43a6-9c6e-5868c9ba34a3",
+      "runId": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "type": "report",
+      "label": "Matched Pages",
+      "path": "data/artifacts\\081097d5-4922-474f-bbb4-c1628f8a3847\\matched-pages.json",
+      "createdAt": "2026-04-07T12:09:01.146Z"
+    },
+    {
+      "id": "3845f042-2442-4772-b2a2-e5871b1cb1e7",
+      "runId": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "type": "report",
+      "label": "Generated Page Map",
+      "path": "data/artifacts\\081097d5-4922-474f-bbb4-c1628f8a3847\\generated-pageMap.json",
+      "createdAt": "2026-04-07T12:09:01.146Z"
+    },
+    {
+      "id": "9d811740-e79e-4182-bdfa-ba5d4d758fad",
+      "runId": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "type": "log",
+      "label": "Crawl Log",
+      "path": "data/artifacts\\081097d5-4922-474f-bbb4-c1628f8a3847\\crawl.log",
+      "createdAt": "2026-04-07T12:09:01.146Z"
+    },
+    {
+      "id": "0b22bd14-9a65-4c93-b4b0-ff7101328de1",
+      "runId": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "type": "report",
+      "label": "Crawl Summary",
+      "path": "data/artifacts/081097d5-4922-474f-bbb4-c1628f8a3847/crawl-summary.json",
+      "createdAt": "2026-04-07T12:09:01.146Z"
+    },
+    {
+      "id": "03f7e322-7f3d-4c7a-ae73-339824961560",
+      "runId": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "type": "report",
+      "label": "AI Reasoning Results",
+      "path": "data/artifacts\\081097d5-4922-474f-bbb4-c1628f8a3847\\ai-reasoning-results.json",
+      "createdAt": "2026-04-07T12:09:01.146Z"
+    },
+    {
+      "id": "7b061f51-f9bc-42ca-a48a-142100ee57ef",
+      "runId": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "type": "report",
+      "label": "Migration Test Report (JSON)",
+      "path": "data/artifacts\\081097d5-4922-474f-bbb4-c1628f8a3847\\reports\\report.json",
+      "createdAt": "2026-04-07T12:09:01.146Z"
+    },
+    {
+      "id": "79362f3b-517b-4fc2-8fb6-f6ffcd828af0",
+      "runId": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "type": "report",
+      "label": "Migration Test Report (Markdown)",
+      "path": "data/artifacts\\081097d5-4922-474f-bbb4-c1628f8a3847\\reports\\report.md",
+      "createdAt": "2026-04-07T12:09:01.146Z"
+    },
+    {
+      "id": "829901ad-f59f-45d7-a4a4-0a482f76cf14",
+      "runId": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
+      "type": "report",
+      "label": "Baseline Crawl Results",
+      "path": "data/artifacts\\22acd8dc-0710-4f63-9ffa-154f28e49ff6\\baseline-crawl.json",
+      "createdAt": "2026-04-07T12:09:56.648Z"
+    },
+    {
+      "id": "8dc63637-a21b-4b35-b300-a874d85ad5ed",
+      "runId": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
+      "type": "report",
+      "label": "Candidate Crawl Results",
+      "path": "data/artifacts\\22acd8dc-0710-4f63-9ffa-154f28e49ff6\\candidate-crawl.json",
+      "createdAt": "2026-04-07T12:09:56.648Z"
+    },
+    {
+      "id": "a33cb12a-606c-479e-969e-01a668b6f7b5",
+      "runId": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
+      "type": "report",
+      "label": "Matched Pages",
+      "path": "data/artifacts\\22acd8dc-0710-4f63-9ffa-154f28e49ff6\\matched-pages.json",
+      "createdAt": "2026-04-07T12:09:56.648Z"
+    },
+    {
+      "id": "302d3e83-1af7-43cd-8b0e-f62eeb6a66f7",
+      "runId": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
+      "type": "report",
+      "label": "Generated Page Map",
+      "path": "data/artifacts\\22acd8dc-0710-4f63-9ffa-154f28e49ff6\\generated-pageMap.json",
+      "createdAt": "2026-04-07T12:09:56.648Z"
+    },
+    {
+      "id": "761065d9-6631-4f22-8e72-674d0b34496f",
+      "runId": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
+      "type": "log",
+      "label": "Crawl Log",
+      "path": "data/artifacts\\22acd8dc-0710-4f63-9ffa-154f28e49ff6\\crawl.log",
+      "createdAt": "2026-04-07T12:09:56.648Z"
+    },
+    {
+      "id": "2adcf139-d9f9-43f8-9a3b-4727bec5d277",
+      "runId": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
+      "type": "report",
+      "label": "Crawl Summary",
+      "path": "data/artifacts/22acd8dc-0710-4f63-9ffa-154f28e49ff6/crawl-summary.json",
+      "createdAt": "2026-04-07T12:09:56.648Z"
+    },
+    {
+      "id": "52845874-024b-456c-ba12-5f3461cd3392",
+      "runId": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
+      "type": "report",
+      "label": "AI Reasoning Results",
+      "path": "data/artifacts\\22acd8dc-0710-4f63-9ffa-154f28e49ff6\\ai-reasoning-results.json",
+      "createdAt": "2026-04-07T12:09:56.648Z"
+    },
+    {
+      "id": "754b552b-955d-4b55-979e-fb286a92f3ca",
+      "runId": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
+      "type": "report",
+      "label": "Migration Test Report (JSON)",
+      "path": "data/artifacts\\22acd8dc-0710-4f63-9ffa-154f28e49ff6\\reports\\report.json",
+      "createdAt": "2026-04-07T12:09:56.648Z"
+    },
+    {
+      "id": "e505c6e4-e642-4e2c-9617-24613b1c27d9",
+      "runId": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
+      "type": "report",
+      "label": "Migration Test Report (Markdown)",
+      "path": "data/artifacts\\22acd8dc-0710-4f63-9ffa-154f28e49ff6\\reports\\report.md",
+      "createdAt": "2026-04-07T12:09:56.648Z"
+    },
+    {
+      "id": "e986438f-ac93-47a4-8193-dc6afef210fb",
+      "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "type": "report",
+      "label": "Baseline Crawl Results",
+      "path": "data/artifacts\\7c01eac6-995f-4265-b377-8b6db5ea4024\\baseline-crawl.json",
+      "createdAt": "2026-04-07T12:12:15.115Z"
+    },
+    {
+      "id": "8fde7823-5e1b-432a-a5a3-8a70c5f10723",
+      "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "type": "report",
+      "label": "Candidate Crawl Results",
+      "path": "data/artifacts\\7c01eac6-995f-4265-b377-8b6db5ea4024\\candidate-crawl.json",
+      "createdAt": "2026-04-07T12:12:15.115Z"
+    },
+    {
+      "id": "58067208-0171-4c69-ba31-2f64012d9b85",
+      "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "type": "report",
+      "label": "Matched Pages",
+      "path": "data/artifacts\\7c01eac6-995f-4265-b377-8b6db5ea4024\\matched-pages.json",
+      "createdAt": "2026-04-07T12:12:15.115Z"
+    },
+    {
+      "id": "d5f0cda3-775c-4dcb-baef-86677d3de1a5",
+      "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "type": "report",
+      "label": "Generated Page Map",
+      "path": "data/artifacts\\7c01eac6-995f-4265-b377-8b6db5ea4024\\generated-pageMap.json",
+      "createdAt": "2026-04-07T12:12:15.115Z"
+    },
+    {
+      "id": "1bb2caaa-8e6c-4b60-af58-442a2ee56822",
+      "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "type": "log",
+      "label": "Crawl Log",
+      "path": "data/artifacts\\7c01eac6-995f-4265-b377-8b6db5ea4024\\crawl.log",
+      "createdAt": "2026-04-07T12:12:15.115Z"
+    },
+    {
+      "id": "c451ccff-86b1-447f-aaf2-ef55a6d59068",
+      "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "type": "report",
+      "label": "Crawl Summary",
+      "path": "data/artifacts/7c01eac6-995f-4265-b377-8b6db5ea4024/crawl-summary.json",
+      "createdAt": "2026-04-07T12:12:15.115Z"
+    },
+    {
+      "id": "a0d2427b-d9a0-4085-b4ac-c63ac2fb96e6",
+      "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "type": "report",
+      "label": "AI Reasoning Results",
+      "path": "data/artifacts\\7c01eac6-995f-4265-b377-8b6db5ea4024\\ai-reasoning-results.json",
+      "createdAt": "2026-04-07T12:12:15.115Z"
+    },
+    {
+      "id": "773440a6-1327-4f5d-ae7c-ae7476c611bb",
+      "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "type": "report",
+      "label": "Migration Test Report (JSON)",
+      "path": "data/artifacts\\7c01eac6-995f-4265-b377-8b6db5ea4024\\reports\\report.json",
+      "createdAt": "2026-04-07T12:12:15.115Z"
+    },
+    {
+      "id": "ed06f096-900c-4de5-87c5-9341b32fd4ed",
+      "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "type": "report",
+      "label": "Migration Test Report (Markdown)",
+      "path": "data/artifacts\\7c01eac6-995f-4265-b377-8b6db5ea4024\\reports\\report.md",
+      "createdAt": "2026-04-07T12:12:15.115Z"
+    },
+    {
+      "id": "ba1a310a-f154-4569-802d-f06e6c5fa204",
+      "runId": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
+      "type": "report",
+      "label": "Baseline Crawl Results",
+      "path": "data/artifacts\\c6d23ed5-93f8-43ae-9180-65b3600f0f62\\baseline-crawl.json",
+      "createdAt": "2026-04-07T12:14:07.041Z"
+    },
+    {
+      "id": "0c152f52-2b6f-4171-a485-7015e8ba2bd6",
+      "runId": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
+      "type": "report",
+      "label": "Candidate Crawl Results",
+      "path": "data/artifacts\\c6d23ed5-93f8-43ae-9180-65b3600f0f62\\candidate-crawl.json",
+      "createdAt": "2026-04-07T12:14:07.041Z"
+    },
+    {
+      "id": "9ac195ab-8c21-4b49-ab42-377bf5638ef6",
+      "runId": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
+      "type": "report",
+      "label": "Matched Pages",
+      "path": "data/artifacts\\c6d23ed5-93f8-43ae-9180-65b3600f0f62\\matched-pages.json",
+      "createdAt": "2026-04-07T12:14:07.041Z"
+    },
+    {
+      "id": "b4413a43-82ef-4bf0-9980-642f9ef45b53",
+      "runId": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
+      "type": "report",
+      "label": "Generated Page Map",
+      "path": "data/artifacts\\c6d23ed5-93f8-43ae-9180-65b3600f0f62\\generated-pageMap.json",
+      "createdAt": "2026-04-07T12:14:07.041Z"
+    },
+    {
+      "id": "1b2c8fc9-7712-4136-843c-f5a058f8d9e6",
+      "runId": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
+      "type": "log",
+      "label": "Crawl Log",
+      "path": "data/artifacts\\c6d23ed5-93f8-43ae-9180-65b3600f0f62\\crawl.log",
+      "createdAt": "2026-04-07T12:14:07.041Z"
+    },
+    {
+      "id": "324b7a08-da51-436a-a0a2-e884cb48552e",
+      "runId": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
+      "type": "report",
+      "label": "Crawl Summary",
+      "path": "data/artifacts/c6d23ed5-93f8-43ae-9180-65b3600f0f62/crawl-summary.json",
+      "createdAt": "2026-04-07T12:14:07.041Z"
+    },
+    {
+      "id": "c462d91e-7ca9-46fd-8722-3bd6f51c866e",
+      "runId": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
+      "type": "report",
+      "label": "AI Reasoning Results",
+      "path": "data/artifacts\\c6d23ed5-93f8-43ae-9180-65b3600f0f62\\ai-reasoning-results.json",
+      "createdAt": "2026-04-07T12:14:07.041Z"
+    },
+    {
+      "id": "359494b4-e24e-4419-8265-df1715a38054",
+      "runId": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
+      "type": "report",
+      "label": "Migration Test Report (JSON)",
+      "path": "data/artifacts\\c6d23ed5-93f8-43ae-9180-65b3600f0f62\\reports\\report.json",
+      "createdAt": "2026-04-07T12:14:07.041Z"
+    },
+    {
+      "id": "57d831f6-2726-44d2-ab64-8830be13e226",
+      "runId": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
+      "type": "report",
+      "label": "Migration Test Report (Markdown)",
+      "path": "data/artifacts\\c6d23ed5-93f8-43ae-9180-65b3600f0f62\\reports\\report.md",
+      "createdAt": "2026-04-07T12:14:07.041Z"
+    },
+    {
+      "id": "95dd146e-5ea7-4683-aac7-c8d44a7216d8",
+      "runId": "530ba959-812b-4cca-861a-a7d2e93dbd68",
+      "type": "report",
+      "label": "Baseline Crawl Results",
+      "path": "data/artifacts\\530ba959-812b-4cca-861a-a7d2e93dbd68\\baseline-crawl.json",
+      "createdAt": "2026-04-07T12:15:46.779Z"
+    },
+    {
+      "id": "2337433f-f410-4e4a-910f-22d9162385d8",
+      "runId": "530ba959-812b-4cca-861a-a7d2e93dbd68",
+      "type": "report",
+      "label": "Candidate Crawl Results",
+      "path": "data/artifacts\\530ba959-812b-4cca-861a-a7d2e93dbd68\\candidate-crawl.json",
+      "createdAt": "2026-04-07T12:15:46.779Z"
+    },
+    {
+      "id": "e35cea0e-2a90-4175-8898-fc9024690073",
+      "runId": "530ba959-812b-4cca-861a-a7d2e93dbd68",
+      "type": "report",
+      "label": "Matched Pages",
+      "path": "data/artifacts\\530ba959-812b-4cca-861a-a7d2e93dbd68\\matched-pages.json",
+      "createdAt": "2026-04-07T12:15:46.779Z"
+    },
+    {
+      "id": "977ed284-9060-4919-aa0f-7daeaa3bf494",
+      "runId": "530ba959-812b-4cca-861a-a7d2e93dbd68",
+      "type": "report",
+      "label": "Generated Page Map",
+      "path": "data/artifacts\\530ba959-812b-4cca-861a-a7d2e93dbd68\\generated-pageMap.json",
+      "createdAt": "2026-04-07T12:15:46.779Z"
+    },
+    {
+      "id": "b26a9e32-f88c-456a-9ed4-aecf73fcb6fe",
+      "runId": "530ba959-812b-4cca-861a-a7d2e93dbd68",
+      "type": "log",
+      "label": "Crawl Log",
+      "path": "data/artifacts\\530ba959-812b-4cca-861a-a7d2e93dbd68\\crawl.log",
+      "createdAt": "2026-04-07T12:15:46.779Z"
+    },
+    {
+      "id": "ca1cba3d-d7e4-4a31-bf9f-1a4ce18a9ea4",
+      "runId": "530ba959-812b-4cca-861a-a7d2e93dbd68",
+      "type": "report",
+      "label": "Crawl Summary",
+      "path": "data/artifacts/530ba959-812b-4cca-861a-a7d2e93dbd68/crawl-summary.json",
+      "createdAt": "2026-04-07T12:15:46.779Z"
+    },
+    {
+      "id": "c8baec3a-76a7-4d3e-9455-734c38f3c30e",
+      "runId": "530ba959-812b-4cca-861a-a7d2e93dbd68",
+      "type": "report",
+      "label": "AI Reasoning Results",
+      "path": "data/artifacts\\530ba959-812b-4cca-861a-a7d2e93dbd68\\ai-reasoning-results.json",
+      "createdAt": "2026-04-07T12:15:46.779Z"
+    },
+    {
+      "id": "992d7ed5-7156-4b26-89a4-5954f581f622",
+      "runId": "530ba959-812b-4cca-861a-a7d2e93dbd68",
+      "type": "report",
+      "label": "Migration Test Report (JSON)",
+      "path": "data/artifacts\\530ba959-812b-4cca-861a-a7d2e93dbd68\\reports\\report.json",
+      "createdAt": "2026-04-07T12:15:46.779Z"
+    },
+    {
+      "id": "6a01e1d0-0db4-417f-bbaa-e052a6754376",
+      "runId": "530ba959-812b-4cca-861a-a7d2e93dbd68",
+      "type": "report",
+      "label": "Migration Test Report (Markdown)",
+      "path": "data/artifacts\\530ba959-812b-4cca-861a-a7d2e93dbd68\\reports\\report.md",
+      "createdAt": "2026-04-07T12:15:46.779Z"
+    },
+    {
+      "id": "d568e10b-4169-4e9c-b20d-4482c14a1aa9",
+      "runId": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
+      "type": "report",
+      "label": "Baseline Crawl Results",
+      "path": "data/artifacts\\abad47e1-b0c9-40c1-a496-ffa3268d14b2\\baseline-crawl.json",
+      "createdAt": "2026-04-07T12:16:42.829Z"
+    },
+    {
+      "id": "e3adfd86-4ffa-4696-a6c3-1c19e33878c0",
+      "runId": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
+      "type": "report",
+      "label": "Candidate Crawl Results",
+      "path": "data/artifacts\\abad47e1-b0c9-40c1-a496-ffa3268d14b2\\candidate-crawl.json",
+      "createdAt": "2026-04-07T12:16:42.829Z"
+    },
+    {
+      "id": "a9c5941a-0599-42d0-bf26-854ba14db81b",
+      "runId": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
+      "type": "report",
+      "label": "Matched Pages",
+      "path": "data/artifacts\\abad47e1-b0c9-40c1-a496-ffa3268d14b2\\matched-pages.json",
+      "createdAt": "2026-04-07T12:16:42.829Z"
+    },
+    {
+      "id": "759ef36a-e30b-49ce-9777-3391c543f5e1",
+      "runId": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
+      "type": "report",
+      "label": "Generated Page Map",
+      "path": "data/artifacts\\abad47e1-b0c9-40c1-a496-ffa3268d14b2\\generated-pageMap.json",
+      "createdAt": "2026-04-07T12:16:42.829Z"
+    },
+    {
+      "id": "c524dd69-0ead-47b2-94ca-dd738eb31717",
+      "runId": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
+      "type": "log",
+      "label": "Crawl Log",
+      "path": "data/artifacts\\abad47e1-b0c9-40c1-a496-ffa3268d14b2\\crawl.log",
+      "createdAt": "2026-04-07T12:16:42.829Z"
+    },
+    {
+      "id": "33c0abe0-b40f-4e0d-8f0d-40ecc90d52ae",
+      "runId": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
+      "type": "report",
+      "label": "Crawl Summary",
+      "path": "data/artifacts/abad47e1-b0c9-40c1-a496-ffa3268d14b2/crawl-summary.json",
+      "createdAt": "2026-04-07T12:16:42.829Z"
+    },
+    {
+      "id": "d973622a-a39d-432f-8210-745e748a0952",
+      "runId": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
+      "type": "report",
+      "label": "AI Reasoning Results",
+      "path": "data/artifacts\\abad47e1-b0c9-40c1-a496-ffa3268d14b2\\ai-reasoning-results.json",
+      "createdAt": "2026-04-07T12:16:42.829Z"
+    },
+    {
+      "id": "7b080368-c72c-4823-85c6-3862ff029537",
+      "runId": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
+      "type": "report",
+      "label": "Migration Test Report (JSON)",
+      "path": "data/artifacts\\abad47e1-b0c9-40c1-a496-ffa3268d14b2\\reports\\report.json",
+      "createdAt": "2026-04-07T12:16:42.829Z"
+    },
+    {
+      "id": "5da1996d-3271-4271-9ebd-cd5aa30cea01",
+      "runId": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
+      "type": "report",
+      "label": "Migration Test Report (Markdown)",
+      "path": "data/artifacts\\abad47e1-b0c9-40c1-a496-ffa3268d14b2\\reports\\report.md",
+      "createdAt": "2026-04-07T12:16:42.829Z"
+    },
+    {
+      "id": "c7eba6bc-19a1-472c-a8e6-7d0dcca5f651",
+      "runId": "dc266f23-5468-4dce-86cf-4c8f287eda26",
+      "type": "report",
+      "label": "Baseline Crawl Results",
+      "path": "data/artifacts\\dc266f23-5468-4dce-86cf-4c8f287eda26\\baseline-crawl.json",
+      "createdAt": "2026-04-07T13:15:14.086Z"
+    },
+    {
+      "id": "842777fc-1d8c-4f0b-86d3-426ef1055fba",
+      "runId": "dc266f23-5468-4dce-86cf-4c8f287eda26",
+      "type": "report",
+      "label": "Candidate Crawl Results",
+      "path": "data/artifacts\\dc266f23-5468-4dce-86cf-4c8f287eda26\\candidate-crawl.json",
+      "createdAt": "2026-04-07T13:15:14.086Z"
+    },
+    {
+      "id": "73b8e0ff-7200-49fc-b6e6-a36c29e43d1e",
+      "runId": "dc266f23-5468-4dce-86cf-4c8f287eda26",
+      "type": "report",
+      "label": "Matched Pages",
+      "path": "data/artifacts\\dc266f23-5468-4dce-86cf-4c8f287eda26\\matched-pages.json",
+      "createdAt": "2026-04-07T13:15:14.086Z"
+    },
+    {
+      "id": "4076459a-1f42-49ba-9582-054a2c728d13",
+      "runId": "dc266f23-5468-4dce-86cf-4c8f287eda26",
+      "type": "report",
+      "label": "Generated Page Map",
+      "path": "data/artifacts\\dc266f23-5468-4dce-86cf-4c8f287eda26\\generated-pageMap.json",
+      "createdAt": "2026-04-07T13:15:14.086Z"
+    },
+    {
+      "id": "ca481e9e-9ad9-4e5b-9dc6-2bbcfe9c94f4",
+      "runId": "dc266f23-5468-4dce-86cf-4c8f287eda26",
+      "type": "log",
+      "label": "Crawl Log",
+      "path": "data/artifacts\\dc266f23-5468-4dce-86cf-4c8f287eda26\\crawl.log",
+      "createdAt": "2026-04-07T13:15:14.086Z"
+    },
+    {
+      "id": "84ba31c8-6c3c-4098-86a7-277b5739df02",
+      "runId": "dc266f23-5468-4dce-86cf-4c8f287eda26",
+      "type": "report",
+      "label": "Crawl Summary",
+      "path": "data/artifacts/dc266f23-5468-4dce-86cf-4c8f287eda26/crawl-summary.json",
+      "createdAt": "2026-04-07T13:15:14.086Z"
+    },
+    {
+      "id": "58c0b85b-bea4-4842-96d6-2ca64c88ba79",
+      "runId": "dc266f23-5468-4dce-86cf-4c8f287eda26",
+      "type": "report",
+      "label": "AI Reasoning Results",
+      "path": "data/artifacts\\dc266f23-5468-4dce-86cf-4c8f287eda26\\ai-reasoning-results.json",
+      "createdAt": "2026-04-07T13:15:14.086Z"
+    },
+    {
+      "id": "44819b01-24b2-4d9a-9cdf-9c82d5c700cb",
+      "runId": "dc266f23-5468-4dce-86cf-4c8f287eda26",
+      "type": "report",
+      "label": "Migration Test Report (JSON)",
+      "path": "data/artifacts\\dc266f23-5468-4dce-86cf-4c8f287eda26\\reports\\report.json",
+      "createdAt": "2026-04-07T13:15:14.086Z"
+    },
+    {
+      "id": "3cb25f2a-e7fc-44cb-b1d4-8a2983bd1009",
+      "runId": "dc266f23-5468-4dce-86cf-4c8f287eda26",
+      "type": "report",
+      "label": "Migration Test Report (Markdown)",
+      "path": "data/artifacts\\dc266f23-5468-4dce-86cf-4c8f287eda26\\reports\\report.md",
+      "createdAt": "2026-04-07T13:15:14.086Z"
     }
   ],
   "metadata": {}

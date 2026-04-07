@@ -15,6 +15,7 @@ import {
   PageMap,
 } from '../models';
 import { CrawlAgent, MatchedPage } from './crawlAgent';
+import { chromium } from 'playwright';
 import { PlaywrightExecutionService } from './playwrightExecutionService';
 import runTwoSiteCapture from '../runner/playwrightRunner';
 import { VisualDiffService, VisualDiffResult } from './visualDiffService';
@@ -559,6 +560,140 @@ export class RunService implements RunServicePort {
         path: `data/artifacts/${runId}/crawl-summary.json`,
         createdAt: now,
       });
+
+      // If no matched pages were found, attempt to extract top internal links from the baseline
+      // homepage and construct matched pages to run a real Playwright comparison. If that fails,
+      // fall back to a deterministic capture to ensure artifacts are produced.
+      let matchedPagesToUse = crawlResult.matchedPages;
+      if (matchedPagesToUse.length === 0) {
+        try {
+          const extracted = await (async function extractLinksAndBuildMatches(baselineUrl: string, candidateUrl: string, maxPages: number) {
+            const browser = await chromium.launch({ headless: true });
+            try {
+                const context = await browser.newContext({ ignoreHTTPSErrors: true, userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0 Safari/537.36' });
+                const page = await context.newPage();
+                await page.goto(baselineUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
+                // Allow dynamic content to render
+                await page.waitForTimeout(1500);
+                // Scroll to bottom to trigger lazy-loaded links
+                await page.evaluate(async () => { for (let i=0;i<5;i++){ window.scrollBy(0, window.innerHeight); await new Promise(r=>setTimeout(r,200)); } });
+                // Collect same-domain anchor hrefs and other potential link-like elements
+                const anchors = await page.evaluate(() => {
+                  const hrefs = Array.from(document.querySelectorAll('a[href]')).map(a => (a as HTMLAnchorElement).href);
+                  const dataHref = Array.from(document.querySelectorAll('[data-href]')).map(el => (el as HTMLElement).getAttribute('data-href') || '');
+                  const onClickLinks = Array.from(document.querySelectorAll('[onclick]')).map(el => (el as HTMLElement).getAttribute('onclick') || '');
+                  return { hrefs, dataHref, onClickLinks };
+                });
+                const collected = ([] as string[]).concat(anchors.hrefs || [], anchors.dataHref || []);
+              const baseObj = new URL(baselineUrl);
+              const paths: string[] = [];
+              for (const a of collected) {
+                try {
+                  const u = new URL(a, baselineUrl);
+                  if (u.host === baseObj.host) {
+                    const p = u.pathname.replace(/\/$/, '') || '/';
+                    if (!paths.includes(p)) paths.push(p);
+                    if (paths.length >= maxPages) break;
+                  }
+                } catch {}
+              }
+              await page.close();
+              await context.close();
+
+              const matches: MatchedPage[] = paths.map((p) => {
+                const baseline = {
+                  url: new URL(p, baselineUrl).href,
+                  normalizedPath: p,
+                  title: undefined,
+                  statusCode: 200,
+                  links: [],
+                  metadata: {},
+                } as any;
+
+                const candidate = {
+                  url: new URL(p, candidateUrl).href,
+                  normalizedPath: p,
+                  title: undefined,
+                  statusCode: 200,
+                  links: [],
+                  metadata: {},
+                } as any;
+
+                return {
+                  baseline,
+                  candidate,
+                  confidence: 0.6,
+                  matchReason: 'Hostname path heuristic',
+                } as MatchedPage;
+              });
+
+              return matches;
+            } finally {
+              try { await browser.close(); } catch {}
+            }
+          })(job.baselineUrl, job.candidateUrl, job.crawlConfig?.maxPages ?? 5);
+
+          if (extracted && extracted.length > 0) {
+            matchedPagesToUse = extracted;
+          } else {
+            // Try a lightweight HTML fetch-and-parse as a last-resort link extractor
+            try {
+              const resp = await fetch(job.baselineUrl);
+              if (resp.ok) {
+                const html = await resp.text();
+                const hrefs = Array.from(html.matchAll(/href\s*=\s*"([^"]+)"/gi)).map(m=>m[1]);
+                const base = new URL(job.baselineUrl);
+                const paths: string[] = [];
+                for (const h of hrefs) {
+                  try {
+                    const u = new URL(h, job.baselineUrl);
+                    if (u.host === base.host) {
+                      const p = u.pathname.replace(/\/$/, '') || '/';
+                      if (!paths.includes(p)) paths.push(p);
+                      if (paths.length >= (job.crawlConfig?.maxPages ?? 5)) break;
+                    }
+                  } catch {}
+                }
+                if (paths.length > 0) {
+                  matchedPagesToUse = paths.map((p) => {
+                    const baseline = {
+                      url: new URL(p, job.baselineUrl).href,
+                      normalizedPath: p,
+                      title: undefined,
+                      statusCode: 200,
+                      links: [],
+                      metadata: {},
+                    } as any;
+                    const candidate = {
+                      url: new URL(p, job.candidateUrl).href,
+                      normalizedPath: p,
+                      title: undefined,
+                      statusCode: 200,
+                      links: [],
+                      metadata: {},
+                    } as any;
+                    return { baseline, candidate, confidence: 0.6, matchReason: 'HTML href heuristic' } as MatchedPage;
+                  });
+                } else {
+                  await this.executePlaywrightRun(runId, job);
+                  return;
+                }
+              } else {
+                await this.executePlaywrightRun(runId, job);
+                return;
+              }
+            } catch (err) {
+              console.error('HTML fetch/parse fallback failed, using deterministic capture', err);
+              try { await this.executePlaywrightRun(runId, job); } catch (e) { console.error('Fallback capture failed', e); }
+              return;
+            }
+          }
+        } catch (err) {
+          console.error('Link extraction failed, falling back to deterministic capture', err);
+          try { await this.executePlaywrightRun(runId, job); } catch (e) { console.error('Fallback capture failed', e); }
+          return;
+        }
+      }
 
       // Collect all test results for AI analysis
       let visualDiffResult: VisualDiffResult | undefined;

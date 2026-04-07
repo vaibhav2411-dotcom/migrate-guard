@@ -5,6 +5,11 @@
   text-align: center;
 }
 
+/* Ensure page content takes header into account when using fragment links */
+:root {
+  scroll-padding-top: 64px;
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -39,4 +44,16 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Visible focus styles for accessibility */
+:focus {
+  outline: 3px solid #2563eb; /* blue focus ring */
+  outline-offset: 2px;
+}
+
+/* Make buttons and interactive elements easier to tap on mobile */
+button, .btn, a[role="button"] {
+  padding: 12px 16px;
+  min-height: 44px;
 }

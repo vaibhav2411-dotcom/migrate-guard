@@ -1,0 +1,13 @@
+{
+  "baseUrl": "https://www.bbcbenelux.com",
+  "pages": [],
+  "sitemapUrls": [],
+  "crawlLog": [
+    "Attempting to read sitemap from: https://www.bbcbenelux.com/sitemap.xml",
+    "Found 0 URLs in sitemap",
+    "Crawling: https://www.bbcbenelux.com (depth: 0)",
+    "Skipped or failed: https://www.bbcbenelux.com",
+    "Crawl completed: 0 pages crawled"
+  ],
+  "errors": []
+}

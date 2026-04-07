@@ -211,7 +211,12 @@ export class CrawlAgent {
     visited.add(normalized);
 
     try {
-      const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 30000 });
+      // Debug logs to help diagnose why pages may be skipped
+      // eslint-disable-next-line no-console
+      console.log('crawlPage: navigating to', url);
+      const response = await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45000 });
+      // eslint-disable-next-line no-console
+      console.log('crawlPage: navigation complete', url, 'status', response?.status());
       const statusCode = response?.status() || 0;
 
       if (statusCode >= 400) {
@@ -258,7 +263,9 @@ export class CrawlAgent {
         metadata,
       };
     } catch (error) {
-      // Page failed to load, return null
+      // Page failed to load — log details for debugging and return null
+      // eslint-disable-next-line no-console
+      console.error(`crawlPage error for ${url}:`, error instanceof Error ? error.message : String(error));
       return null;
     }
   }
@@ -303,7 +310,13 @@ export class CrawlAgent {
       throw new Error('Browser not initialized');
     }
 
-    const page = await this.browser.newPage();
+    // Create a context that tolerates HTTPS errors (useful for staging sites with self-signed certs)
+    const context = await this.browser.newContext({
+      ignoreHTTPSErrors: true,
+      userAgent:
+        'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0 Safari/537.36',
+    });
+    const page = await context.newPage();
 
     try {
       while (toVisit.length > 0 && result.pages.length < (config.maxPages || 100)) {
@@ -338,7 +351,12 @@ export class CrawlAgent {
     } catch (error) {
       result.errors.push(`Crawl error: ${error instanceof Error ? error.message : String(error)}`);
     } finally {
-      await page.close();
+      try {
+        await page.close();
+      } catch {}
+      try {
+        await context.close();
+      } catch {}
     }
 
     result.crawlLog.push(`Crawl completed: ${result.pages.length} pages crawled`);

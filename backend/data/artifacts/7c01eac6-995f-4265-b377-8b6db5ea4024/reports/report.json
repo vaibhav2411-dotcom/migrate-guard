@@ -1,0 +1,56 @@
+{
+  "executiveSummary": {
+    "jobName": "BBC Benelux thorough",
+    "baselineUrl": "https://www.bbcbenelux.com",
+    "candidateUrl": "https://stage.beta.bbcbenelux.com",
+    "runDate": "2026-04-07T12:12:15.106Z",
+    "overallStatus": "conditional",
+    "riskScore": 50,
+    "goNoGo": "conditional",
+    "summary": "Moderate issues detected during testing. 0 issues found. Review recommended with conditional approval for deployment.",
+    "keyMetrics": {
+      "pagesTested": 0,
+      "issuesFound": 0,
+      "criticalIssues": 0,
+      "passRate": 100
+    },
+    "topFindings": []
+  },
+  "riskScore": {
+    "overall": 50,
+    "visual": 0,
+    "functional": 0,
+    "data": 0,
+    "seo": 0,
+    "breakdown": {
+      "critical": 0,
+      "high": 0,
+      "medium": 0,
+      "low": 0,
+      "none": 0
+    }
+  },
+  "technicalFindings": [],
+  "aiAnalysis": {
+    "overallSeverity": "none",
+    "overallConfidence": 0.7,
+    "overallPass": true,
+    "overallExplanation": "Analysis completed: 0 categories analyzed",
+    "categoryAnalyses": [],
+    "falsePositives": [],
+    "expectedChanges": [],
+    "recommendations": [
+      "No critical issues found. Migration appears ready for deployment."
+    ],
+    "artifactPaths": []
+  },
+  "recommendations": [
+    "No critical issues found. Migration appears ready for deployment."
+  ],
+  "metadata": {
+    "jobId": "cdfad7e8-9a12-434a-aa80-c1747df86f27",
+    "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+    "generatedAt": "2026-04-07T12:12:21.937Z",
+    "version": "1.0"
+  }
+}

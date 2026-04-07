@@ -1,0 +1,16 @@
+{
+  "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+  "jobId": "6f539d72-109f-4dd3-adf8-5d06207c8626",
+  "baselineUrl": "https://www.bbcbenelux.com",
+  "candidateUrl": "https://stage.beta.bbcbenelux.com",
+  "baselinePagesCount": 0,
+  "candidatePagesCount": 0,
+  "matchedPagesCount": 0,
+  "pageMapGenerated": 0,
+  "crawlConfig": {
+    "depth": 1,
+    "maxPages": 10,
+    "followExternalLinks": false
+  },
+  "timestamp": "2026-04-07T12:03:40.783Z"
+}

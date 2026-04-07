@@ -489,6 +489,8 @@ export class PlaywrightExecutionService {
     artifactPaths.push(networkFile);
 
     // Save DOM snapshots summary (without full HTML to reduce size)
+    // Sanitize server HTML snapshots to remove common volatile attributes that trigger hydration diffs
+    const { sanitizeServerHtml } = await import('../utils/htmlSanitize');
     const domSummary = {
       baseline: baselineResult.pages.map((p) => ({
         url: p.url,
@@ -499,6 +501,8 @@ export class PlaywrightExecutionService {
           timestamp: s.timestamp,
           textContentLength: s.textContent.length,
           htmlLength: s.html.length,
+          // store a sanitized preview snippet to help debugging without storing full HTML
+          htmlPreview: sanitizeServerHtml(s.html).slice(0, 1024),
         })),
       })),
       candidate: candidateResult.pages.map((p) => ({
@@ -510,6 +514,7 @@ export class PlaywrightExecutionService {
           timestamp: s.timestamp,
           textContentLength: s.textContent.length,
           htmlLength: s.html.length,
+          htmlPreview: sanitizeServerHtml(s.html).slice(0, 1024),
         })),
       })),
     };

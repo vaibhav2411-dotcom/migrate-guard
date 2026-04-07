@@ -9,7 +9,14 @@
     "build": "vite build",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check:hydration": "npx ts-node backend/scripts/hydration_check.ts",
+    "check:seo": "npx ts-node backend/scripts/seo_regression.ts",
+    "check:analytics": "npx ts-node backend/scripts/analytics_check.ts",
+    "check:perf": "npx ts-node backend/scripts/run_lighthouse.ts",
+    "check:axe": "npx ts-node backend/scripts/axe_check.ts",
+    "gen:bugcsv": "npx ts-node backend/scripts/generate_bug_csv.ts",
+    "check:admin-publish": "npx ts-node backend/scripts/admin_publish_check.ts"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.10.0",
@@ -72,7 +79,9 @@
     "@types/react": "^18.3.23",
     "@types/react-dom": "^18.3.7",
     "@vitejs/plugin-react-swc": "^3.11.0",
+    "ajv": "^8.12.0",
     "autoprefixer": "^10.4.21",
+    "axe-core": "^4.6.3",
     "concurrently": "^9.0.0",
     "eslint": "^9.32.0",
     "eslint-plugin-react-hooks": "^5.2.0",

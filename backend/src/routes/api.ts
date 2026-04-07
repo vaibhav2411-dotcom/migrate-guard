@@ -437,6 +437,24 @@ async function apiRoutes(fastify: FastifyInstance, _opts: FastifyPluginOptions) 
       reply.code(500).send({ message: 'Failed to read summary' });
     }
   });
+
+  // Admin: trigger cache invalidation / surrogate-key purge
+  fastify.post('/api/cache/purge', async (request, reply) => {
+    const body: any = request.body || {};
+    const keys: string[] = Array.isArray(body.keys) ? body.keys : [];
+    if (keys.length === 0) {
+      reply.code(400).send({ message: 'keys array required' });
+      return;
+    }
+
+    try {
+      const { broadcastPurge } = await import('../services/cacheInvalidation');
+      const res = await broadcastPurge(keys);
+      reply.send({ ok: true, result: res });
+    } catch (err) {
+      reply.code(500).send({ message: 'Purge failed', error: String(err) });
+    }
+  });
 }
 
 export default fp(apiRoutes);

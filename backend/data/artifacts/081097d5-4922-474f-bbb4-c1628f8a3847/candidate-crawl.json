@@ -1,0 +1,13 @@
+{
+  "baseUrl": "https://stage.beta.bbcbenelux.com",
+  "pages": [],
+  "sitemapUrls": [],
+  "crawlLog": [
+    "Attempting to read sitemap from: https://stage.beta.bbcbenelux.com/sitemap.xml",
+    "Found 0 URLs in sitemap",
+    "Crawling: https://stage.beta.bbcbenelux.com (depth: 0)",
+    "Skipped or failed: https://stage.beta.bbcbenelux.com",
+    "Crawl completed: 0 pages crawled"
+  ],
+  "errors": []
+}

@@ -1,0 +1,13 @@
+{
+  "overallSeverity": "none",
+  "overallConfidence": 0.7,
+  "overallPass": true,
+  "overallExplanation": "Analysis completed: 0 categories analyzed",
+  "categoryAnalyses": [],
+  "falsePositives": [],
+  "expectedChanges": [],
+  "recommendations": [
+    "No critical issues found. Migration appears ready for deployment."
+  ],
+  "artifactPaths": []
+}
