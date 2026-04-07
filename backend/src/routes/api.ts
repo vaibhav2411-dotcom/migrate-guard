@@ -2,12 +2,42 @@ import { FastifyInstance, FastifyPluginOptions } from 'fastify';
 import fp from 'fastify-plugin';
 import { ComparisonJobService, RunService } from '../services/domainServices';
 import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 import { FileStorage } from '../services/fileStorage';
 import { CrawlConfig, TestMatrix, PageMap } from '../models';
 
 const storage = new FileStorage();
 const jobService = new ComparisonJobService(storage);
 const runService = new RunService(storage);
+
+  // Helper: find a file under data/artifacts/{runId} matching suffix (recursive)
+  async function findFileBySuffix(runId: string, suffix: string): Promise<string | null> {
+    const fs = await import('fs/promises');
+    const start = path.join(__dirname, '..', '..', 'data', 'artifacts', runId);
+    async function walk(dir: string): Promise<string | null> {
+      let entries;
+      try {
+        entries = await fs.readdir(dir, { withFileTypes: true });
+      } catch (e) {
+        return null;
+      }
+      for (const ent of entries) {
+        const full = path.join(dir, ent.name);
+        if (ent.isFile()) {
+          if (ent.name.toLowerCase().endsWith(suffix.toLowerCase())) return full;
+        } else if (ent.isDirectory()) {
+          const found = await walk(full);
+          if (found) return found;
+        }
+      }
+      return null;
+    }
+    return await walk(start);
+  }
 
 // Request/Response schemas for validation
 const createJobSchema = {
@@ -306,9 +336,26 @@ async function apiRoutes(fastify: FastifyInstance, _opts: FastifyPluginOptions) 
     }
     const fs = await import('fs/promises');
     try {
-      const content = await fs.readFile(exec.path.replace(/^data\//, path.join(__dirname, '..', '..', 'data') + '/'), 'utf-8');
+      const dataRoot = path.join(__dirname, '..', '..', 'data') + path.sep;
+      const normalized = exec.path.replace(/^data[\\/]/, dataRoot).replace(/\\/g, path.sep).replace(/\//g, path.sep);
+      const content = await fs.readFile(normalized, 'utf-8');
       reply.type('text/markdown').send(content);
+      return;
     } catch (err) {
+      // @ts-ignore
+      console.error('Error reading executive report (primary path):', err, 'artifactPath:', exec.path);
+      // fallback: search artifacts folder for any .md report
+      const fallback = await findFileBySuffix(id, 'report.md') || await findFileBySuffix(id, '.md');
+      if (fallback) {
+        try {
+          const content = await fs.readFile(fallback, 'utf-8');
+          reply.type('text/markdown').send(content);
+          return;
+        } catch (e) {
+          // @ts-ignore
+          console.error('Error reading executive report (fallback):', e, 'fallbackPath:', fallback);
+        }
+      }
       reply.code(500).send({ message: 'Failed to read report' });
     }
   });
@@ -323,9 +370,25 @@ async function apiRoutes(fastify: FastifyInstance, _opts: FastifyPluginOptions) 
     }
     const fs = await import('fs/promises');
     try {
-      const content = await fs.readFile(tech.path.replace(/^data\//, path.join(__dirname, '..', '..', 'data') + '/'), 'utf-8');
+      const dataRoot = path.join(__dirname, '..', '..', 'data') + path.sep;
+      const normalized = tech.path.replace(/^data[\\/]/, dataRoot).replace(/\\/g, path.sep).replace(/\//g, path.sep);
+      const content = await fs.readFile(normalized, 'utf-8');
       reply.type('application/json').send(JSON.parse(content));
+      return;
     } catch (err) {
+      // @ts-ignore
+      console.error('Error reading technical report (primary):', err, 'artifactPath:', tech.path);
+      const fallback = await findFileBySuffix(id, 'report.json') || await findFileBySuffix(id, '.json');
+      if (fallback) {
+        try {
+          const content = await fs.readFile(fallback, 'utf-8');
+          reply.type('application/json').send(JSON.parse(content));
+          return;
+        } catch (e) {
+          // @ts-ignore
+          console.error('Error reading technical report (fallback):', e, 'fallbackPath:', fallback);
+        }
+      }
       reply.code(500).send({ message: 'Failed to read technical report' });
     }
   });
@@ -341,7 +404,9 @@ async function apiRoutes(fastify: FastifyInstance, _opts: FastifyPluginOptions) 
     }
     const fs = await import('fs/promises');
     try {
-      const content = await fs.readFile(ai.path.replace(/^data\//, path.join(__dirname, '..', '..', 'data') + '/'), 'utf-8');
+      const dataRoot = path.join(__dirname, '..', '..', 'data') + path.sep;
+      const normalized = ai.path.replace(/^data[\\/]/, dataRoot).replace(/\\/g, path.sep).replace(/\//g, path.sep);
+      const content = await fs.readFile(normalized, 'utf-8');
       const parsed = JSON.parse(content);
       // Derive a compact summary
       if (parsed.executiveSummary) {
@@ -349,7 +414,26 @@ async function apiRoutes(fastify: FastifyInstance, _opts: FastifyPluginOptions) 
       } else {
         reply.send(parsed);
       }
+      return;
     } catch (err) {
+      // @ts-ignore
+      console.error('Error reading summary (primary):', err, 'artifactPath:', ai.path);
+      const fallback = await findFileBySuffix(id, 'ai-reasoning-results.json') || await findFileBySuffix(id, 'report.json') || await findFileBySuffix(id, '.json');
+      if (fallback) {
+        try {
+          const content = await fs.readFile(fallback, 'utf-8');
+          const parsed = JSON.parse(content);
+          if (parsed.executiveSummary) {
+            reply.send({ executive: parsed.executiveSummary, riskScore: parsed.riskScore });
+          } else {
+            reply.send(parsed);
+          }
+          return;
+        } catch (e) {
+          // @ts-ignore
+          console.error('Error reading summary (fallback):', e, 'fallbackPath:', fallback);
+        }
+      }
       reply.code(500).send({ message: 'Failed to read summary' });
     }
   });

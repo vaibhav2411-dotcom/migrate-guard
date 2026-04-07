@@ -378,9 +378,9 @@ export class RunService implements RunServicePort {
     };
     await this.storage.save(next);
 
-    // Start deterministic Playwright-based capture (baseline then candidate)
-    this.executePlaywrightRun(run.id, comparisonJob).catch((err) => {
-      console.error(`Error executing Playwright run for run ${run.id}:`, err);
+    // Start full comparison pipeline (crawl -> capture -> visual -> functional -> data -> seo -> perf -> ai -> report)
+    this.simulateComparisonRunExecution(run.id, comparisonJob).catch((err) => {
+      console.error(`Error executing comparison pipeline for run ${run.id}:`, err);
     });
 
     return run;
