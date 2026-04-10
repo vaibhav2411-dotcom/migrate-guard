@@ -2,6 +2,26 @@ import { describe, it, expect } from 'vitest';
 import { AiReasoningService } from '../src/services/aiReasoningService';
 
 describe('AiReasoningService fallback analysis', () => {
+  it('shouldUseAI honors explicit per-run false over env true', () => {
+    const previous = process.env.ENABLE_AI_REASONING;
+    process.env.ENABLE_AI_REASONING = 'true';
+
+    const svc = new AiReasoningService();
+    expect(svc.shouldUseAI({ useAI: false })).toBe(false);
+
+    process.env.ENABLE_AI_REASONING = previous;
+  });
+
+  it('shouldUseAI honors explicit per-run true over env false', () => {
+    const previous = process.env.ENABLE_AI_REASONING;
+    process.env.ENABLE_AI_REASONING = 'false';
+
+    const svc = new AiReasoningService();
+    expect(svc.shouldUseAI({ useAI: true })).toBe(true);
+
+    process.env.ENABLE_AI_REASONING = previous;
+  });
+
   it('returns a fallback analysis when AI is not configured', async () => {
     const svc = new AiReasoningService();
 

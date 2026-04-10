@@ -12,17 +12,32 @@ function createTestServer() {
 }
 
 describe('API routes', () => {
+  it('rejects job creation when both URL pairs are missing', async () => {
+    const app = createTestServer();
+
+    const res = await app.inject({
+      method: 'POST',
+      url: '/api/jobs',
+      payload: {
+        name: 'Invalid Job',
+        description: 'Missing URLs',
+      },
+    });
+
+    expect(res.statusCode).toBe(400);
+  });
+
   it('creates and retrieves a job', async () => {
     const app = createTestServer();
 
     const createRes = await app.inject({
       method: 'POST',
       url: '/api/jobs',
-      payload: {
+        payload: {
         name: 'API Job',
         description: 'Created via API test',
-        sourceUrl: 'https://old.example.com',
-        targetUrl: 'https://new.example.com',
+        sourceUrl: 'http://localhost',
+        targetUrl: 'http://localhost:8080',
       },
     });
 
@@ -46,6 +61,40 @@ describe('API routes', () => {
     const res = await app.inject({
       method: 'GET',
       url: '/api/jobs/non-existent',
+    });
+
+    expect(res.statusCode).toBe(404);
+  });
+
+  it('returns run trends payload', async () => {
+    const app = createTestServer();
+
+    const res = await app.inject({
+      method: 'GET',
+      url: '/api/runs/trends?limit=10',
+    });
+
+    expect(res.statusCode).toBe(200);
+    const payload = res.json() as {
+      points: unknown[];
+      aggregates: {
+        totalRuns: number;
+        completedRuns: number;
+        failedRuns: number;
+        riskTrend: string;
+      };
+    };
+    expect(Array.isArray(payload.points)).toBe(true);
+    expect(payload.aggregates).toBeDefined();
+    expect(typeof payload.aggregates.totalRuns).toBe('number');
+  });
+
+  it('returns 404 for missing job history', async () => {
+    const app = createTestServer();
+
+    const res = await app.inject({
+      method: 'GET',
+      url: '/api/jobs/non-existent/history',
     });
 
     expect(res.statusCode).toBe(404);

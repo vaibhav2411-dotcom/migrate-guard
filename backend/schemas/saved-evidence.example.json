@@ -1,0 +1,28 @@
+{
+  "savedAt": "2026-04-07T16:00:00.000Z",
+  "payload": {
+    "pageKey": "index",
+    "type": "link-row",
+    "row": {
+      "key": "/home?country=NL",
+      "status": "candidate-only",
+      "candidateUrl": "https://stage.beta.bbcbenelux.com/home?country=NL"
+    }
+  },
+  "evidence": {
+    "screenshots": [
+      { "side": "candidate", "viewport": "desktop", "path": "data/artifacts/a97c09f0-a97f-433e-829c-b537b37b8bdf/candidate/index/screenshot-desktop.png" }
+    ],
+    "domSnapshots": {
+      "baseline": [
+        {
+          "url": "https://www.bbcbenelux.com/home?country=NL",
+          "viewport": { "width": 1920, "height": 1080 },
+          "timestamp": "2026-04-07T15:48:38.959Z",
+          "htmlPreview": "<!DOCTYPE html>..."
+        }
+      ],
+      "candidate": []
+    }
+  }
+}

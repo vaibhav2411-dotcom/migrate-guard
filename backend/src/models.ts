@@ -43,6 +43,10 @@ export interface TestMatrix {
   functional: boolean; // Functional testing (interactions, forms, navigation)
   data: boolean; // Data validation (content, API responses)
   seo: boolean; // SEO comparison (meta tags, structured data, sitemap)
+  performance: boolean; // Performance metrics and regression checks
+  security: boolean; // Security headers and mixed-content checks
+  uiIntegrity: boolean; // UI structure, token consistency, and interaction checks
+  accessibility: boolean; // Accessibility-focused checks (focus/targets/landmarks)
 }
 
 /**
@@ -82,6 +86,9 @@ export interface Run {
   triggeredBy: string;
   triggeredAt: string;
   completedAt?: string;
+  runSettings?: {
+    useAI?: boolean;
+  };
 }
 
 /**
@@ -102,6 +109,54 @@ export interface StorageSnapshot {
 export interface StoragePort {
   load(): Promise<StorageSnapshot>;
   save(snapshot: StorageSnapshot): Promise<void>;
+}
+
+/**
+ * UI integrity result types
+ */
+export interface UiRegionResult {
+  region: string;
+  present: boolean;
+  baseline: boolean;
+  severity: 'critical' | 'high' | 'medium' | 'low' | 'pass';
+  notes: string;
+}
+
+export interface BrandingResult {
+  token: string;
+  baseline: string;
+  candidate: string;
+  match: boolean;
+  severity: 'high' | 'medium' | 'low' | 'pass';
+}
+
+export interface InteractionResult {
+  element: string;
+  state: 'hover' | 'focus' | 'active' | 'disabled';
+  hasFocusRing: boolean;
+  isVisible: boolean;
+  notes: string;
+}
+
+export interface OverflowResult {
+  selector: string;
+  viewport: number;
+  overflows: boolean;
+  direction: 'x' | 'y' | 'both';
+  notes: string;
+}
+
+export interface UiIntegrityResult {
+  regions: UiRegionResult[];
+  branding: BrandingResult[];
+  interactions: InteractionResult[];
+  overflows: OverflowResult[];
+  summary: {
+    pass: number;
+    warn: number;
+    fail: number;
+    critical: number;
+  };
 }
 
 export interface ComparisonJobServicePort {

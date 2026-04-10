@@ -26,4 +26,28 @@ describe('ReportAgent', () => {
     expect(saved.jsonPath).toMatch(/data[\\/]artifacts[\\/]test-run/);
     expect(saved.markdownPath).toMatch(/data[\\/]artifacts[\\/]test-run/);
   });
+
+  it('keeps risk score at 0 for overallSeverity none with no category analyses', async () => {
+    const agent = new ReportAgent();
+    const job: any = { id: randomUUID(), name: 'No Findings Job', baselineUrl: 'https://a', candidateUrl: 'https://b' };
+    const run: any = { id: randomUUID(), triggeredAt: new Date().toISOString() };
+
+    const aiResult: any = {
+      overallSeverity: 'none',
+      overallConfidence: 0.9,
+      overallPass: true,
+      overallExplanation: 'No actionable differences detected',
+      categoryAnalyses: [],
+      falsePositives: [],
+      expectedChanges: [],
+      recommendations: [],
+      artifactPaths: [],
+    };
+
+    const report = await agent.generateReport(job, run, aiResult, undefined, undefined, undefined, 'test-run-none');
+    expect(report.riskScore.overall).toBe(0);
+    expect(report.executiveSummary.riskScore).toBe(0);
+    expect(report.executiveSummary.goNoGo).toBe('go');
+    expect(report.executiveSummary.overallStatus).toBe('pass');
+  });
 });

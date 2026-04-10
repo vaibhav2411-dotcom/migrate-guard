@@ -166,7 +166,7 @@ export default function TestCasesPage() {
                   <TableCell>
                     <div>
                       <p className="font-medium">{test.title}</p>
-                      <p className="text-sm text-muted-foreground line-clamp-1">
+                      <p className="text-sm text-foreground line-clamp-1">
                         {test.description}
                       </p>
                     </div>
@@ -198,8 +198,8 @@ export default function TestCasesPage() {
                   <TableCell>
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="icon">
-                          <MoreHorizontal className="w-4 h-4" />
+                        <Button variant="ghost" size="icon" aria-label="More actions">
+                          <MoreHorizontal className="w-4 h-4" aria-hidden="true" />
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">

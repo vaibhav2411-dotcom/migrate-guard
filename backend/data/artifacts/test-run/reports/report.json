@@ -3,7 +3,7 @@
     "jobName": "Test Job",
     "baselineUrl": "https://a",
     "candidateUrl": "https://b",
-    "runDate": "2026-04-07T12:12:03.287Z",
+    "runDate": "2026-04-09T21:27:24.091Z",
     "overallStatus": "pass",
     "riskScore": 25,
     "goNoGo": "go",
@@ -44,9 +44,9 @@
   },
   "recommendations": [],
   "metadata": {
-    "jobId": "83ad8512-15ff-4d34-99ad-f4c9bf0fc2a4",
+    "jobId": "0fc283c2-bc3f-4931-93dc-a6c690a0f11f",
     "runId": "test-run",
-    "generatedAt": "2026-04-07T12:12:03.287Z",
+    "generatedAt": "2026-04-09T21:27:24.092Z",
     "version": "1.0"
   }
 }

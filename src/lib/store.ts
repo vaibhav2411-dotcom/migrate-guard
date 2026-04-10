@@ -7,8 +7,8 @@ const demoProjects: Project[] = [
     id: '1',
     name: 'E-Commerce Platform Migration',
     description: 'Complete migration of the main e-commerce platform from legacy system to modern infrastructure',
-    sourceUrl: 'https://old.example.com',
-    targetUrl: 'https://new.example.com',
+    sourceUrl: '',
+    targetUrl: '',
     status: 'in_progress',
     startDate: '2025-01-15',
     cutoverDate: '2025-02-28',
@@ -191,7 +191,7 @@ const demoActivities: Activity[] = [
 const currentUser: User = {
   id: 'user1',
   name: 'Sarah Chen',
-  email: 'sarah.chen@example.com',
+  email: '',
   role: 'admin',
   avatar: undefined,
 };

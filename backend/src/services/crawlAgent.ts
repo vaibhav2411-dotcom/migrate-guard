@@ -225,25 +225,47 @@ export class CrawlAgent {
 
       // Extract page information
       const title = await page.title().catch(() => undefined);
-      const links = await page.evaluate(() => {
-        const anchors = Array.from(document.querySelectorAll('a[href]'));
-        return anchors.map((a) => (a as HTMLAnchorElement).href);
-      }) as string[];
+      const links = await page.evaluate(`
+        Array.from(document.querySelectorAll('a[href]')).map((a) => a.href)
+      `) as string[];
 
       // Extract metadata
-      const metadata = await page.evaluate(() => {
-        const getMeta = (name: string) => {
-          const meta = document.querySelector(`meta[name="${name}"], meta[property="${name}"]`);
-          return meta?.getAttribute('content') || undefined;
-        };
+      const metadata = await page.evaluate(`
+        (() => {
+          const description =
+            document.querySelector('meta[name="description"]')?.getAttribute('content') ||
+            document.querySelector('meta[property="description"]')?.getAttribute('content') ||
+            document.querySelector('meta[property="og:description"]')?.getAttribute('content') ||
+            undefined;
 
-        return {
-          description: getMeta('description') || getMeta('og:description'),
-          keywords: getMeta('keywords'),
-          ogTitle: getMeta('og:title'),
-          ogDescription: getMeta('og:description'),
-        };
-      });
+          const keywords =
+            document.querySelector('meta[name="keywords"]')?.getAttribute('content') ||
+            document.querySelector('meta[property="keywords"]')?.getAttribute('content') ||
+            undefined;
+
+          const ogTitle =
+            document.querySelector('meta[property="og:title"]')?.getAttribute('content') ||
+            document.querySelector('meta[name="og:title"]')?.getAttribute('content') ||
+            undefined;
+
+          const ogDescription =
+            document.querySelector('meta[property="og:description"]')?.getAttribute('content') ||
+            document.querySelector('meta[name="og:description"]')?.getAttribute('content') ||
+            undefined;
+
+          return {
+            description,
+            keywords,
+            ogTitle,
+            ogDescription,
+          };
+        })()
+      `) as {
+        description?: string;
+        keywords?: string;
+        ogTitle?: string;
+        ogDescription?: string;
+      };
 
       return {
         url: normalized,

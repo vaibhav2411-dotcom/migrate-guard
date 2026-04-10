@@ -24,8 +24,11 @@ function parseArgs() {
 }
 
 async function simulatePublish() {
-  const log = path.resolve('backend', 'cache-purge.log');
+  // write to artifacts-safe location (resolve using process.cwd as fallback)
+  const base = (typeof process !== 'undefined' && process.cwd) ? process.cwd() : '.';
+  const log = path.join(base, 'data', 'cache-purge.log');
   const entry = `SIMULATED-PUBLISH:${new Date().toISOString()}`;
+  try { fs.mkdirSync(path.dirname(log), { recursive: true }); } catch {}
   fs.appendFileSync(log, entry + '\n');
   console.log('Simulated publish recorded to', log);
   // simulate asynchronous purge propagation
@@ -33,7 +36,8 @@ async function simulatePublish() {
 }
 
 async function verifySimulated(entry: string) {
-  const log = path.resolve('backend', 'cache-purge.log');
+  const base = (typeof process !== 'undefined' && process.cwd) ? process.cwd() : '.';
+  const log = path.join(base, 'data', 'cache-purge.log');
   for (let i = 0; i < 6; i++) {
     const contents = fs.existsSync(log) ? fs.readFileSync(log, 'utf8') : '';
     if (contents.includes(entry)) {

@@ -23,6 +23,7 @@ import { FunctionalQaAgent, FunctionalQAResult } from './functionalQaAgent';
 import { DataIntegrityAgent, DataIntegrityResult } from './dataIntegrityAgent';
 import { AiReasoningService } from './aiReasoningService';
 import { ReportAgent } from './reportAgent';
+import { UiIntegrityAgent } from './uiIntegrityAgent';
 import { DATA_DIR, config } from '../config/config';
 
 /**
@@ -42,6 +43,10 @@ const defaultTestMatrix: TestMatrix = {
   functional: true,
   data: true,
   seo: true,
+  performance: true,
+  security: true,
+  uiIntegrity: true,
+  accessibility: true,
 };
 
 /**
@@ -301,6 +306,13 @@ export class JobService implements JobServicePort {
 export class RunService implements RunServicePort {
   constructor(private readonly storage: StoragePort) {}
 
+  private async withTimeout<T>(promise: Promise<T>, timeoutMs: number, stage: string): Promise<T> {
+    const timeout = new Promise<never>((_, reject) => {
+      setTimeout(() => reject(new Error(`${stage} timed out after ${timeoutMs}ms`)), timeoutMs);
+    });
+    return Promise.race([promise, timeout]);
+  }
+
   async listRuns(): Promise<Run[]> {
     const snapshot = await this.storage.load();
     return snapshot.runs;
@@ -325,7 +337,7 @@ export class RunService implements RunServicePort {
    * Triggers a comparison run that enforces dual-site comparison
    * This is the primary method for ComparisonJob runs
    */
-  async triggerComparisonRun(jobId: string, triggeredBy: string): Promise<Run> {
+  async triggerComparisonRun(jobId: string, triggeredBy: string, runSettings?: { useAI?: boolean }): Promise<Run> {
     const snapshot = await this.storage.load();
 
     // Try to find ComparisonJob first
@@ -369,6 +381,7 @@ export class RunService implements RunServicePort {
       status: 'queued',
       triggeredBy,
       triggeredAt: now,
+      runSettings: runSettings ?? undefined,
     };
 
     // Save the run first
@@ -472,14 +485,10 @@ export class RunService implements RunServicePort {
    * 5. Normalize URLs and match equivalent pages
    * 6. Generate stable pageMap
    * 7. Store crawl artifacts and logs
-   * 8. TODO: Phase 2 - Execute testMatrix:
-   *    - Visual: Screenshot comparison, layout diff
-   *    - Functional: Interaction testing, form validation
-   *    - Data: Content comparison, API response validation
-   *    - SEO: Meta tags, structured data, sitemap comparison
-   * 9. TODO: Phase 2 - Use Azure OpenAI to analyze differences
-   * 10. TODO: Phase 2 - Use MS Agent Framework for orchestration
-   * 11. Update run status to 'completed' or 'failed'
+  * 8. Execute enabled test stages (visual, functional, data, SEO, security, performance)
+  * 9. Run AI reasoning and generate technical/executive reports
+  * 10. Future enhancement: move orchestration to a durable queue/worker model
+  * 11. Update run status to 'completed' or 'failed'
    */
   private async simulateComparisonRunExecution(runId: string, job: ComparisonJob): Promise<void> {
     const snapshot = await this.storage.load();
@@ -500,7 +509,11 @@ export class RunService implements RunServicePort {
     try {
       // Initialize CrawlAgent and perform crawling
       const crawlAgent = new CrawlAgent();
-      const crawlResult = await crawlAgent.crawlComparison(job, runId);
+      const crawlResult = await this.withTimeout(
+        crawlAgent.crawlComparison(job, runId),
+        180000,
+        'crawlComparison'
+      );
 
       // Store crawl artifacts
       for (const artifactPath of crawlResult.artifactPaths) {
@@ -701,15 +714,32 @@ export class RunService implements RunServicePort {
       let dataIntegrityResult: DataIntegrityResult | undefined;
       let seoResults: any[] | undefined;
       let perfResults: any[] | undefined;
+      let securityResults: any[] | undefined;
+      let uiIntegrityResult: any | undefined;
+
+      const matrix = {
+        visual: job.testMatrix?.visual ?? true,
+        functional: job.testMatrix?.functional ?? true,
+        data: job.testMatrix?.data ?? true,
+        seo: job.testMatrix?.seo ?? true,
+        performance: job.testMatrix?.performance ?? true,
+        security: job.testMatrix?.security ?? true,
+        uiIntegrity: job.testMatrix?.uiIntegrity ?? true,
+        accessibility: job.testMatrix?.accessibility ?? true,
+      };
 
       // Execute Playwright tests on matched pages
-      if (crawlResult.matchedPages.length > 0) {
+      if (matchedPagesToUse.length > 0) {
         const executionService = new PlaywrightExecutionService();
-        const executionResult = await executionService.executeComparison(
-          job.baselineUrl,
-          job.candidateUrl,
-          crawlResult.matchedPages,
-          runId
+        const executionResult = await this.withTimeout(
+          executionService.executeComparison(
+            job.baselineUrl,
+            job.candidateUrl,
+            matchedPagesToUse,
+            runId
+          ),
+          180000,
+          'executeComparison'
         );
 
         // Store execution artifacts
@@ -753,103 +783,146 @@ export class RunService implements RunServicePort {
         }
 
         // Perform functional QA testing
-        if (job.testMatrix.functional && executionResult.baselineContext && executionResult.candidateContext) {
-          const functionalQaAgent = new FunctionalQaAgent();
-          functionalQaResult = await functionalQaAgent.executeFunctionalQAWithContexts(
-            executionResult.baselineContext,
-            executionResult.candidateContext,
-            crawlResult.matchedPages,
-            job.baselineUrl,
-            job.candidateUrl,
-            runId
-          );
+        if (matrix.functional && executionResult.baselineContext && executionResult.candidateContext) {
+          try {
+            const functionalQaAgent = new FunctionalQaAgent();
+            functionalQaResult = await this.withTimeout(
+              functionalQaAgent.executeFunctionalQAWithContexts(
+                executionResult.baselineContext,
+                executionResult.candidateContext,
+                matchedPagesToUse,
+                job.baselineUrl,
+                job.candidateUrl,
+                runId
+              ),
+              600000,
+              'functionalQa'
+            );
 
-          // Store functional QA artifacts
-          for (const artifactPath of functionalQaResult!.artifactPaths) {
-            const relativePath = artifactPath.replace(/^.*[\\/]data[\\/]/, 'data/');
+            // Store functional QA artifacts
+            for (const artifactPath of functionalQaResult.artifactPaths) {
+              const relativePath = artifactPath.replace(/^.*[\\/]data[\\/]/, 'data/');
+              artifacts.push({
+                id: randomUUID(),
+                runId,
+                type: 'report',
+                label: 'Functional QA Results',
+                path: relativePath,
+                createdAt: now,
+              });
+            }
+
+            // Store HAR files
+            for (const pageResult of functionalQaResult.baseline.pages) {
+              if (pageResult.harPath) {
+                artifacts.push({
+                  id: randomUUID(),
+                  runId,
+                  type: 'report',
+                  label: `Baseline HAR: ${pageResult.normalizedPath}`,
+                  path: pageResult.harPath,
+                  createdAt: now,
+                });
+              }
+            }
+
+            for (const pageResult of functionalQaResult.candidate.pages) {
+              if (pageResult.harPath) {
+                artifacts.push({
+                  id: randomUUID(),
+                  runId,
+                  type: 'report',
+                  label: `Candidate HAR: ${pageResult.normalizedPath}`,
+                  path: pageResult.harPath,
+                  createdAt: now,
+                });
+              }
+            }
+          } catch (err) {
             artifacts.push({
               id: randomUUID(),
               runId,
-              type: 'report',
-              label: 'Functional QA Results',
-              path: relativePath,
+              type: 'log',
+              label: 'Functional QA Error',
+              path: `data/artifacts/${runId}/functional-qa-error.log`,
               createdAt: now,
             });
-          }
-
-          // Store HAR files
-          for (const pageResult of functionalQaResult!.baseline.pages) {
-            if (pageResult.harPath) {
-              artifacts.push({
-                id: randomUUID(),
-                runId,
-                type: 'report',
-                label: `Baseline HAR: ${pageResult.normalizedPath}`,
-                path: pageResult.harPath,
-                createdAt: now,
-              });
-            }
-          }
-
-          for (const pageResult of functionalQaResult!.candidate.pages) {
-            if (pageResult.harPath) {
-              artifacts.push({
-                id: randomUUID(),
-                runId,
-                type: 'report',
-                label: `Candidate HAR: ${pageResult.normalizedPath}`,
-                path: pageResult.harPath,
-                createdAt: now,
-              });
-            }
+            try {
+              await fs.mkdir(path.join(DATA_DIR, 'artifacts', runId), { recursive: true });
+              await fs.writeFile(
+                path.join(DATA_DIR, 'artifacts', runId, 'functional-qa-error.log'),
+                err instanceof Error ? err.stack || err.message : String(err),
+                'utf-8'
+              );
+            } catch {}
           }
         }
 
         // Perform data integrity check
-        if (job.testMatrix.data && executionResult.baselineContext && executionResult.candidateContext) {
-          const dataIntegrityAgent = new DataIntegrityAgent();
-          dataIntegrityResult = await dataIntegrityAgent.executeDataIntegrityCheckWithContexts(
-            executionResult.baselineContext,
-            executionResult.candidateContext,
-            crawlResult.matchedPages,
-            job.baselineUrl,
-            job.candidateUrl,
-            runId
-          );
+        if (matrix.data && executionResult.baselineContext && executionResult.candidateContext) {
+          try {
+            const dataIntegrityAgent = new DataIntegrityAgent();
+            dataIntegrityResult = await this.withTimeout(
+              dataIntegrityAgent.executeDataIntegrityCheckWithContexts(
+                executionResult.baselineContext,
+                executionResult.candidateContext,
+                matchedPagesToUse,
+                job.baselineUrl,
+                job.candidateUrl,
+                runId
+              ),
+              180000,
+              'dataIntegrity'
+            );
 
-          // Store data integrity artifacts
-          for (const artifactPath of dataIntegrityResult!.artifactPaths) {
-            const relativePath = artifactPath.replace(/^.*[\\/]data[\\/]/, 'data/');
+            // Store data integrity artifacts
+            for (const artifactPath of dataIntegrityResult.artifactPaths) {
+              const relativePath = artifactPath.replace(/^.*[\\/]data[\\/]/, 'data/');
+              artifacts.push({
+                id: randomUUID(),
+                runId,
+                type: 'report',
+                label: 'Data Integrity Results',
+                path: relativePath,
+                createdAt: now,
+              });
+            }
+          } catch (err) {
             artifacts.push({
               id: randomUUID(),
               runId,
-              type: 'report',
-              label: 'Data Integrity Results',
-              path: relativePath,
+              type: 'log',
+              label: 'Data Integrity Error',
+              path: `data/artifacts/${runId}/data-integrity-error.log`,
               createdAt: now,
             });
+            try {
+              await fs.mkdir(path.join(DATA_DIR, 'artifacts', runId), { recursive: true });
+              await fs.writeFile(
+                path.join(DATA_DIR, 'artifacts', runId, 'data-integrity-error.log'),
+                err instanceof Error ? err.stack || err.message : String(err),
+                'utf-8'
+              );
+            } catch {}
           }
         }
 
         // SEO & Performance checks (run before closing contexts)
-        let seoResults: any[] | undefined;
-        let perfResults: any[] | undefined;
-
-        if (config.features.seoValidation && executionResult.baselineContext && executionResult.candidateContext) {
+        if (matrix.seo && config.features.seoValidation && executionResult.baselineContext && executionResult.candidateContext) {
           try {
             const { SeoAgent } = await import('./seoAgent');
             const seoAgent = new SeoAgent();
             seoResults = [];
-            for (const mp of crawlResult.matchedPages) {
+            for (const mp of matchedPagesToUse) {
               const bPage = await executionResult.baselineContext.newPage();
               const cPage = await executionResult.candidateContext.newPage();
               try {
-                await bPage.goto(mp.baseline.url, { waitUntil: 'networkidle' });
-                await cPage.goto(mp.candidate.url, { waitUntil: 'networkidle' });
+                await bPage.goto(mp.baseline.url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+                await cPage.goto(mp.candidate.url, { waitUntil: 'domcontentloaded', timeout: 30000 });
                 const baselineSeo = await seoAgent.extractFromPageHandle(bPage, mp.baseline.normalizedPath);
                 const candidateSeo = await seoAgent.extractFromPageHandle(cPage, mp.candidate.normalizedPath);
                 const res = seoAgent.compareSnapshots(mp.baseline.normalizedPath, baselineSeo, candidateSeo);
-                const saved = await seoAgent.saveResult(res, runId);
+                const saved = await seoAgent.saveResult(res, runId, run?.runSettings);
                 artifacts.push({ id: randomUUID(), runId, type: 'report', label: `SEO: ${mp.baseline.normalizedPath}`, path: saved, createdAt: now });
                 seoResults.push(res);
               } finally {
@@ -863,21 +936,49 @@ export class RunService implements RunServicePort {
           }
         }
 
-        if (config.features.performanceMetrics && executionResult.baselineContext && executionResult.candidateContext) {
+            // Security checks (headers, CSP, HSTS, mixed content)
+            if (matrix.security && config.features.securityHeaders && executionResult.baselineContext && executionResult.candidateContext) {
+              try {
+                const { SecurityAgent } = await import('./securityAgent');
+                const securityAgent = new SecurityAgent();
+                securityResults = [];
+                for (const mp of matchedPagesToUse) {
+                  const bPage = await executionResult.baselineContext.newPage();
+                  const cPage = await executionResult.candidateContext.newPage();
+                  try {
+                    await bPage.goto(mp.baseline.url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+                    await cPage.goto(mp.candidate.url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+                    const baselineSec = await securityAgent.extractFromPageHandle(bPage, mp.baseline.normalizedPath);
+                    const candidateSec = await securityAgent.extractFromPageHandle(cPage, mp.candidate.normalizedPath);
+                    const res = securityAgent.compareSnapshots(mp.baseline.normalizedPath, baselineSec, candidateSec);
+                    const saved = await securityAgent.saveResult(res, runId, run?.runSettings);
+                    artifacts.push({ id: randomUUID(), runId, type: 'report', label: `Security: ${mp.baseline.normalizedPath}`, path: saved, createdAt: now });
+                    securityResults.push(res);
+                  } finally {
+                    try { await bPage.close(); } catch {}
+                    try { await cPage.close(); } catch {}
+                  }
+                }
+              } catch (err) {
+                console.error('Security agent error', err);
+              }
+            }
+
+        if (matrix.performance && config.features.performanceMetrics && executionResult.baselineContext && executionResult.candidateContext) {
           try {
             const { PerformanceAgent } = await import('./performanceAgent');
             const performanceAgent = new PerformanceAgent();
             perfResults = [];
-            for (const mp of crawlResult.matchedPages) {
+            for (const mp of matchedPagesToUse) {
               const bPage = await executionResult.baselineContext.newPage();
               const cPage = await executionResult.candidateContext.newPage();
               try {
-                await bPage.goto(mp.baseline.url, { waitUntil: 'networkidle' });
-                await cPage.goto(mp.candidate.url, { waitUntil: 'networkidle' });
+                await bPage.goto(mp.baseline.url, { waitUntil: 'domcontentloaded', timeout: 30000 });
+                await cPage.goto(mp.candidate.url, { waitUntil: 'domcontentloaded', timeout: 30000 });
                 const baselinePerf = await performanceAgent.extractFromPageHandle(bPage);
                 const candidatePerf = await performanceAgent.extractFromPageHandle(cPage);
                 const res = performanceAgent.compareSnapshots(mp.baseline.normalizedPath, baselinePerf, candidatePerf);
-                const saved = await performanceAgent.saveResult(res, runId);
+                const saved = await performanceAgent.saveResult(res, runId, run?.runSettings);
                 artifacts.push({ id: randomUUID(), runId, type: 'report', label: `Performance: ${mp.baseline.normalizedPath}`, path: saved, createdAt: now });
                 perfResults.push(res);
               } finally {
@@ -899,12 +1000,66 @@ export class RunService implements RunServicePort {
         }
         await executionService.cleanup();
 
+        if ((matrix.uiIntegrity || matrix.accessibility) && (config.features.uiIntegrity || config.features.accessibilityChecks)) {
+          try {
+            const uiIntegrityAgent = new UiIntegrityAgent();
+            const baselineDir = path.join(DATA_DIR, 'artifacts', runId, 'baseline');
+            const candidateDir = path.join(DATA_DIR, 'artifacts', runId, 'candidate');
+            uiIntegrityResult = await this.withTimeout(
+              uiIntegrityAgent.executeUiIntegrityCheck(
+                baselineDir,
+                candidateDir,
+                job,
+                runId,
+                run?.runSettings
+              ),
+              180000,
+              'uiIntegrity'
+            );
+
+            if (uiIntegrityResult) {
+              artifacts.push({
+                id: randomUUID(),
+                runId,
+                type: 'report',
+                label: 'UI Integrity Results',
+                path: `data/artifacts/${runId}/ui-integrity.json`,
+                createdAt: now,
+              });
+
+              artifacts.push({
+                id: randomUUID(),
+                runId,
+                type: 'report',
+                label: 'UI Integrity Suggestions',
+                path: `data/artifacts/${runId}/ui-integrity-suggestions.json`,
+                createdAt: now,
+              });
+
+              artifacts.push({
+                id: randomUUID(),
+                runId,
+                type: 'report',
+                label: 'UI Integrity Fixes CSS',
+                path: `data/artifacts/${runId}/ui-integrity-fixes.css`,
+                createdAt: now,
+              });
+            }
+          } catch (err) {
+            console.error('UI integrity agent error', err);
+          }
+        }
+
         // Perform visual diff comparison
-        if (job.testMatrix.visual) {
+        if (matrix.visual) {
           const visualDiffService = new VisualDiffService();
-          visualDiffResult = await visualDiffService.compareExecutionResults(
-            executionResult,
-            runId
+          visualDiffResult = await this.withTimeout(
+            visualDiffService.compareExecutionResults(
+              executionResult,
+              runId
+            ),
+            180000,
+            'visualDiff'
           );
 
           // Store visual diff artifacts
@@ -949,13 +1104,19 @@ export class RunService implements RunServicePort {
 
       // Perform AI reasoning on all artifacts
       const aiReasoningService = new AiReasoningService();
-      const aiResult = await aiReasoningService.analyzeArtifacts(
-        visualDiffResult,
-        functionalQaResult,
-        dataIntegrityResult,
-        runId,
-        seoResults,
-        perfResults
+      const aiResult = await this.withTimeout(
+        aiReasoningService.analyzeArtifacts(
+          visualDiffResult,
+          functionalQaResult,
+          dataIntegrityResult,
+          runId,
+          seoResults,
+          perfResults,
+          securityResults,
+          run?.runSettings
+        ),
+        90000,
+        'aiReasoning'
       );
 
       // Save AI reasoning results
@@ -971,18 +1132,26 @@ export class RunService implements RunServicePort {
 
       // Generate comprehensive report
       const reportAgent = new ReportAgent();
-      const report = await reportAgent.generateReport(
-        job,
-        runningRun,
-        aiResult,
-        visualDiffResult,
-        functionalQaResult,
-        dataIntegrityResult,
-        runId
+      const report = await this.withTimeout(
+        reportAgent.generateReport(
+          job,
+          runningRun,
+          aiResult,
+          visualDiffResult,
+          functionalQaResult,
+          dataIntegrityResult,
+          runId
+        ),
+        60000,
+        'generateReport'
       );
 
       // Save report in both formats
-      const reportPaths = await reportAgent.saveReport(report, runId);
+      const reportPaths = await this.withTimeout(
+        reportAgent.saveReport(report, runId),
+        30000,
+        'saveReport'
+      );
       artifacts.push({
         id: randomUUID(),
         runId,

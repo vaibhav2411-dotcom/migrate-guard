@@ -3,9 +3,6 @@ import { motion } from 'framer-motion';
 import {
   LayoutDashboard,
   FolderKanban,
-  ClipboardCheck,
-  Link2,
-  Database,
   FileText,
   Activity,
   Settings,
@@ -18,12 +15,9 @@ import { cn } from '@/lib/utils';
 
 const navItems = [
   { path: '/', icon: LayoutDashboard, label: 'Dashboard' },
-  { path: '/projects', icon: FolderKanban, label: 'Projects' },
-  { path: '/tests', icon: ClipboardCheck, label: 'Test Cases' },
-  { path: '/urls', icon: Link2, label: 'URL Inventory' },
-  { path: '/data', icon: Database, label: 'Data Validation' },
-  { path: '/reports', icon: FileText, label: 'Reports' },
+  { path: '/projects', icon: FolderKanban, label: 'Jobs' },
   { path: '/runs', icon: Activity, label: 'Runs' },
+  { path: '/reports', icon: FileText, label: 'Reports' },
 ];
 
 const bottomNavItems = [
@@ -58,6 +52,7 @@ export function AppSidebar() {
         </motion.div>
         <button
           onClick={() => setSidebarOpen(!sidebarOpen)}
+          aria-label={sidebarOpen ? 'Collapse sidebar' : 'Expand sidebar'}
           className="p-1.5 rounded-md hover:bg-sidebar-accent transition-colors"
         >
           {sidebarOpen ? (

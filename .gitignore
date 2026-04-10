@@ -22,3 +22,22 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local backend environment (do not commit keys)
+backend/.env
+
+# Runtime/test artifacts and reports
+# Ignore generated data/artifacts from test runs and Playwright
+data/
+backend/data/
+
+# Common test output file types
+*.har
+*.log
+*.png
+*.jpg
+*.jpeg
+
+# Report folders
+reports/
+**/reports/

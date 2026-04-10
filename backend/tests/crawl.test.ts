@@ -6,10 +6,10 @@ describe('CrawlAgent matching', () => {
     const agent = new CrawlAgent();
 
     const baselineResult: any = {
-      baseUrl: 'https://example.com',
+      baseUrl: 'http://localhost',
       pages: [
-        { url: 'https://example.com/', normalizedPath: '/', title: 'Home' },
-        { url: 'https://example.com/about', normalizedPath: '/about', title: 'About' },
+        { url: 'http://localhost/', normalizedPath: '/', title: 'Home' },
+        { url: 'http://localhost/about', normalizedPath: '/about', title: 'About' },
       ],
       sitemapUrls: [],
       crawlLog: [],
@@ -17,10 +17,10 @@ describe('CrawlAgent matching', () => {
     };
 
     const candidateResult: any = {
-      baseUrl: 'https://example.org',
+      baseUrl: 'http://localhost',
       pages: [
-        { url: 'https://example.org/', normalizedPath: '/', title: 'Home' },
-        { url: 'https://example.org/about-us', normalizedPath: '/about', title: 'About' },
+        { url: 'http://localhost/', normalizedPath: '/', title: 'Home' },
+        { url: 'http://localhost/about-us', normalizedPath: '/about', title: 'About' },
       ],
       sitemapUrls: [],
       crawlLog: [],

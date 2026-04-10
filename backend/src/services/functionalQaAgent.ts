@@ -1,4 +1,4 @@
-import { BrowserContext, Page, Route } from 'playwright';
+import { BrowserContext, Page } from 'playwright';
 import { promises as fs } from 'fs';
 import path from 'path';
 import { DATA_DIR } from '../config/config';
@@ -41,6 +41,10 @@ export interface BrokenLink {
   statusCode?: number;
   error: string;
   linkText?: string;
+  kind?: 'anchor' | 'network';
+  method?: string;
+  resourceType?: string;
+  isExternal?: boolean;
 }
 
 /**
@@ -104,6 +108,101 @@ export class FunctionalQaAgent {
 
   constructor() {
     this.artifactsDir = path.join(DATA_DIR, 'artifacts');
+  }
+
+  /**
+   * Attach listeners that record failed network resources and HTTP 4xx/5xx responses.
+   */
+  private captureNetworkBrokenLinks(page: Page, baseUrl: string): BrokenLink[] {
+    const brokenLinks: BrokenLink[] = [];
+    const seen = new Set<string>();
+    const baseHost = new URL(baseUrl).host;
+
+    const record = (link: BrokenLink) => {
+      const key = [
+        link.kind ?? 'network',
+        link.url,
+        link.sourceUrl,
+        String(link.statusCode ?? ''),
+        link.error,
+      ].join('|');
+
+      if (seen.has(key)) {
+        return;
+      }
+
+      seen.add(key);
+      brokenLinks.push(link);
+    };
+
+    page.on('response', (response) => {
+      if (response.status() < 400) {
+        return;
+      }
+
+      const request = response.request();
+      const requestUrl = request.url();
+      if (!requestUrl || requestUrl.startsWith('data:') || requestUrl === 'about:blank') {
+        return;
+      }
+
+      const sourceUrl = request.frame()?.url() || page.url() || baseUrl;
+      const requestHost = (() => {
+        try {
+          return new URL(requestUrl).host;
+        } catch {
+          return '';
+        }
+      })();
+
+      const rec = {
+        url: requestUrl,
+        sourceUrl,
+        sourceSelector: request.resourceType(),
+        statusCode: response.status(),
+        error: `HTTP ${response.status()}: ${response.statusText()}`,
+        kind: 'network',
+        method: request.method(),
+        resourceType: request.resourceType(),
+        isExternal: requestHost !== '' && requestHost !== baseHost,
+      } as BrokenLink;
+
+      // debug log
+      try { console.debug('FunctionalQaAgent: network response noted', { runUrl: baseUrl, requestUrl, status: response.status(), sourceUrl }); } catch {}
+
+      record(rec);
+    });
+
+    page.on('requestfailed', (request) => {
+      const requestUrl = request.url();
+      if (!requestUrl || requestUrl.startsWith('data:') || requestUrl === 'about:blank') {
+        return;
+      }
+
+      const sourceUrl = request.frame()?.url() || page.url() || baseUrl;
+      const requestHost = (() => {
+        try {
+          return new URL(requestUrl).host;
+        } catch {
+          return '';
+        }
+      })();
+
+      const rec = {
+        url: requestUrl,
+        sourceUrl,
+        sourceSelector: request.resourceType(),
+        error: request.failure()?.errorText || 'Request failed',
+        kind: 'network',
+        method: request.method(),
+        resourceType: request.resourceType(),
+        isExternal: requestHost !== '' && requestHost !== baseHost,
+      } as BrokenLink;
+      try { console.debug('FunctionalQaAgent: request failed', { requestUrl, reason: request.failure()?.errorText, sourceUrl }); } catch {}
+      record(rec);
+    });
+
+    return brokenLinks;
   }
 
   /**
@@ -184,7 +283,7 @@ export class FunctionalQaAgent {
             const name = await input.getAttribute('name');
 
             if (inputType === 'email') {
-              await input.fill('test@example.com');
+              await input.fill('test@localhost');
             } else if (placeholder?.toLowerCase().includes('name')) {
               await input.fill('Test User');
             } else if (name?.toLowerCase().includes('message') || name?.toLowerCase().includes('comment')) {
@@ -262,6 +361,8 @@ export class FunctionalQaAgent {
       // Check each link
       for (const link of links) {
         try {
+          const sourceUrl = page.url() || baseUrl;
+
           // Skip mailto, tel, javascript, and anchor links
           if (
             link.href.startsWith('mailto:') ||
@@ -293,23 +394,39 @@ export class FunctionalQaAgent {
           if (!response || response.status() >= 400) {
             brokenLinks.push({
               url: link.href,
-              sourceUrl: page.url(),
+              sourceUrl,
               sourceSelector: link.selector,
               statusCode: response?.status(),
               error: response ? `HTTP ${response.status()}` : 'No response',
               linkText: link.text,
+              kind: 'anchor',
+              method: 'GET',
+              resourceType: 'document',
+              isExternal,
             });
           }
 
           // Navigate back
           await page.goBack({ waitUntil: 'domcontentloaded' });
         } catch (error) {
+          const linkUrl = (() => {
+            try {
+              return new URL(link.href);
+            } catch {
+              return null;
+            }
+          })();
+
           brokenLinks.push({
             url: link.href,
-            sourceUrl: page.url(),
+            sourceUrl: page.url() || baseUrl,
             sourceSelector: link.selector,
             error: error instanceof Error ? error.message : String(error),
             linkText: link.text,
+            kind: 'anchor',
+            method: 'GET',
+            resourceType: 'document',
+            isExternal: linkUrl ? linkUrl.host !== new URL(baseUrl).host : undefined,
           });
         }
       }
@@ -537,6 +654,8 @@ export class FunctionalQaAgent {
     };
 
     try {
+      const networkBrokenLinks = this.captureNetworkBrokenLinks(page, baseUrl);
+
       // Set up JS error capture
       const jsErrorPromise = this.captureJSErrors(page);
 
@@ -550,7 +669,7 @@ export class FunctionalQaAgent {
       result.forms = await this.executeFormSubmissions(page);
 
       // Detect broken links
-      result.brokenLinks = await this.detectBrokenLinks(page, baseUrl);
+      result.brokenLinks = [...networkBrokenLinks, ...(await this.detectBrokenLinks(page, baseUrl))];
 
       // Get captured JS errors
       result.jsErrors = await jsErrorPromise;
@@ -676,6 +795,92 @@ export class FunctionalQaAgent {
       } finally {
         await candidatePage.close();
       }
+    }
+
+    // Augment broken-links from execution artifacts (network failures / 4xx responses)
+    try {
+      const baselineExecPath = path.join(this.artifactsDir, runId, 'baseline-execution.json');
+      const candidateExecPath = path.join(this.artifactsDir, runId, 'candidate-execution.json');
+
+      if (await fs.stat(baselineExecPath).then(() => true).catch(() => false)) {
+        const raw = await fs.readFile(baselineExecPath, 'utf-8');
+        const exec = JSON.parse(raw);
+        for (const pageExec of exec.pages || []) {
+          const match = baselineResults.find((r) => r.normalizedPath === pageExec.normalizedPath || r.url === pageExec.url);
+          if (!match) continue;
+
+          const failures = Array.isArray(pageExec.networkFailures) ? pageExec.networkFailures : [];
+          for (const f of failures) {
+            match.brokenLinks.push({
+              url: f.url || '',
+              sourceUrl: pageExec.url || '',
+              sourceSelector: f.resourceType || 'network',
+              statusCode: f.status || undefined,
+              error: f.failureText || f.statusText || 'Request failed',
+              kind: 'network',
+              method: f.method || 'GET',
+              resourceType: f.resourceType || undefined,
+              linkText: undefined,
+            });
+          }
+
+          const badResponses = (Array.isArray(pageExec.networkRequests) ? pageExec.networkRequests : []).filter((r: any) => typeof r.status === 'number' && r.status >= 400);
+          for (const br of badResponses) {
+            match.brokenLinks.push({
+              url: br.url || '',
+              sourceUrl: pageExec.url || '',
+              sourceSelector: br.requestHeaders ? 'request' : 'network',
+              statusCode: br.status || undefined,
+              error: br.statusText || `HTTP ${br.status}` || 'HTTP error',
+              kind: 'network',
+              method: br.method || 'GET',
+              resourceType: undefined,
+              linkText: undefined,
+            });
+          }
+        }
+      }
+
+      if (await fs.stat(candidateExecPath).then(() => true).catch(() => false)) {
+        const raw = await fs.readFile(candidateExecPath, 'utf-8');
+        const exec = JSON.parse(raw);
+        for (const pageExec of exec.pages || []) {
+          const match = candidateResults.find((r) => r.normalizedPath === pageExec.normalizedPath || r.url === pageExec.url);
+          if (!match) continue;
+
+          const failures = Array.isArray(pageExec.networkFailures) ? pageExec.networkFailures : [];
+          for (const f of failures) {
+            match.brokenLinks.push({
+              url: f.url || '',
+              sourceUrl: pageExec.url || '',
+              sourceSelector: f.resourceType || 'network',
+              statusCode: f.status || undefined,
+              error: f.failureText || f.statusText || 'Request failed',
+              kind: 'network',
+              method: f.method || 'GET',
+              resourceType: f.resourceType || undefined,
+              linkText: undefined,
+            });
+          }
+
+          const badResponses = (Array.isArray(pageExec.networkRequests) ? pageExec.networkRequests : []).filter((r: any) => typeof r.status === 'number' && r.status >= 400);
+          for (const br of badResponses) {
+            match.brokenLinks.push({
+              url: br.url || '',
+              sourceUrl: pageExec.url || '',
+              sourceSelector: br.requestHeaders ? 'request' : 'network',
+              statusCode: br.status || undefined,
+              error: br.statusText || `HTTP ${br.status}` || 'HTTP error',
+              kind: 'network',
+              method: br.method || 'GET',
+              resourceType: undefined,
+              linkText: undefined,
+            });
+          }
+        }
+      }
+    } catch (err) {
+      console.error('Error augmenting broken links from execution artifacts:', err);
     }
 
     // Generate summaries

@@ -1,11 +1,10 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { formatDistanceToNow } from 'date-fns';
 import { motion } from 'framer-motion';
-import { useAppStore } from '@/lib/store';
-import { useNavigate } from 'react-router-dom';
+import { Plus, Search, PlayCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
 import {
   Dialog,
   DialogContent,
@@ -16,141 +15,111 @@ import {
   DialogTrigger,
 } from '@/components/ui/dialog';
 import { Label } from '@/components/ui/label';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
-import { 
-  Plus, 
-  Search, 
-  ExternalLink, 
-  Calendar,
-  MoreHorizontal,
-  Trash2,
-  Edit
-} from 'lucide-react';
-import { format } from 'date-fns';
-import { cn } from '@/lib/utils';
-import { ProjectStatus } from '@/lib/types';
-import { createJob, listJobs, triggerRun } from '@/lib/api';
+import { createJob, listJobs, listRuns, triggerRun, JobDto, RunDto } from '@/lib/api';
 import { toast } from '@/hooks/use-toast';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu';
 
-const statusStyles: Record<ProjectStatus, string> = {
-  planning: 'bg-muted text-muted-foreground',
-  in_progress: 'bg-primary/10 text-primary',
-  testing: 'bg-chart-3/10 text-chart-3',
-  completed: 'bg-success/10 text-success',
-  on_hold: 'bg-warning/10 text-warning-foreground',
+type JobWithRun = JobDto & {
+  latestRun?: RunDto;
+  totalRuns: number;
 };
 
-const statusLabels: Record<ProjectStatus, string> = {
-  planning: 'Planning',
-  in_progress: 'In Progress',
-  testing: 'Testing',
-  completed: 'Completed',
-  on_hold: 'On Hold',
-};
+function statusTone(status: JobDto['status']) {
+  if (status === 'active') return 'bg-primary/10 text-primary';
+  if (status === 'completed') return 'bg-success/10 text-success';
+  if (status === 'failed') return 'bg-destructive/10 text-destructive';
+  return 'bg-muted text-muted-foreground';
+}
 
 export default function ProjectsPage() {
-  const { projects, addProject, deleteProject } = useAppStore();
-  const navigate = useNavigate();
+  const [jobs, setJobs] = useState<JobWithRun[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [newProject, setNewProject] = useState({
+  const [newJob, setNewJob] = useState({
     name: '',
     description: '',
-    sourceUrl: '',
-    targetUrl: '',
-    status: 'planning' as ProjectStatus,
-    startDate: '',
-    cutoverDate: '',
+    baselineUrl: '',
+    candidateUrl: '',
   });
 
-  const filteredProjects = projects.filter(
-    (p) =>
-      p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      p.description.toLowerCase().includes(searchQuery.toLowerCase())
+  async function loadData() {
+    setIsLoading(true);
+    try {
+      const [rawJobs, runs] = await Promise.all([listJobs(), listRuns()]);
+      const mapped = rawJobs.map((job) => {
+        const runList = runs.filter((r) => r.jobId === job.id);
+        const latestRun = runList
+          .slice()
+          .sort((a, b) => new Date(b.triggeredAt).getTime() - new Date(a.triggeredAt).getTime())[0];
+        return {
+          ...job,
+          latestRun,
+          totalRuns: runList.length,
+        };
+      });
+      setJobs(mapped);
+    } catch {
+      toast({
+        title: 'Failed to load jobs',
+        description: 'Could not fetch jobs/runs from backend.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  useEffect(() => {
+    loadData();
+  }, []);
+
+  const filteredJobs = useMemo(
+    () =>
+      jobs.filter(
+        (job) =>
+          job.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          (job.description ?? '').toLowerCase().includes(searchQuery.toLowerCase()) ||
+          job.baselineUrl.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          job.candidateUrl.toLowerCase().includes(searchQuery.toLowerCase())
+      ),
+    [jobs, searchQuery]
   );
 
-  const handleCreateProject = async () => {
-    if (newProject.name && newProject.sourceUrl && newProject.targetUrl) {
-      addProject(newProject);
+  const handleCreateJob = async () => {
+    if (!newJob.name || !newJob.baselineUrl || !newJob.candidateUrl) {
+      toast({
+        title: 'Missing required fields',
+        description: 'Name, baseline URL, and candidate URL are required.',
+        variant: 'destructive',
+      });
+      return;
+    }
 
-      try {
-        await createJob({
-          name: newProject.name,
-          description: newProject.description || undefined,
-          sourceUrl: newProject.sourceUrl,
-          targetUrl: newProject.targetUrl,
-        });
-        toast({
-          title: 'Backend job created',
-          description: 'Control plane received this migration project.',
-        });
-      } catch (error) {
-        // Frontend state is already updated; surfacing a non-blocking error is enough.
-        toast({
-          title: 'Backend sync failed',
-          description: 'Project was created locally, but backend job creation failed.',
-          variant: 'destructive',
-        });
-      }
-
+    try {
+      await createJob(newJob);
+      toast({ title: 'Job created', description: 'Migration audit job is ready to run.' });
       setIsDialogOpen(false);
-      setNewProject({
-        name: '',
-        description: '',
-        sourceUrl: '',
-        targetUrl: '',
-        status: 'planning',
-        startDate: '',
-        cutoverDate: '',
+      setNewJob({ name: '', description: '', baselineUrl: '', candidateUrl: '' });
+      await loadData();
+    } catch {
+      toast({
+        title: 'Job creation failed',
+        description: 'Backend rejected the job request.',
+        variant: 'destructive',
       });
     }
   };
 
-  const handleTriggerRun = async (projectId: string) => {
-    const project = projects.find((p) => p.id === projectId);
-    if (!project) return;
-
+  const handleTriggerRun = async (jobId: string) => {
     try {
-      const jobs = await listJobs();
-      let job = jobs.find(
-        (j) =>
-          j.name === project.name &&
-          j.sourceUrl === project.sourceUrl &&
-          j.targetUrl === project.targetUrl,
-      );
-
-      if (!job) {
-        job = await createJob({
-          name: project.name,
-          description: project.description,
-          sourceUrl: project.sourceUrl,
-          targetUrl: project.targetUrl,
-        });
-      }
-
-      const run = await triggerRun(job.id, 'ui');
-
-      toast({
-        title: 'Run triggered',
-        description: `Run ${run.id} queued for job ${job.id}.`,
-      });
-    } catch (error) {
+      const run = await triggerRun(jobId, 'ui');
+      toast({ title: 'Run triggered', description: `Run ${run.id} has been queued.` });
+      await loadData();
+    } catch {
       toast({
         title: 'Failed to trigger run',
-        description: 'An error occurred while triggering a backend run.',
+        description: 'Could not start a backend run for this job.',
         variant: 'destructive',
       });
     }
@@ -158,219 +127,130 @@ export default function ProjectsPage() {
 
   return (
     <div className="space-y-6 animate-fade-in">
-      {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight">Projects</h1>
+          <h1 className="text-2xl font-bold tracking-tight">Jobs</h1>
           <p className="text-muted-foreground">
-            Manage your website migration projects
+            Configure and run production vs staging migration audits.
           </p>
         </div>
         <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
           <DialogTrigger asChild>
             <Button>
               <Plus className="w-4 h-4 mr-2" />
-              New Project
+              New Job
             </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-lg">
             <DialogHeader>
-              <DialogTitle>Create New Project</DialogTitle>
+              <DialogTitle>Create Migration Audit Job</DialogTitle>
               <DialogDescription>
-                Set up a new website migration project
+                Define baseline production URL and candidate staging URL.
               </DialogDescription>
             </DialogHeader>
             <div className="grid gap-4 py-4">
               <div className="space-y-2">
-                <Label htmlFor="name">Project Name</Label>
+                <Label htmlFor="name">Job Name</Label>
                 <Input
                   id="name"
-                  value={newProject.name}
-                  onChange={(e) => setNewProject({ ...newProject, name: e.target.value })}
-                  placeholder="E-Commerce Platform Migration"
+                  value={newJob.name}
+                  onChange={(e) => setNewJob({ ...newJob, name: e.target.value })}
+                  placeholder="Retail Site Migration - Wave 1"
                 />
               </div>
               <div className="space-y-2">
                 <Label htmlFor="description">Description</Label>
                 <Textarea
                   id="description"
-                  value={newProject.description}
-                  onChange={(e) => setNewProject({ ...newProject, description: e.target.value })}
-                  placeholder="Brief description of the migration project..."
+                  value={newJob.description}
+                  onChange={(e) => setNewJob({ ...newJob, description: e.target.value })}
+                  placeholder="Optional context for the migration audit"
                 />
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="sourceUrl">Source URL</Label>
-                  <Input
-                    id="sourceUrl"
-                    value={newProject.sourceUrl}
-                    onChange={(e) => setNewProject({ ...newProject, sourceUrl: e.target.value })}
-                    placeholder="https://old.example.com"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="targetUrl">Target URL</Label>
-                  <Input
-                    id="targetUrl"
-                    value={newProject.targetUrl}
-                    onChange={(e) => setNewProject({ ...newProject, targetUrl: e.target.value })}
-                    placeholder="https://new.example.com"
-                  />
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="startDate">Start Date</Label>
-                  <Input
-                    id="startDate"
-                    type="date"
-                    value={newProject.startDate}
-                    onChange={(e) => setNewProject({ ...newProject, startDate: e.target.value })}
-                  />
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="cutoverDate">Cutover Date</Label>
-                  <Input
-                    id="cutoverDate"
-                    type="date"
-                    value={newProject.cutoverDate}
-                    onChange={(e) => setNewProject({ ...newProject, cutoverDate: e.target.value })}
-                  />
-                </div>
+              <div className="space-y-2">
+                <Label htmlFor="baselineUrl">Baseline (Production) URL</Label>
+                <Input
+                  id="baselineUrl"
+                  value={newJob.baselineUrl}
+                  onChange={(e) => setNewJob({ ...newJob, baselineUrl: e.target.value })}
+                  placeholder="https://www.example.com"
+                />
               </div>
               <div className="space-y-2">
-                <Label htmlFor="status">Status</Label>
-                <Select
-                  value={newProject.status}
-                  onValueChange={(value: ProjectStatus) => setNewProject({ ...newProject, status: value })}
-                >
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {Object.entries(statusLabels).map(([value, label]) => (
-                      <SelectItem key={value} value={value}>
-                        {label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+                <Label htmlFor="candidateUrl">Candidate (Staging) URL</Label>
+                <Input
+                  id="candidateUrl"
+                  value={newJob.candidateUrl}
+                  onChange={(e) => setNewJob({ ...newJob, candidateUrl: e.target.value })}
+                  placeholder="https://staging.example.com"
+                />
               </div>
             </div>
             <DialogFooter>
               <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
                 Cancel
               </Button>
-              <Button onClick={handleCreateProject}>Create Project</Button>
+              <Button onClick={handleCreateJob}>Create Job</Button>
             </DialogFooter>
           </DialogContent>
         </Dialog>
       </div>
 
-      {/* Search */}
-      <div className="flex items-center gap-4">
-        <div className="relative flex-1 max-w-sm">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
-          <Input
-            placeholder="Search projects..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10"
-          />
-        </div>
+      <div className="relative max-w-md">
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+        <Input
+          placeholder="Search by name or URL..."
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          className="pl-10"
+        />
       </div>
 
-      {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-        {filteredProjects.map((project, index) => (
-          <motion.div
-            key={project.id}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.05 }}
-            className="bg-card rounded-xl border border-border p-6 hover:shadow-lg hover:border-primary/30 transition-all group"
-          >
-            <div className="flex items-start justify-between mb-4">
-              <div className="flex-1">
-                <h3 className="font-semibold text-lg group-hover:text-primary transition-colors">
-                  {project.name}
-                </h3>
-                <p className="text-sm text-muted-foreground line-clamp-2 mt-1">
-                  {project.description}
-                </p>
+      {isLoading ? (
+        <div className="text-muted-foreground">Loading jobs...</div>
+      ) : filteredJobs.length === 0 ? (
+        <div className="text-muted-foreground">No jobs found.</div>
+      ) : (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          {filteredJobs.map((job, index) => (
+            <motion.div
+              key={job.id}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.03 }}
+              className="rounded-xl border border-border bg-card p-5"
+            >
+              <div className="flex items-start justify-between gap-3">
+                <div>
+                  <h3 className="font-semibold text-lg">{job.name}</h3>
+                  {job.description && (
+                    <p className="text-sm text-muted-foreground mt-1">{job.description}</p>
+                  )}
+                </div>
+                <Badge className={statusTone(job.status)}>{job.status}</Badge>
               </div>
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" size="icon" className="opacity-0 group-hover:opacity-100 transition-opacity">
-                    <MoreHorizontal className="w-4 h-4" />
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
-                  <DropdownMenuItem onClick={() => navigate(`/projects/${project.id}`)}>
-                    <Edit className="w-4 h-4 mr-2" />
-                    Edit
-                  </DropdownMenuItem>
-                  <DropdownMenuItem 
-                    className="text-destructive"
-                    onClick={() => deleteProject(project.id)}
-                  >
-                    <Trash2 className="w-4 h-4 mr-2" />
-                    Delete
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            </div>
 
-            <Badge className={cn('mb-4', statusStyles[project.status])}>
-              {statusLabels[project.status]}
-            </Badge>
-
-            <div className="space-y-3 mb-4">
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Progress</span>
-                <span className="font-medium">{project.progress}%</span>
+              <div className="mt-4 space-y-2 text-sm">
+                <div>
+                  <span className="text-muted-foreground">Baseline:</span> {job.baselineUrl}
+                </div>
+                <div>
+                  <span className="text-muted-foreground">Candidate:</span> {job.candidateUrl}
+                </div>
+                <div className="text-muted-foreground">
+                  Runs: {job.totalRuns}
+                  {job.latestRun ? ` • Last run ${formatDistanceToNow(new Date(job.latestRun.triggeredAt), { addSuffix: true })}` : ''}
+                </div>
               </div>
-              <Progress value={project.progress} className="h-2" />
-            </div>
 
-            <div className="flex items-center gap-4 text-xs text-muted-foreground mb-4">
-              <div className="flex items-center gap-1">
-                <Calendar className="w-3 h-3" />
-                <span>Cutover: {format(new Date(project.cutoverDate), 'MMM d')}</span>
-              </div>
-              <span>{project.testsPassed}/{project.testsTotal} tests</span>
-            </div>
-
-            <div className="pt-4 border-t border-border flex items-center justify-between gap-2">
-              <div className="text-xs font-mono text-muted-foreground truncate max-w-[150px]">
-                {project.targetUrl}
-              </div>
-              <div className="flex items-center gap-2">
-                <Button 
-                  variant="outline" 
-                  size="sm"
-                  onClick={() => handleTriggerRun(project.id)}
-                >
+              <div className="mt-4 flex items-center justify-end gap-2">
+                <Button variant="outline" size="sm" onClick={() => handleTriggerRun(job.id)}>
+                  <PlayCircle className="w-4 h-4 mr-1" />
                   Trigger Run
                 </Button>
-                <Button 
-                  variant="ghost" 
-                  size="sm"
-                  onClick={() => navigate(`/projects/${project.id}`)}
-                >
-                  View Details
-                  <ExternalLink className="w-3 h-3 ml-1" />
-                </Button>
               </div>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-
-      {filteredProjects.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-muted-foreground">No projects found</p>
+            </motion.div>
+          ))}
         </div>
       )}
     </div>

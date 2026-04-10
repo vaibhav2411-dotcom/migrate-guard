@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SavedEvidence",
+  "type": "object",
+  "required": ["savedAt", "payload"],
+  "properties": {
+    "savedAt": { "type": "string", "format": "date-time" },
+    "payload": {
+      "type": "object",
+      "properties": {
+        "pageKey": { "type": "string" },
+        "type": { "type": "string" },
+        "row": { "type": "object" }
+      },
+      "required": ["pageKey", "type"]
+    },
+    "evidence": {
+      "type": "object",
+      "properties": {
+        "screenshots": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "side": { "type": "string" },
+              "viewport": { "type": "string" },
+              "path": { "type": "string" }
+            }
+          }
+        },
+        "domSnapshots": {
+          "type": "object",
+          "properties": {
+            "baseline": { "type": "array" },
+            "candidate": { "type": "array" }
+          }
+        }
+      }
+    }
+  }
+}

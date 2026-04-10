@@ -183,6 +183,8 @@ export default function RunView() {
   });
 
   const { toast } = useToast();
+  const [baselineStyles, setBaselineStyles] = useState<Array<{ selector: string; computed: Record<string, string> }>>([]);
+  const [candidateStyles, setCandidateStyles] = useState<Array<{ selector: string; computed: Record<string, string> }>>([]);
 
   const savedEvidenceQuery = useQuery({
     queryKey: ['run-saved-evidence', id],
@@ -335,6 +337,51 @@ export default function RunView() {
     };
   }, [evidenceQuery.data, evidence, findings.length]);
 
+  // Fetch computed styles from execution artifacts for active page
+  useEffect(() => {
+    async function loadStyles() {
+      setBaselineStyles([]);
+      setCandidateStyles([]);
+      if (!id || !selectedMatchedPage) return;
+
+      const baselineArtifact = (artifactsQuery.data ?? []).find((a) => a.path.toLowerCase().endsWith('baseline-execution.json'));
+      const candidateArtifact = (artifactsQuery.data ?? []).find((a) => a.path.toLowerCase().endsWith('candidate-execution.json'));
+
+      const viewportWidthMap: Record<string, string> = { desktop: '1920px', tablet: '768px', mobile: '375px' };
+      const widthMatch = viewportWidthMap[selectedViewport ?? 'desktop'];
+
+      try {
+        if (baselineArtifact) {
+          const res = await fetch(artifactUrl(baselineArtifact.path));
+          const json = await res.json();
+          const page = (json.pages ?? []).find((p: any) => {
+            return p.normalizedPath === selectedMatchedPage?.baseline.normalizedPath || p.url === selectedMatchedPage?.baseline.url;
+          });
+          if (page?.styles) {
+            const filtered = page.styles.filter((s: any) => (s.computed?.width ?? '').includes(widthMatch));
+            setBaselineStyles(filtered ?? []);
+          }
+        }
+
+        if (candidateArtifact) {
+          const res2 = await fetch(artifactUrl(candidateArtifact.path));
+          const json2 = await res2.json();
+          const page2 = (json2.pages ?? []).find((p: any) => {
+            return p.normalizedPath === selectedMatchedPage?.candidate.normalizedPath || p.url === selectedMatchedPage?.candidate.url;
+          });
+          if (page2?.styles) {
+            const filtered2 = page2.styles.filter((s: any) => (s.computed?.width ?? '').includes(widthMatch));
+            setCandidateStyles(filtered2 ?? []);
+          }
+        }
+      } catch (err) {
+        console.error('failed to load execution styles', err);
+      }
+    }
+
+    loadStyles();
+  }, [id, artifactsQuery.data, selectedMatchedPage, selectedViewport]);
+
   const filteredFindings = useMemo(() => {
     return findings.filter((finding) => {
       if (severityFilter !== 'all' && finding.severity !== severityFilter) {
@@ -364,6 +411,11 @@ export default function RunView() {
     () => [...filteredFindings].sort((a, b) => severityOrder[a.severity] - severityOrder[b.severity]),
     [filteredFindings]
   );
+
+  const suggestionArtifacts = useMemo(() => {
+    const artifacts = artifactsQuery.data ?? [];
+    return artifacts.filter((a) => /suggestions?\.json$/i.test(a.path) || a.path.toLowerCase().includes('ui-integrity-suggestions') || a.path.toLowerCase().includes('-suggestions.json'));
+  }, [artifactsQuery.data]);
 
   function severityClass(severity: TechnicalFindingDto['severity']) {
     if (severity === 'critical') return 'bg-destructive/10 text-destructive';
@@ -474,6 +526,48 @@ export default function RunView() {
                     </td>
                     <td className="px-3 py-2">{new Date(f.createdAt).toLocaleString()}</td>
                     <td className="px-3 py-2">{Math.round((f.size ?? 0) / 1024)} KB</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        )}
+      </Card>
+
+      <Card className="p-4 space-y-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="font-semibold">AI / Heuristic Suggestions</h2>
+            <p className="text-sm text-muted-foreground">Suggestion artifacts produced by agents (UI, SEO, Performance).</p>
+          </div>
+        </div>
+
+        {artifactsQuery.isLoading ? (
+          <p className="text-sm text-muted-foreground">Loading suggestion artifacts...</p>
+        ) : suggestionArtifacts.length === 0 ? (
+          <p className="text-sm text-muted-foreground">No suggestion artifacts were produced for this run.</p>
+        ) : (
+          <div className="overflow-auto rounded-lg border border-border">
+            <table className="w-full text-sm">
+              <thead className="bg-muted/50 text-left">
+                <tr>
+                  <th className="px-3 py-2 font-medium">Artifact</th>
+                  <th className="px-3 py-2 font-medium">Type</th>
+                  <th className="px-3 py-2 font-medium">Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                {suggestionArtifacts.map((a) => (
+                  <tr key={a.path} className="border-t border-border align-top">
+                    <td className="px-3 py-2 break-all">{a.label || a.path.split('/').slice(-1)[0]}</td>
+                    <td className="px-3 py-2">{a.type ?? 'artifact'}</td>
+                    <td className="px-3 py-2">
+                      <div className="flex gap-2">
+                        <a href={artifactUrl(a.path)} target="_blank" rel="noreferrer">
+                          <Button size="sm" variant="outline">Open</Button>
+                        </a>
+                      </div>
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -630,6 +724,7 @@ export default function RunView() {
                     <th className="px-3 py-2 font-medium">Code</th>
                     <th className="px-3 py-2 font-medium">Type</th>
                     <th className="px-3 py-2 font-medium">Details</th>
+                    <th className="px-3 py-2 font-medium">Actions</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -643,12 +738,130 @@ export default function RunView() {
                       <td className="px-3 py-2">{row.statusCode ?? 'ERR'}</td>
                       <td className="px-3 py-2">{brokenKindBadge(row)}</td>
                       <td className="px-3 py-2">{row.error}</td>
+                      <td className="px-3 py-2">
+                        <div className="flex gap-2">
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={async (e) => {
+                              e.stopPropagation();
+                              if (!id) return;
+                              try {
+                                const payload = { pageKey: activePage, type: 'broken-resource', row };
+                                const res = await saveRunEvidence(id, payload);
+                                toast({ title: 'Saved evidence', description: res.path ?? 'saved' });
+                                savedEvidenceQuery.refetch();
+                              } catch (err) {
+                                console.error('save broken resource failed', err);
+                                toast({ title: 'Save failed', description: String(err) });
+                              }
+                            }}
+                          >
+                            Save
+                          </Button>
+                        </div>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
               </table>
             </div>
           )}
+
+          <div className="mt-4">
+            <h4 className="font-medium">Computed Styles</h4>
+            <p className="text-sm text-muted-foreground">Computed CSS for the selected viewport (baseline / candidate).</p>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-2">
+              <Card className="p-3">
+                <div className="flex items-center justify-between">
+                  <h5 className="font-medium">Baseline Styles</h5>
+                  <Button size="sm" variant="outline" onClick={async () => {
+                    if (!id) return;
+                    try {
+                      const payload = { pageKey: activePage, type: 'computed-styles', viewport: selectedViewport, styles: baselineStyles };
+                      const res = await saveRunEvidence(id, payload);
+                      toast({ title: 'Saved styles', description: res.path ?? 'saved' });
+                      savedEvidenceQuery.refetch();
+                    } catch (err) {
+                      console.error('save styles failed', err);
+                      toast({ title: 'Save failed', description: String(err) });
+                    }
+                  }}>Save</Button>
+                </div>
+                {baselineStyles.length === 0 ? (
+                  <p className="text-sm text-muted-foreground mt-2">No baseline computed styles for this viewport.</p>
+                ) : (
+                  <div className="overflow-auto mt-2 rounded border border-border">
+                    <table className="w-full text-sm">
+                      <thead className="bg-muted/50 text-left">
+                        <tr>
+                          <th className="px-3 py-2">Selector</th>
+                          <th className="px-3 py-2">Color</th>
+                          <th className="px-3 py-2">Width</th>
+                          <th className="px-3 py-2">Height</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {baselineStyles.map((s, i) => (
+                          <tr key={`${s.selector}-${i}`} className="border-t border-border">
+                            <td className="px-3 py-2 break-all">{s.selector}</td>
+                            <td className="px-3 py-2">{s.computed?.color ?? '—'}</td>
+                            <td className="px-3 py-2">{s.computed?.width ?? '—'}</td>
+                            <td className="px-3 py-2">{s.computed?.height ?? '—'}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </Card>
+
+              <Card className="p-3">
+                <div className="flex items-center justify-between">
+                  <h5 className="font-medium">Candidate Styles</h5>
+                  <Button size="sm" variant="outline" onClick={async () => {
+                    if (!id) return;
+                    try {
+                      const payload = { pageKey: activePage, type: 'computed-styles', viewport: selectedViewport, styles: candidateStyles };
+                      const res = await saveRunEvidence(id, payload);
+                      toast({ title: 'Saved styles', description: res.path ?? 'saved' });
+                      savedEvidenceQuery.refetch();
+                    } catch (err) {
+                      console.error('save styles failed', err);
+                      toast({ title: 'Save failed', description: String(err) });
+                    }
+                  }}>Save</Button>
+                </div>
+                {candidateStyles.length === 0 ? (
+                  <p className="text-sm text-muted-foreground mt-2">No candidate computed styles for this viewport.</p>
+                ) : (
+                  <div className="overflow-auto mt-2 rounded border border-border">
+                    <table className="w-full text-sm">
+                      <thead className="bg-muted/50 text-left">
+                        <tr>
+                          <th className="px-3 py-2">Selector</th>
+                          <th className="px-3 py-2">Color</th>
+                          <th className="px-3 py-2">Width</th>
+                          <th className="px-3 py-2">Height</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {candidateStyles.map((s, i) => (
+                          <tr key={`${s.selector}-${i}`} className="border-t border-border">
+                            <td className="px-3 py-2 break-all">{s.selector}</td>
+                            <td className="px-3 py-2">{s.computed?.color ?? '—'}</td>
+                            <td className="px-3 py-2">{s.computed?.width ?? '—'}</td>
+                            <td className="px-3 py-2">{s.computed?.height ?? '—'}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                )}
+              </Card>
+            </div>
+          </div>
         </Card>
       </div>
 
@@ -721,7 +934,7 @@ export default function RunView() {
 
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-xs text-muted-foreground">category</span>
-            {(['all', 'visual', 'functional', 'data', 'seo'] as const).map((category) => (
+            {(['all', 'visual', 'functional', 'data', 'seo', 'security', 'performance', 'ui', 'accessibility'] as const).map((category) => (
               <Button
                 key={category}
                 size="sm"

@@ -2,10 +2,10 @@
   "version": "2.0",
   "comparisonJobs": [
     {
-      "id": "7975f47d-1287-4f12-b952-0b1688dd4ebc",
+      "id": "2e309544-c602-4504-aabc-86e60c31fc3b",
       "status": "pending",
-      "createdAt": "2026-04-07T11:40:20.031Z",
-      "updatedAt": "2026-04-07T11:40:20.031Z",
+      "createdAt": "2026-04-07T19:12:44.747Z",
+      "updatedAt": "2026-04-07T19:12:44.747Z",
       "pageMap": [],
       "snapshotVersion": "2.0",
       "crawlConfig": {
@@ -21,14 +21,14 @@
       },
       "name": "API Job",
       "description": "Created via API test",
-      "baselineUrl": "https://old.example.com",
-      "candidateUrl": "https://new.example.com"
+      "baselineUrl": "http://localhost",
+      "candidateUrl": "http://localhost:8080"
     },
     {
-      "id": "f85c0285-b7cb-4302-9367-9d2dc4d86224",
+      "id": "fd9775e4-798a-488b-9b7d-086f90c66bbb",
       "status": "pending",
-      "createdAt": "2026-04-07T11:45:42.791Z",
-      "updatedAt": "2026-04-07T11:45:42.791Z",
+      "createdAt": "2026-04-07T19:13:30.382Z",
+      "updatedAt": "2026-04-07T19:13:30.382Z",
       "pageMap": [],
       "snapshotVersion": "2.0",
       "crawlConfig": {
@@ -44,14 +44,14 @@
       },
       "name": "API Job",
       "description": "Created via API test",
-      "baselineUrl": "https://old.example.com",
-      "candidateUrl": "https://new.example.com"
+      "baselineUrl": "http://localhost",
+      "candidateUrl": "http://localhost:8080"
     },
     {
-      "id": "681d610d-63fa-48cc-88ed-4eee861a22dd",
+      "id": "0314d274-b606-4f99-a1ef-88973015e438",
       "status": "pending",
-      "createdAt": "2026-04-07T11:46:09.046Z",
-      "updatedAt": "2026-04-07T11:46:09.046Z",
+      "createdAt": "2026-04-07T19:25:37.349Z",
+      "updatedAt": "2026-04-07T19:25:37.349Z",
       "pageMap": [],
       "snapshotVersion": "2.0",
       "crawlConfig": {
@@ -67,36 +67,14 @@
       },
       "name": "API Job",
       "description": "Created via API test",
-      "baselineUrl": "https://old.example.com",
-      "candidateUrl": "https://new.example.com"
+      "baselineUrl": "http://localhost",
+      "candidateUrl": "http://localhost:8080"
     },
     {
-      "id": "fe0476de-59e8-46be-903c-edd1e46d4a78",
+      "id": "df678fbb-f1c8-4e20-9a95-5fad5636d836",
       "status": "pending",
-      "createdAt": "2026-04-07T11:51:54.827Z",
-      "updatedAt": "2026-04-07T11:51:54.827Z",
-      "pageMap": [],
-      "snapshotVersion": "2.0",
-      "crawlConfig": {
-        "depth": 1,
-        "maxPages": 10,
-        "followExternalLinks": false
-      },
-      "testMatrix": {
-        "visual": true,
-        "functional": true,
-        "data": true,
-        "seo": true
-      },
-      "name": "BBC Benelux Test",
-      "baselineUrl": "https://www.bbcbenelux.com",
-      "candidateUrl": "https://stage.beta.bbcbenelux.com"
-    },
-    {
-      "id": "7a841708-08f6-4f76-848a-68b1171641b6",
-      "status": "pending",
-      "createdAt": "2026-04-07T12:01:09.144Z",
-      "updatedAt": "2026-04-07T12:01:09.144Z",
+      "createdAt": "2026-04-07T19:27:10.641Z",
+      "updatedAt": "2026-04-07T19:27:10.641Z",
       "pageMap": [],
       "snapshotVersion": "2.0",
       "crawlConfig": {
@@ -112,14 +90,14 @@
       },
       "name": "API Job",
       "description": "Created via API test",
-      "baselineUrl": "https://old.example.com",
-      "candidateUrl": "https://new.example.com"
+      "baselineUrl": "http://localhost",
+      "candidateUrl": "http://localhost:8080"
     },
     {
-      "id": "05d27cd2-46e4-44b5-a3e3-34de5e6cf502",
+      "id": "d37fb8da-f69f-453f-9129-63e0bfcaa54f",
       "status": "pending",
-      "createdAt": "2026-04-07T12:01:27.758Z",
-      "updatedAt": "2026-04-07T12:01:27.758Z",
+      "createdAt": "2026-04-07T19:30:14.948Z",
+      "updatedAt": "2026-04-07T19:30:14.948Z",
       "pageMap": [],
       "snapshotVersion": "2.0",
       "crawlConfig": {
@@ -135,124 +113,14 @@
       },
       "name": "API Job",
       "description": "Created via API test",
-      "baselineUrl": "https://old.example.com",
-      "candidateUrl": "https://new.example.com"
+      "baselineUrl": "http://localhost",
+      "candidateUrl": "http://localhost:8080"
     },
     {
-      "id": "6f539d72-109f-4dd3-adf8-5d06207c8626",
+      "id": "bdea1e2a-9bca-47f8-820e-1538f18531c7",
       "status": "pending",
-      "createdAt": "2026-04-07T12:03:40.749Z",
-      "updatedAt": "2026-04-07T12:03:40.749Z",
-      "pageMap": [],
-      "snapshotVersion": "2.0",
-      "crawlConfig": {
-        "depth": 1,
-        "maxPages": 10,
-        "followExternalLinks": false
-      },
-      "testMatrix": {
-        "visual": true,
-        "functional": true,
-        "data": true,
-        "seo": true
-      },
-      "name": "BBC Benelux test",
-      "baselineUrl": "https://www.bbcbenelux.com",
-      "candidateUrl": "https://stage.beta.bbcbenelux.com"
-    },
-    {
-      "id": "b8ef00cb-9ec5-4a6f-8e65-2bf4763c8f03",
-      "status": "pending",
-      "createdAt": "2026-04-07T12:05:43.884Z",
-      "updatedAt": "2026-04-07T12:05:43.884Z",
-      "pageMap": [],
-      "snapshotVersion": "2.0",
-      "crawlConfig": {
-        "depth": 1,
-        "maxPages": 10,
-        "followExternalLinks": false
-      },
-      "testMatrix": {
-        "visual": true,
-        "functional": true,
-        "data": true,
-        "seo": true
-      },
-      "name": "BBC Benelux test 2",
-      "baselineUrl": "https://www.bbcbenelux.com",
-      "candidateUrl": "https://stage.beta.bbcbenelux.com"
-    },
-    {
-      "id": "9d3b9025-373c-4027-af37-ed19ccc0e639",
-      "status": "pending",
-      "createdAt": "2026-04-07T12:07:42.348Z",
-      "updatedAt": "2026-04-07T12:07:42.348Z",
-      "pageMap": [],
-      "snapshotVersion": "2.0",
-      "crawlConfig": {
-        "depth": 1,
-        "maxPages": 10,
-        "followExternalLinks": false
-      },
-      "testMatrix": {
-        "visual": true,
-        "functional": true,
-        "data": true,
-        "seo": true
-      },
-      "name": "BBC Benelux test 3",
-      "baselineUrl": "https://www.bbcbenelux.com",
-      "candidateUrl": "https://stage.beta.bbcbenelux.com"
-    },
-    {
-      "id": "9a55b38c-efc7-4945-878a-90f90d8af1ea",
-      "status": "pending",
-      "createdAt": "2026-04-07T12:09:01.100Z",
-      "updatedAt": "2026-04-07T12:09:01.100Z",
-      "pageMap": [],
-      "snapshotVersion": "2.0",
-      "crawlConfig": {
-        "depth": 1,
-        "maxPages": 10,
-        "followExternalLinks": false
-      },
-      "testMatrix": {
-        "visual": true,
-        "functional": true,
-        "data": true,
-        "seo": true
-      },
-      "name": "BBC Benelux debug",
-      "baselineUrl": "https://www.bbcbenelux.com",
-      "candidateUrl": "https://stage.beta.bbcbenelux.com"
-    },
-    {
-      "id": "16225ab3-bf07-4db3-91b0-88a0baa5c147",
-      "status": "pending",
-      "createdAt": "2026-04-07T12:09:56.622Z",
-      "updatedAt": "2026-04-07T12:09:56.622Z",
-      "pageMap": [],
-      "snapshotVersion": "2.0",
-      "crawlConfig": {
-        "depth": 1,
-        "maxPages": 10,
-        "followExternalLinks": false
-      },
-      "testMatrix": {
-        "visual": true,
-        "functional": true,
-        "data": true,
-        "seo": true
-      },
-      "name": "BBC Benelux fallback",
-      "baselineUrl": "https://www.bbcbenelux.com",
-      "candidateUrl": "https://stage.beta.bbcbenelux.com"
-    },
-    {
-      "id": "7eb8fcb0-a552-4c90-be26-4b15882a90a7",
-      "status": "pending",
-      "createdAt": "2026-04-07T12:12:04.242Z",
-      "updatedAt": "2026-04-07T12:12:04.242Z",
+      "createdAt": "2026-04-07T19:31:04.408Z",
+      "updatedAt": "2026-04-07T19:31:04.408Z",
       "pageMap": [],
       "snapshotVersion": "2.0",
       "crawlConfig": {
@@ -268,40 +136,19 @@
       },
       "name": "API Job",
       "description": "Created via API test",
-      "baselineUrl": "https://old.example.com",
-      "candidateUrl": "https://new.example.com"
+      "baselineUrl": "http://localhost",
+      "candidateUrl": "http://localhost:8080"
     },
     {
-      "id": "cdfad7e8-9a12-434a-aa80-c1747df86f27",
+      "id": "5d19fdce-d1a0-4276-a439-51e230b5bc07",
       "status": "pending",
-      "createdAt": "2026-04-07T12:12:15.093Z",
-      "updatedAt": "2026-04-07T12:12:15.093Z",
+      "createdAt": "2026-04-07T19:33:12.266Z",
+      "updatedAt": "2026-04-07T19:33:12.266Z",
       "pageMap": [],
       "snapshotVersion": "2.0",
       "crawlConfig": {
         "depth": 1,
-        "maxPages": 8
-      },
-      "testMatrix": {
-        "visual": true,
-        "functional": true,
-        "data": true,
-        "seo": true
-      },
-      "name": "BBC Benelux thorough",
-      "baselineUrl": "https://www.bbcbenelux.com",
-      "candidateUrl": "https://stage.beta.bbcbenelux.com"
-    },
-    {
-      "id": "ca53d7a8-c69c-4de3-a8a7-44cc42b4b419",
-      "status": "pending",
-      "createdAt": "2026-04-07T12:14:07.014Z",
-      "updatedAt": "2026-04-07T12:14:07.014Z",
-      "pageMap": [],
-      "snapshotVersion": "2.0",
-      "crawlConfig": {
-        "depth": 2,
-        "maxPages": 20,
+        "maxPages": 10,
         "followExternalLinks": false
       },
       "testMatrix": {
@@ -310,86 +157,21 @@
         "data": true,
         "seo": true
       },
-      "name": "BBC Benelux full-test",
-      "baselineUrl": "https://www.bbcbenelux.com",
-      "candidateUrl": "https://stage.beta.bbcbenelux.com"
+      "name": "API Job",
+      "description": "Created via API test",
+      "baselineUrl": "http://localhost",
+      "candidateUrl": "http://localhost:8080"
     },
     {
-      "id": "ffdd2062-a63f-4252-b86f-e887fef9e11a",
+      "id": "db586503-3871-4162-b27c-4c655a504244",
       "status": "pending",
-      "createdAt": "2026-04-07T12:15:40.383Z",
-      "updatedAt": "2026-04-07T12:15:40.383Z",
-      "pageMap": [],
-      "snapshotVersion": "2.0",
-      "crawlConfig": {
-        "depth": 2,
-        "maxPages": 12,
-        "followExternalLinks": false
-      },
-      "testMatrix": {
-        "visual": true,
-        "functional": true,
-        "data": true,
-        "seo": true
-      },
-      "name": "BBC Benelux final",
-      "baselineUrl": "https://www.bbcbenelux.com",
-      "candidateUrl": "https://stage.beta.bbcbenelux.com"
-    },
-    {
-      "id": "82a6e4c5-d1b4-49d2-a41c-a073f61c80ee",
-      "status": "pending",
-      "createdAt": "2026-04-07T12:15:46.762Z",
-      "updatedAt": "2026-04-07T12:15:46.762Z",
-      "pageMap": [],
-      "snapshotVersion": "2.0",
-      "crawlConfig": {
-        "depth": 2,
-        "maxPages": 12,
-        "followExternalLinks": false
-      },
-      "testMatrix": {
-        "visual": true,
-        "functional": true,
-        "data": true,
-        "seo": true
-      },
-      "name": "BBC Benelux final2",
-      "baselineUrl": "https://www.bbcbenelux.com",
-      "candidateUrl": "https://stage.beta.bbcbenelux.com"
-    },
-    {
-      "id": "95ce9e96-58dd-4182-b6b1-be0f54f93072",
-      "status": "pending",
-      "createdAt": "2026-04-07T12:16:42.808Z",
-      "updatedAt": "2026-04-07T12:16:42.808Z",
-      "pageMap": [],
-      "snapshotVersion": "2.0",
-      "crawlConfig": {
-        "depth": 2,
-        "maxPages": 12,
-        "followExternalLinks": false
-      },
-      "testMatrix": {
-        "visual": true,
-        "functional": true,
-        "data": true,
-        "seo": true
-      },
-      "name": "BBC Benelux final-2",
-      "baselineUrl": "https://www.bbcbenelux.com",
-      "candidateUrl": "https://stage.beta.bbcbenelux.com"
-    },
-    {
-      "id": "8f274793-6323-457c-8106-a546032a247f",
-      "status": "pending",
-      "createdAt": "2026-04-07T13:15:14.061Z",
-      "updatedAt": "2026-04-07T13:15:14.061Z",
+      "createdAt": "2026-04-07T19:50:05.822Z",
+      "updatedAt": "2026-04-07T19:50:05.822Z",
       "pageMap": [],
       "snapshotVersion": "2.0",
       "crawlConfig": {
         "depth": 1,
-        "maxPages": 6,
+        "maxPages": 10,
         "followExternalLinks": false
       },
       "testMatrix": {
@@ -398,900 +180,2507 @@
         "data": true,
         "seo": true
       },
-      "name": "Automated Admin Simulation",
+      "name": "API Job",
+      "description": "Created via API test",
+      "baselineUrl": "http://localhost",
+      "candidateUrl": "http://localhost:8080"
+    },
+    {
+      "id": "24e878fd-0d84-4b7f-9cbf-2222d2479137",
+      "status": "pending",
+      "createdAt": "2026-04-07T19:51:43.595Z",
+      "updatedAt": "2026-04-07T19:51:43.595Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "API Job",
+      "description": "Created via API test",
+      "baselineUrl": "http://localhost",
+      "candidateUrl": "http://localhost:8080"
+    },
+    {
+      "id": "dedd9be8-adf6-4a4e-a857-74169eaf61c6",
+      "status": "pending",
+      "createdAt": "2026-04-07T19:59:10.112Z",
+      "updatedAt": "2026-04-07T19:59:10.112Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "API Job",
+      "description": "Created via API test",
+      "baselineUrl": "http://localhost",
+      "candidateUrl": "http://localhost:8080"
+    },
+    {
+      "id": "b4955837-5ffc-44ea-bc62-27ceee13959b",
+      "status": "pending",
+      "createdAt": "2026-04-07T20:03:49.825Z",
+      "updatedAt": "2026-04-07T20:03:49.825Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "seo": true,
+        "data": false
+      },
+      "name": "local-sample",
+      "baselineUrl": "https://example.com",
+      "candidateUrl": "https://example.org"
+    },
+    {
+      "id": "a0395210-c559-495f-9278-4fc4743db6f1",
+      "status": "pending",
+      "createdAt": "2026-04-07T20:20:36.358Z",
+      "updatedAt": "2026-04-07T20:20:36.358Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "API Job",
+      "description": "Created via API test",
+      "baselineUrl": "http://localhost",
+      "candidateUrl": "http://localhost:8080"
+    },
+    {
+      "id": "dbc981cd-3962-4bca-834b-9d2a8c6c6562",
+      "status": "pending",
+      "createdAt": "2026-04-07T20:22:00.920Z",
+      "updatedAt": "2026-04-07T20:22:00.920Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "seo": true,
+        "data": false
+      },
+      "name": "live-ai-sample",
+      "baselineUrl": "https://example.com",
+      "candidateUrl": "https://example.org"
+    },
+    {
+      "id": "4cc700aa-f69c-4632-8955-34cb11f73f7f",
+      "status": "pending",
+      "createdAt": "2026-04-07T20:40:23.593Z",
+      "updatedAt": "2026-04-07T20:40:23.593Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "API Job",
+      "description": "Created via API test",
+      "baselineUrl": "http://localhost",
+      "candidateUrl": "http://localhost:8080"
+    },
+    {
+      "id": "97cf4385-92d4-4072-aa84-29f039074258",
+      "status": "pending",
+      "createdAt": "2026-04-07T20:42:33.005Z",
+      "updatedAt": "2026-04-07T20:42:33.005Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "local-security-test",
+      "baselineUrl": "https://example.com",
+      "candidateUrl": "https://example.org"
+    },
+    {
+      "id": "e95d1843-fc19-4df5-9764-329deeb3771b",
+      "status": "pending",
+      "createdAt": "2026-04-07T21:20:41.362Z",
+      "updatedAt": "2026-04-07T21:20:41.362Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "API Job",
+      "description": "Created via API test",
+      "baselineUrl": "http://localhost",
+      "candidateUrl": "http://localhost:8080"
+    },
+    {
+      "id": "298a6a08-9d1a-4aa8-bb79-cfb1f7c2b5bf",
+      "status": "pending",
+      "createdAt": "2026-04-07T21:21:23.200Z",
+      "updatedAt": "2026-04-07T21:21:23.200Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "API Job",
+      "description": "Created via API test",
+      "baselineUrl": "http://localhost",
+      "candidateUrl": "http://localhost:8080"
+    },
+    {
+      "id": "682f03c4-b497-4a9a-9a6d-c578f4761a85",
+      "status": "pending",
+      "createdAt": "2026-04-07T21:22:06.276Z",
+      "updatedAt": "2026-04-07T21:22:06.276Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "API Job",
+      "description": "Created via API test",
+      "baselineUrl": "http://localhost",
+      "candidateUrl": "http://localhost:8080"
+    },
+    {
+      "id": "b27dfbee-d883-4ce6-af0e-896c24d63d6e",
+      "status": "pending",
+      "createdAt": "2026-04-08T04:22:41.479Z",
+      "updatedAt": "2026-04-08T04:22:41.479Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "API Job",
+      "description": "Created via API test",
+      "baselineUrl": "http://localhost",
+      "candidateUrl": "http://localhost:8080"
+    },
+    {
+      "id": "17b1e496-53a8-46d4-b996-9f4dfcb3a739",
+      "status": "pending",
+      "createdAt": "2026-04-09T21:11:16.174Z",
+      "updatedAt": "2026-04-09T21:11:16.174Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true
+      },
+      "name": "API Job",
+      "description": "Created via API test",
+      "baselineUrl": "http://localhost",
+      "candidateUrl": "http://localhost:8080"
+    },
+    {
+      "id": "5fee3e39-6880-4188-b445-9c75ffd4e62d",
+      "status": "pending",
+      "createdAt": "2026-04-09T21:27:25.299Z",
+      "updatedAt": "2026-04-09T21:27:25.299Z",
+      "pageMap": [],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true,
+        "performance": true,
+        "security": true,
+        "uiIntegrity": true,
+        "accessibility": true
+      },
+      "name": "API Job",
+      "description": "Created via API test",
+      "baselineUrl": "http://localhost",
+      "candidateUrl": "http://localhost:8080"
+    },
+    {
+      "id": "5d523b4a-6db0-4b4c-9a56-7e0fee9a2d76",
+      "status": "pending",
+      "createdAt": "2026-04-09T21:48:17.413Z",
+      "updatedAt": "2026-04-09T21:48:25.450Z",
+      "pageMap": [
+        {
+          "baselinePath": "/",
+          "candidatePath": "/",
+          "notes": "Matched with 90% confidence: Exact path match"
+        },
+        {
+          "baselinePath": "/home",
+          "candidatePath": "/home",
+          "notes": "Matched with 90% confidence: Exact path match"
+        },
+        {
+          "baselinePath": "/tv-gids-nederland",
+          "candidatePath": "/tv-gids-nederland",
+          "notes": "Matched with 90% confidence: Exact path match"
+        },
+        {
+          "baselinePath": "/bbc-first-nieuws",
+          "candidatePath": "/bbc-first-nieuws",
+          "notes": "Matched with 90% confidence: Exact path match"
+        },
+        {
+          "baselinePath": "/berichten",
+          "candidatePath": "/berichten",
+          "notes": "Matched with 90% confidence: Exact path match"
+        },
+        {
+          "baselinePath": "/contact",
+          "candidatePath": "/contact",
+          "notes": "Matched with 90% confidence: Exact path match"
+        },
+        {
+          "baselinePath": "/zenders/nl",
+          "candidatePath": "/zenders/nl",
+          "notes": "Matched with 90% confidence: Exact path match"
+        }
+      ],
+      "snapshotVersion": "2.0",
+      "crawlConfig": {
+        "depth": 1,
+        "maxPages": 10,
+        "followExternalLinks": false
+      },
+      "testMatrix": {
+        "visual": true,
+        "functional": true,
+        "data": true,
+        "seo": true,
+        "performance": true,
+        "security": true,
+        "uiIntegrity": true,
+        "accessibility": true
+      },
+      "name": "bbc-benelux-real-run-296907",
+      "description": "Real inbuilt-browser test against BBC prod vs staging",
       "baselineUrl": "https://www.bbcbenelux.com",
       "candidateUrl": "https://stage.beta.bbcbenelux.com"
     }
   ],
   "runs": [
     {
-      "id": "dc266f23-5468-4dce-86cf-4c8f287eda26",
-      "jobId": "8f274793-6323-457c-8106-a546032a247f",
+      "id": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "jobId": "5d523b4a-6db0-4b4c-9a56-7e0fee9a2d76",
       "status": "completed",
-      "triggeredBy": "automated-sim",
-      "triggeredAt": "2026-04-07T13:15:14.079Z",
-      "completedAt": "2026-04-07T13:15:26.821Z"
+      "triggeredBy": "ui",
+      "triggeredAt": "2026-04-09T22:03:24.915Z",
+      "completedAt": "2026-04-09T22:16:14.639Z"
     },
     {
-      "id": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
-      "jobId": "95ce9e96-58dd-4182-b6b1-be0f54f93072",
-      "status": "completed",
-      "triggeredBy": "final-agent-2",
-      "triggeredAt": "2026-04-07T12:16:42.823Z",
-      "completedAt": "2026-04-07T12:16:48.826Z"
-    },
-    {
-      "id": "530ba959-812b-4cca-861a-a7d2e93dbd68",
-      "jobId": "82a6e4c5-d1b4-49d2-a41c-a073f61c80ee",
-      "status": "completed",
-      "triggeredBy": "final-agent",
-      "triggeredAt": "2026-04-07T12:15:46.774Z",
-      "completedAt": "2026-04-07T12:15:53.671Z"
-    },
-    {
-      "id": "676adb2f-4694-4713-bbe3-257c977edec9",
-      "jobId": "ffdd2062-a63f-4252-b86f-e887fef9e11a",
+      "id": "8a9d3131-04c6-47f8-ac37-3717197fa317",
+      "jobId": "5d523b4a-6db0-4b4c-9a56-7e0fee9a2d76",
       "status": "running",
-      "triggeredBy": "final-agent",
-      "triggeredAt": "2026-04-07T12:15:40.401Z"
+      "triggeredBy": "ui",
+      "triggeredAt": "2026-04-09T22:02:01.436Z"
     },
     {
-      "id": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
-      "jobId": "ca53d7a8-c69c-4de3-a8a7-44cc42b4b419",
-      "status": "completed",
-      "triggeredBy": "agent-full-run",
-      "triggeredAt": "2026-04-07T12:14:07.034Z",
-      "completedAt": "2026-04-07T12:14:13.550Z"
+      "id": "3d607e92-2c1e-4d43-86ca-c1b9b0fa2b15",
+      "jobId": "5d523b4a-6db0-4b4c-9a56-7e0fee9a2d76",
+      "status": "running",
+      "triggeredBy": "ui",
+      "triggeredAt": "2026-04-09T21:48:25.440Z"
     },
     {
-      "id": "7c01eac6-995f-4265-b377-8b6db5ea4024",
-      "jobId": "cdfad7e8-9a12-434a-aa80-c1747df86f27",
+      "id": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "jobId": "97cf4385-92d4-4072-aa84-29f039074258",
       "status": "completed",
-      "triggeredBy": "thorough-agent",
-      "triggeredAt": "2026-04-07T12:12:15.106Z",
-      "completedAt": "2026-04-07T12:12:21.941Z"
+      "triggeredBy": "dev",
+      "triggeredAt": "2026-04-07T20:44:34.802Z",
+      "runSettings": {
+        "useAI": false
+      },
+      "completedAt": "2026-04-07T20:44:58.299Z"
     },
     {
-      "id": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
-      "jobId": "16225ab3-bf07-4db3-91b0-88a0baa5c147",
+      "id": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "jobId": "97cf4385-92d4-4072-aa84-29f039074258",
       "status": "completed",
-      "triggeredBy": "agent-run",
-      "triggeredAt": "2026-04-07T12:09:56.642Z",
-      "completedAt": "2026-04-07T12:10:02.251Z"
+      "triggeredBy": "dev",
+      "triggeredAt": "2026-04-07T20:42:35.029Z",
+      "runSettings": {
+        "useAI": false
+      },
+      "completedAt": "2026-04-07T20:42:58.541Z"
     },
     {
-      "id": "081097d5-4922-474f-bbb4-c1628f8a3847",
-      "jobId": "9a55b38c-efc7-4945-878a-90f90d8af1ea",
+      "id": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "jobId": "dbc981cd-3962-4bca-834b-9d2a8c6c6562",
       "status": "completed",
-      "triggeredBy": "agent-run",
-      "triggeredAt": "2026-04-07T12:09:01.135Z",
-      "completedAt": "2026-04-07T12:09:07.647Z"
+      "triggeredBy": "local",
+      "triggeredAt": "2026-04-07T20:22:02.937Z",
+      "runSettings": {
+        "useAI": true
+      },
+      "completedAt": "2026-04-07T20:22:15.814Z"
     },
     {
-      "id": "7db065b0-87e1-4666-84f7-0afc749387c9",
-      "jobId": "9d3b9025-373c-4027-af37-ed19ccc0e639",
+      "id": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "jobId": "b4955837-5ffc-44ea-bc62-27ceee13959b",
       "status": "completed",
-      "triggeredBy": "agent-run",
-      "triggeredAt": "2026-04-07T12:07:42.361Z",
-      "completedAt": "2026-04-07T12:07:51.648Z"
-    },
-    {
-      "id": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
-      "jobId": "b8ef00cb-9ec5-4a6f-8e65-2bf4763c8f03",
-      "status": "completed",
-      "triggeredBy": "agent-run",
-      "triggeredAt": "2026-04-07T12:05:43.909Z",
-      "completedAt": "2026-04-07T12:05:54.986Z"
-    },
-    {
-      "id": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
-      "jobId": "6f539d72-109f-4dd3-adf8-5d06207c8626",
-      "status": "completed",
-      "triggeredBy": "agent-run",
-      "triggeredAt": "2026-04-07T12:03:40.774Z",
-      "completedAt": "2026-04-07T12:03:51.668Z"
-    },
-    {
-      "id": "04bd35c1-600a-48e4-899f-7878851a6590",
-      "jobId": "fe0476de-59e8-46be-903c-edd1e46d4a78",
-      "status": "completed",
-      "triggeredBy": "manual",
-      "triggeredAt": "2026-04-07T11:52:23.273Z",
-      "completedAt": "2026-04-07T11:52:37.173Z"
+      "triggeredBy": "local",
+      "triggeredAt": "2026-04-07T20:03:51.856Z",
+      "runSettings": {
+        "useAI": false
+      },
+      "completedAt": "2026-04-07T20:04:08.283Z"
     }
   ],
   "artifacts": [
     {
-      "id": "78bedeee-6a00-4080-af25-dac77580471e",
-      "runId": "04bd35c1-600a-48e4-899f-7878851a6590",
+      "id": "116d4366-eafa-45f4-8ee4-f375e7cf6469",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
       "type": "report",
       "label": "Baseline Crawl Results",
-      "path": "data/artifacts\\04bd35c1-600a-48e4-899f-7878851a6590\\baseline-crawl.json",
-      "createdAt": "2026-04-07T11:52:23.277Z"
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\baseline-crawl.json",
+      "createdAt": "2026-04-07T20:03:51.868Z"
     },
     {
-      "id": "26e569d2-399e-40bc-a455-9fd6db81045b",
-      "runId": "04bd35c1-600a-48e4-899f-7878851a6590",
+      "id": "0dad3452-7c6c-4e4d-abfb-5a22190b1cc8",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
       "type": "report",
       "label": "Candidate Crawl Results",
-      "path": "data/artifacts\\04bd35c1-600a-48e4-899f-7878851a6590\\candidate-crawl.json",
-      "createdAt": "2026-04-07T11:52:23.277Z"
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\candidate-crawl.json",
+      "createdAt": "2026-04-07T20:03:51.868Z"
     },
     {
-      "id": "6e4b5bdc-c4de-4d68-8178-f68129142c95",
-      "runId": "04bd35c1-600a-48e4-899f-7878851a6590",
+      "id": "c4230943-03b3-4680-ac12-b78789597128",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
       "type": "report",
       "label": "Matched Pages",
-      "path": "data/artifacts\\04bd35c1-600a-48e4-899f-7878851a6590\\matched-pages.json",
-      "createdAt": "2026-04-07T11:52:23.277Z"
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\matched-pages.json",
+      "createdAt": "2026-04-07T20:03:51.868Z"
     },
     {
-      "id": "a47d2d48-5d5c-4c43-9b20-bf1466f10a23",
-      "runId": "04bd35c1-600a-48e4-899f-7878851a6590",
+      "id": "5e815572-9171-4af4-8922-b541a16e59ce",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
       "type": "report",
       "label": "Generated Page Map",
-      "path": "data/artifacts\\04bd35c1-600a-48e4-899f-7878851a6590\\generated-pageMap.json",
-      "createdAt": "2026-04-07T11:52:23.277Z"
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\generated-pageMap.json",
+      "createdAt": "2026-04-07T20:03:51.868Z"
     },
     {
-      "id": "c937cf71-312a-4224-a6ac-0e3d99d754d1",
-      "runId": "04bd35c1-600a-48e4-899f-7878851a6590",
+      "id": "6ecc0a87-489e-4f90-927b-be7973c007be",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
       "type": "log",
       "label": "Crawl Log",
-      "path": "data/artifacts\\04bd35c1-600a-48e4-899f-7878851a6590\\crawl.log",
-      "createdAt": "2026-04-07T11:52:23.277Z"
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\crawl.log",
+      "createdAt": "2026-04-07T20:03:51.868Z"
     },
     {
-      "id": "6e88e168-96b4-4890-8c81-fe85e852d184",
-      "runId": "04bd35c1-600a-48e4-899f-7878851a6590",
+      "id": "532b7d80-be8e-477e-a008-892e0ce5e53a",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
       "type": "report",
       "label": "Crawl Summary",
-      "path": "data/artifacts/04bd35c1-600a-48e4-899f-7878851a6590/crawl-summary.json",
-      "createdAt": "2026-04-07T11:52:23.277Z"
+      "path": "data/artifacts/657c0c2a-83c0-445d-9be7-a3764a824dda/crawl-summary.json",
+      "createdAt": "2026-04-07T20:03:51.868Z"
     },
     {
-      "id": "cac2488e-d9f5-482f-8802-f871db328ade",
-      "runId": "04bd35c1-600a-48e4-899f-7878851a6590",
+      "id": "e885711d-b210-4afd-8bc7-aa3f3bd693cd",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "report",
+      "label": "baseline execution",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\baseline-execution.json",
+      "createdAt": "2026-04-07T20:03:51.868Z"
+    },
+    {
+      "id": "f4ccedee-bc47-4b29-909a-fb6e44047052",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "report",
+      "label": "candidate execution",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\candidate-execution.json",
+      "createdAt": "2026-04-07T20:03:51.868Z"
+    },
+    {
+      "id": "9183b7c2-936d-4077-98f3-f7474e05f19c",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "report",
+      "label": "console messages",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\console-messages.json",
+      "createdAt": "2026-04-07T20:03:51.868Z"
+    },
+    {
+      "id": "b0177856-cb7d-4005-809d-1de9c3777d74",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "report",
+      "label": "network requests",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\network-requests.json",
+      "createdAt": "2026-04-07T20:03:51.868Z"
+    },
+    {
+      "id": "ab4625d8-00d9-44ae-87b5-2e7a178cc1d3",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "report",
+      "label": "dom snapshots summary",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\dom-snapshots-summary.json",
+      "createdAt": "2026-04-07T20:03:51.868Z"
+    },
+    {
+      "id": "858c27fb-a8b3-4783-90a4-a48f378cc1f3",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "log",
+      "label": "execution",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\execution.log",
+      "createdAt": "2026-04-07T20:03:51.868Z"
+    },
+    {
+      "id": "06e1d320-3b81-44a0-8616-64e0559978cf",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "screenshot",
+      "label": "Baseline: / (desktop)",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\baseline\\index\\screenshot-desktop.png",
+      "createdAt": "2026-04-07T20:03:55.912Z"
+    },
+    {
+      "id": "ed591c06-7421-4f4c-bba6-80205ebe137a",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "screenshot",
+      "label": "Baseline: / (tablet)",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\baseline\\index\\screenshot-tablet.png",
+      "createdAt": "2026-04-07T20:03:56.544Z"
+    },
+    {
+      "id": "fc4d7f34-de74-4156-82ba-2ccb72b5dad4",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "screenshot",
+      "label": "Baseline: / (mobile)",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\baseline\\index\\screenshot-mobile.png",
+      "createdAt": "2026-04-07T20:03:57.105Z"
+    },
+    {
+      "id": "5c308976-bcd9-4947-9a93-170380713f19",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "screenshot",
+      "label": "Candidate: / (desktop)",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\candidate\\index\\screenshot-desktop.png",
+      "createdAt": "2026-04-07T20:03:56.096Z"
+    },
+    {
+      "id": "972b954d-6ec8-4ce3-b5aa-cc82ee14d348",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "screenshot",
+      "label": "Candidate: / (tablet)",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\candidate\\index\\screenshot-tablet.png",
+      "createdAt": "2026-04-07T20:03:56.678Z"
+    },
+    {
+      "id": "2035cba6-bafc-4862-bcf1-c8ec32491d7f",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "screenshot",
+      "label": "Candidate: / (mobile)",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\candidate\\index\\screenshot-mobile.png",
+      "createdAt": "2026-04-07T20:03:57.242Z"
+    },
+    {
+      "id": "9ab17c3b-7a3b-43e9-aed6-2b05ce1229e0",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "report",
+      "label": "Functional QA Results",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\functional-qa-results.json",
+      "createdAt": "2026-04-07T20:03:51.868Z"
+    },
+    {
+      "id": "0824881d-a39a-4095-b76d-129da963a51e",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "report",
+      "label": "Baseline HAR: /",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\har\\baseline\\index.har",
+      "createdAt": "2026-04-07T20:03:51.868Z"
+    },
+    {
+      "id": "8809ef8b-80c0-43dd-b8f4-8f2cafbeb735",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "report",
+      "label": "Candidate HAR: /",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\har\\candidate\\index.har",
+      "createdAt": "2026-04-07T20:03:51.868Z"
+    },
+    {
+      "id": "a3a4cd1c-9f57-49c5-a736-d992525e3340",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "report",
+      "label": "SEO: /",
+      "path": "data/artifacts/657c0c2a-83c0-445d-9be7-a3764a824dda/seo/index.json",
+      "createdAt": "2026-04-07T20:03:51.868Z"
+    },
+    {
+      "id": "1aecdf07-0a64-4180-8d18-462076b9c71e",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "report",
+      "label": "Performance: /",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\performance\\index.json",
+      "createdAt": "2026-04-07T20:03:51.868Z"
+    },
+    {
+      "id": "10558ef3-f28c-4df3-b8d4-f512646d0c5a",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "report",
+      "label": "Visual Diff Results",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\visual-diff-results.json",
+      "createdAt": "2026-04-07T20:03:51.868Z"
+    },
+    {
+      "id": "fce83388-1bf0-4bb2-ba3e-cf39038f51ff",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "screenshot",
+      "label": "Diff: / (desktop) - high",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\visual-diffs\\index\\diff-desktop.png",
+      "createdAt": "2026-04-07T20:04:06.796Z"
+    },
+    {
+      "id": "43603599-2ad5-4996-84ac-776c7ad91829",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "screenshot",
+      "label": "Heatmap: / (desktop)",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\visual-diffs\\index\\heatmap-desktop.png",
+      "createdAt": "2026-04-07T20:04:06.796Z"
+    },
+    {
+      "id": "906a2f5f-4f16-4512-8d15-4092d07bed80",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "screenshot",
+      "label": "Diff: / (tablet) - high",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\visual-diffs\\index\\diff-tablet.png",
+      "createdAt": "2026-04-07T20:04:07.839Z"
+    },
+    {
+      "id": "1f69a9d8-c731-4e49-9df5-72406ccb81e3",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "screenshot",
+      "label": "Heatmap: / (tablet)",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\visual-diffs\\index\\heatmap-tablet.png",
+      "createdAt": "2026-04-07T20:04:07.839Z"
+    },
+    {
+      "id": "1ec599ee-1114-4633-a3b2-93d02df58033",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "screenshot",
+      "label": "Diff: / (mobile) - high",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\visual-diffs\\index\\diff-mobile.png",
+      "createdAt": "2026-04-07T20:04:08.160Z"
+    },
+    {
+      "id": "ac50f6d7-0d1f-49a2-b06b-ae2f061e2220",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
+      "type": "screenshot",
+      "label": "Heatmap: / (mobile)",
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\visual-diffs\\index\\heatmap-mobile.png",
+      "createdAt": "2026-04-07T20:04:08.160Z"
+    },
+    {
+      "id": "c12ad218-aa32-42a5-a55b-7e83c15135d2",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
       "type": "report",
       "label": "AI Reasoning Results",
-      "path": "data/artifacts\\04bd35c1-600a-48e4-899f-7878851a6590\\ai-reasoning-results.json",
-      "createdAt": "2026-04-07T11:52:23.277Z"
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\ai-reasoning-results.json",
+      "createdAt": "2026-04-07T20:03:51.868Z"
     },
     {
-      "id": "1004760a-1b36-4dd1-acfb-ae61fc93f3a8",
-      "runId": "04bd35c1-600a-48e4-899f-7878851a6590",
+      "id": "5de92f81-7af3-4c8b-bf68-7dff14392db2",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
       "type": "report",
       "label": "Migration Test Report (JSON)",
-      "path": "data/artifacts\\04bd35c1-600a-48e4-899f-7878851a6590\\reports\\report.json",
-      "createdAt": "2026-04-07T11:52:23.277Z"
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\reports\\report.json",
+      "createdAt": "2026-04-07T20:03:51.868Z"
     },
     {
-      "id": "f74b13bd-bb1e-4554-91f7-6873567a351f",
-      "runId": "04bd35c1-600a-48e4-899f-7878851a6590",
+      "id": "2ec46548-d0be-46d5-a36b-4a33c5f65dd2",
+      "runId": "657c0c2a-83c0-445d-9be7-a3764a824dda",
       "type": "report",
       "label": "Migration Test Report (Markdown)",
-      "path": "data/artifacts\\04bd35c1-600a-48e4-899f-7878851a6590\\reports\\report.md",
-      "createdAt": "2026-04-07T11:52:23.277Z"
+      "path": "data/artifacts\\657c0c2a-83c0-445d-9be7-a3764a824dda\\reports\\report.md",
+      "createdAt": "2026-04-07T20:03:51.868Z"
     },
     {
-      "id": "130c3e76-51cc-4c5c-a924-1dd1a936688c",
-      "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "id": "b5e650ab-1396-40e5-b28b-27d80a104b90",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
       "type": "report",
       "label": "Baseline Crawl Results",
-      "path": "data/artifacts\\f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee\\baseline-crawl.json",
-      "createdAt": "2026-04-07T12:03:40.783Z"
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\baseline-crawl.json",
+      "createdAt": "2026-04-07T20:22:02.944Z"
     },
     {
-      "id": "8bf2ca01-3d1c-4a6b-a8bf-a7c106163b1e",
-      "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "id": "6e7503aa-ace5-4a6d-b20c-f6c2d136bdda",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
       "type": "report",
       "label": "Candidate Crawl Results",
-      "path": "data/artifacts\\f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee\\candidate-crawl.json",
-      "createdAt": "2026-04-07T12:03:40.783Z"
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\candidate-crawl.json",
+      "createdAt": "2026-04-07T20:22:02.944Z"
     },
     {
-      "id": "7202d4a8-5d94-427e-af94-38de8310164f",
-      "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "id": "ad18933c-051f-4ef4-abea-7da26f3e723e",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
       "type": "report",
       "label": "Matched Pages",
-      "path": "data/artifacts\\f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee\\matched-pages.json",
-      "createdAt": "2026-04-07T12:03:40.783Z"
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\matched-pages.json",
+      "createdAt": "2026-04-07T20:22:02.944Z"
     },
     {
-      "id": "a88a4cb9-a0c6-4a0b-8411-8b0d66686463",
-      "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "id": "02f8bde8-148a-422e-b554-7718301fde26",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
       "type": "report",
       "label": "Generated Page Map",
-      "path": "data/artifacts\\f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee\\generated-pageMap.json",
-      "createdAt": "2026-04-07T12:03:40.783Z"
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\generated-pageMap.json",
+      "createdAt": "2026-04-07T20:22:02.944Z"
     },
     {
-      "id": "63cef8b5-9d9a-4ffa-878a-50b42c20bf20",
-      "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "id": "c07699c1-7303-4569-8b0b-f1dfd905eb17",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
       "type": "log",
       "label": "Crawl Log",
-      "path": "data/artifacts\\f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee\\crawl.log",
-      "createdAt": "2026-04-07T12:03:40.783Z"
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\crawl.log",
+      "createdAt": "2026-04-07T20:22:02.944Z"
     },
     {
-      "id": "a0439ba2-e12e-485f-86ad-4abc8eebbbb7",
-      "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "id": "e0b2a440-5423-4202-a223-29fb48f6e1c9",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
       "type": "report",
       "label": "Crawl Summary",
-      "path": "data/artifacts/f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee/crawl-summary.json",
-      "createdAt": "2026-04-07T12:03:40.783Z"
+      "path": "data/artifacts/c49caa7f-72bf-45be-85bc-1a4c25337da4/crawl-summary.json",
+      "createdAt": "2026-04-07T20:22:02.944Z"
     },
     {
-      "id": "abccaa56-263a-4510-bd43-d7bd951c3edc",
-      "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "id": "44530820-8322-42a9-9eac-0d0f5417d958",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "report",
+      "label": "baseline execution",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\baseline-execution.json",
+      "createdAt": "2026-04-07T20:22:02.944Z"
+    },
+    {
+      "id": "3452e59d-352a-4d61-ac23-6e23f4a27288",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "report",
+      "label": "candidate execution",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\candidate-execution.json",
+      "createdAt": "2026-04-07T20:22:02.944Z"
+    },
+    {
+      "id": "8f1c537f-3df3-4c66-993c-a629941934cc",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "report",
+      "label": "console messages",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\console-messages.json",
+      "createdAt": "2026-04-07T20:22:02.944Z"
+    },
+    {
+      "id": "a3449728-800b-4375-a41a-ff457fce4d68",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "report",
+      "label": "network requests",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\network-requests.json",
+      "createdAt": "2026-04-07T20:22:02.944Z"
+    },
+    {
+      "id": "44cefa60-a2dd-44da-898f-ee5d01bfeb99",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "report",
+      "label": "dom snapshots summary",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\dom-snapshots-summary.json",
+      "createdAt": "2026-04-07T20:22:02.944Z"
+    },
+    {
+      "id": "42014df4-746e-4e1f-820c-ca6495810932",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "log",
+      "label": "execution",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\execution.log",
+      "createdAt": "2026-04-07T20:22:02.944Z"
+    },
+    {
+      "id": "2afab731-3cb3-4f29-a88f-205f94049458",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "screenshot",
+      "label": "Baseline: / (desktop)",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\baseline\\index\\screenshot-desktop.png",
+      "createdAt": "2026-04-07T20:22:06.778Z"
+    },
+    {
+      "id": "6a9ca626-c724-495e-8da8-366848d288ee",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "screenshot",
+      "label": "Baseline: / (tablet)",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\baseline\\index\\screenshot-tablet.png",
+      "createdAt": "2026-04-07T20:22:07.381Z"
+    },
+    {
+      "id": "6763e9de-74d4-4a64-8a2f-990dbd43d51c",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "screenshot",
+      "label": "Baseline: / (mobile)",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\baseline\\index\\screenshot-mobile.png",
+      "createdAt": "2026-04-07T20:22:07.938Z"
+    },
+    {
+      "id": "4abf8f00-9b00-424b-a87e-0bc0bdbaf6d1",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "screenshot",
+      "label": "Candidate: / (desktop)",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\candidate\\index\\screenshot-desktop.png",
+      "createdAt": "2026-04-07T20:22:06.858Z"
+    },
+    {
+      "id": "98dadb1e-7b4a-4e78-a74d-67b0c487a098",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "screenshot",
+      "label": "Candidate: / (tablet)",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\candidate\\index\\screenshot-tablet.png",
+      "createdAt": "2026-04-07T20:22:07.446Z"
+    },
+    {
+      "id": "a94a4a14-91f1-45fa-b237-7648a71ee6a6",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "screenshot",
+      "label": "Candidate: / (mobile)",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\candidate\\index\\screenshot-mobile.png",
+      "createdAt": "2026-04-07T20:22:08.000Z"
+    },
+    {
+      "id": "54ce8508-1af2-449b-a413-58b4122a4e13",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "report",
+      "label": "Functional QA Results",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\functional-qa-results.json",
+      "createdAt": "2026-04-07T20:22:02.944Z"
+    },
+    {
+      "id": "a010d3f8-380e-4cf9-ae53-ba63948cd418",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "report",
+      "label": "Baseline HAR: /",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\har\\baseline\\index.har",
+      "createdAt": "2026-04-07T20:22:02.944Z"
+    },
+    {
+      "id": "417e9db0-04b5-4dab-b924-815994ba6753",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "report",
+      "label": "Candidate HAR: /",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\har\\candidate\\index.har",
+      "createdAt": "2026-04-07T20:22:02.944Z"
+    },
+    {
+      "id": "3fb0d695-20ed-455b-9001-d42af54aafe6",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "report",
+      "label": "SEO: /",
+      "path": "data/artifacts/c49caa7f-72bf-45be-85bc-1a4c25337da4/seo/index.json",
+      "createdAt": "2026-04-07T20:22:02.944Z"
+    },
+    {
+      "id": "deba9569-c056-44cb-aaa2-47c55ad1f4a8",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "report",
+      "label": "Performance: /",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\performance\\index.json",
+      "createdAt": "2026-04-07T20:22:02.944Z"
+    },
+    {
+      "id": "1a9d9489-24e5-45a7-bb90-e547df3dc602",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "report",
+      "label": "Visual Diff Results",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\visual-diff-results.json",
+      "createdAt": "2026-04-07T20:22:02.944Z"
+    },
+    {
+      "id": "e7f04311-c9c1-4214-9ac0-4fb5c0ff642d",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "screenshot",
+      "label": "Diff: / (desktop) - high",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\visual-diffs\\index\\diff-desktop.png",
+      "createdAt": "2026-04-07T20:22:14.963Z"
+    },
+    {
+      "id": "21c90dec-b2c1-40ff-8895-ba1334bf495b",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "screenshot",
+      "label": "Heatmap: / (desktop)",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\visual-diffs\\index\\heatmap-desktop.png",
+      "createdAt": "2026-04-07T20:22:14.963Z"
+    },
+    {
+      "id": "980a7130-4b3d-4438-b89b-6bf0bb4d29b4",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "screenshot",
+      "label": "Diff: / (tablet) - high",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\visual-diffs\\index\\diff-tablet.png",
+      "createdAt": "2026-04-07T20:22:15.562Z"
+    },
+    {
+      "id": "45ff74c8-8e61-4e92-994a-4c3877599529",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "screenshot",
+      "label": "Heatmap: / (tablet)",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\visual-diffs\\index\\heatmap-tablet.png",
+      "createdAt": "2026-04-07T20:22:15.562Z"
+    },
+    {
+      "id": "608052d9-5e3f-4426-99f4-c92c866a626d",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "screenshot",
+      "label": "Diff: / (mobile) - high",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\visual-diffs\\index\\diff-mobile.png",
+      "createdAt": "2026-04-07T20:22:15.731Z"
+    },
+    {
+      "id": "666058fb-4f79-4170-9b12-2fa216f95a2f",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
+      "type": "screenshot",
+      "label": "Heatmap: / (mobile)",
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\visual-diffs\\index\\heatmap-mobile.png",
+      "createdAt": "2026-04-07T20:22:15.731Z"
+    },
+    {
+      "id": "3fcc6505-a7b6-4962-b682-6b101796da55",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
       "type": "report",
       "label": "AI Reasoning Results",
-      "path": "data/artifacts\\f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee\\ai-reasoning-results.json",
-      "createdAt": "2026-04-07T12:03:40.783Z"
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\ai-reasoning-results.json",
+      "createdAt": "2026-04-07T20:22:02.944Z"
     },
     {
-      "id": "a773ee12-6f35-4b5b-bd69-4f700d65d777",
-      "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "id": "b3472cfe-d88e-461c-bf6e-9e49fde8a87c",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
       "type": "report",
       "label": "Migration Test Report (JSON)",
-      "path": "data/artifacts\\f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee\\reports\\report.json",
-      "createdAt": "2026-04-07T12:03:40.783Z"
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\reports\\report.json",
+      "createdAt": "2026-04-07T20:22:02.944Z"
     },
     {
-      "id": "7209801d-b955-42bf-947f-5a63443e2aa6",
-      "runId": "f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee",
+      "id": "cef42f7e-e572-4a3c-9a6d-b2832edf2f6b",
+      "runId": "c49caa7f-72bf-45be-85bc-1a4c25337da4",
       "type": "report",
       "label": "Migration Test Report (Markdown)",
-      "path": "data/artifacts\\f3a58cf8-dd68-4874-a8b2-a81dcfd3ccee\\reports\\report.md",
-      "createdAt": "2026-04-07T12:03:40.783Z"
+      "path": "data/artifacts\\c49caa7f-72bf-45be-85bc-1a4c25337da4\\reports\\report.md",
+      "createdAt": "2026-04-07T20:22:02.944Z"
     },
     {
-      "id": "0395f028-5893-473a-92fc-6ecc8f94f547",
-      "runId": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "id": "6ca523ef-f12d-4107-9fac-b910e8f990a7",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
       "type": "report",
       "label": "Baseline Crawl Results",
-      "path": "data/artifacts\\a7fe7adb-475a-4a3c-8ad9-148039a7e843\\baseline-crawl.json",
-      "createdAt": "2026-04-07T12:05:43.917Z"
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\baseline-crawl.json",
+      "createdAt": "2026-04-07T20:42:35.046Z"
     },
     {
-      "id": "8530fe40-b2ae-45ae-b157-4019c1d43027",
-      "runId": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "id": "ee4f5876-6c7b-458c-bf97-924815db0d2b",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
       "type": "report",
       "label": "Candidate Crawl Results",
-      "path": "data/artifacts\\a7fe7adb-475a-4a3c-8ad9-148039a7e843\\candidate-crawl.json",
-      "createdAt": "2026-04-07T12:05:43.917Z"
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\candidate-crawl.json",
+      "createdAt": "2026-04-07T20:42:35.046Z"
     },
     {
-      "id": "8ce0accb-06a4-4d95-bb2b-b5e4e65328ab",
-      "runId": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "id": "2c645668-e4a6-43f6-879c-53b11a9a044c",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
       "type": "report",
       "label": "Matched Pages",
-      "path": "data/artifacts\\a7fe7adb-475a-4a3c-8ad9-148039a7e843\\matched-pages.json",
-      "createdAt": "2026-04-07T12:05:43.917Z"
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\matched-pages.json",
+      "createdAt": "2026-04-07T20:42:35.046Z"
     },
     {
-      "id": "16b194cf-ad96-49d5-acbe-572e1c0da984",
-      "runId": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "id": "85ad806a-01df-44bc-ac8b-6fe6fe909bc1",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
       "type": "report",
       "label": "Generated Page Map",
-      "path": "data/artifacts\\a7fe7adb-475a-4a3c-8ad9-148039a7e843\\generated-pageMap.json",
-      "createdAt": "2026-04-07T12:05:43.917Z"
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\generated-pageMap.json",
+      "createdAt": "2026-04-07T20:42:35.046Z"
     },
     {
-      "id": "33945d4a-63ac-4fcc-b876-8e41131083b6",
-      "runId": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "id": "69c05d12-e422-431d-8d08-0fc2b29ed3d1",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
       "type": "log",
       "label": "Crawl Log",
-      "path": "data/artifacts\\a7fe7adb-475a-4a3c-8ad9-148039a7e843\\crawl.log",
-      "createdAt": "2026-04-07T12:05:43.917Z"
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\crawl.log",
+      "createdAt": "2026-04-07T20:42:35.046Z"
     },
     {
-      "id": "d2e20413-3431-45e4-8f05-fb78c4bcecc8",
-      "runId": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "id": "4762705e-b92d-4d55-9a26-e32d19bedf73",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
       "type": "report",
       "label": "Crawl Summary",
-      "path": "data/artifacts/a7fe7adb-475a-4a3c-8ad9-148039a7e843/crawl-summary.json",
-      "createdAt": "2026-04-07T12:05:43.917Z"
+      "path": "data/artifacts/bea5cbd1-7b48-4eda-bfe6-04716402d3fb/crawl-summary.json",
+      "createdAt": "2026-04-07T20:42:35.046Z"
     },
     {
-      "id": "3bd79944-ae12-4c9c-8660-eaedf21c34f8",
-      "runId": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "id": "d8bbd269-03bf-4604-943f-02912c64283f",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "report",
+      "label": "baseline execution",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\baseline-execution.json",
+      "createdAt": "2026-04-07T20:42:35.046Z"
+    },
+    {
+      "id": "9ade23b4-127f-4728-8324-2a910ec122e7",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "report",
+      "label": "candidate execution",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\candidate-execution.json",
+      "createdAt": "2026-04-07T20:42:35.046Z"
+    },
+    {
+      "id": "7f9e1e70-9296-4572-89e1-b632b2f16ddb",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "report",
+      "label": "console messages",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\console-messages.json",
+      "createdAt": "2026-04-07T20:42:35.046Z"
+    },
+    {
+      "id": "f9c6fc06-4c44-4bb6-bafb-e306c6cbb9b5",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "report",
+      "label": "network requests",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\network-requests.json",
+      "createdAt": "2026-04-07T20:42:35.046Z"
+    },
+    {
+      "id": "26ac0e13-54d0-4ecd-b9b1-039b1d913874",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "report",
+      "label": "dom snapshots summary",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\dom-snapshots-summary.json",
+      "createdAt": "2026-04-07T20:42:35.046Z"
+    },
+    {
+      "id": "bc362b24-a1dc-4a75-a82d-1571524657a6",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "log",
+      "label": "execution",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\execution.log",
+      "createdAt": "2026-04-07T20:42:35.046Z"
+    },
+    {
+      "id": "a15d3950-85ed-44a8-9e68-f2151baf528d",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "screenshot",
+      "label": "Baseline: / (desktop)",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\baseline\\index\\screenshot-desktop.png",
+      "createdAt": "2026-04-07T20:42:42.045Z"
+    },
+    {
+      "id": "91556783-1d59-4285-82cb-89d77c6657a3",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "screenshot",
+      "label": "Baseline: / (tablet)",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\baseline\\index\\screenshot-tablet.png",
+      "createdAt": "2026-04-07T20:42:42.815Z"
+    },
+    {
+      "id": "5d1f9940-3594-4b07-b2da-ed022c33c3d8",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "screenshot",
+      "label": "Baseline: / (mobile)",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\baseline\\index\\screenshot-mobile.png",
+      "createdAt": "2026-04-07T20:42:43.420Z"
+    },
+    {
+      "id": "b14038ac-e291-4c74-a955-b5f68e761f17",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "screenshot",
+      "label": "Candidate: / (desktop)",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\candidate\\index\\screenshot-desktop.png",
+      "createdAt": "2026-04-07T20:42:41.988Z"
+    },
+    {
+      "id": "4e721e24-ac9a-4d05-8cf3-69cc61ab21af",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "screenshot",
+      "label": "Candidate: / (tablet)",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\candidate\\index\\screenshot-tablet.png",
+      "createdAt": "2026-04-07T20:42:42.661Z"
+    },
+    {
+      "id": "d1156e0d-39e5-4673-8b6a-02d0b0f60a8a",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "screenshot",
+      "label": "Candidate: / (mobile)",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\candidate\\index\\screenshot-mobile.png",
+      "createdAt": "2026-04-07T20:42:43.310Z"
+    },
+    {
+      "id": "b753e69c-5274-42ef-8c48-734cc2b4d5c8",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "report",
+      "label": "Functional QA Results",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\functional-qa-results.json",
+      "createdAt": "2026-04-07T20:42:35.046Z"
+    },
+    {
+      "id": "a117b221-ec90-47a3-a244-637085c929a0",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "report",
+      "label": "Baseline HAR: /",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\har\\baseline\\index.har",
+      "createdAt": "2026-04-07T20:42:35.046Z"
+    },
+    {
+      "id": "b262be4a-8abf-453c-805d-a8a05d310639",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "report",
+      "label": "Candidate HAR: /",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\har\\candidate\\index.har",
+      "createdAt": "2026-04-07T20:42:35.046Z"
+    },
+    {
+      "id": "c4a26ed8-3408-419b-b570-8206eb0b55a3",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "log",
+      "label": "Data Integrity Error",
+      "path": "data/artifacts/bea5cbd1-7b48-4eda-bfe6-04716402d3fb/data-integrity-error.log",
+      "createdAt": "2026-04-07T20:42:35.046Z"
+    },
+    {
+      "id": "c09a0f38-0f91-49b7-84f9-31b8e13da001",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "report",
+      "label": "SEO: /",
+      "path": "data/artifacts/bea5cbd1-7b48-4eda-bfe6-04716402d3fb/seo/index.json",
+      "createdAt": "2026-04-07T20:42:35.046Z"
+    },
+    {
+      "id": "f034ad6d-d904-4ab2-90b8-b6b9f1b456ae",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "report",
+      "label": "Performance: /",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\performance\\index.json",
+      "createdAt": "2026-04-07T20:42:35.046Z"
+    },
+    {
+      "id": "713bd8c2-742b-46ec-b3f9-91251e32f274",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "report",
+      "label": "Visual Diff Results",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\visual-diff-results.json",
+      "createdAt": "2026-04-07T20:42:35.046Z"
+    },
+    {
+      "id": "51d6a416-8d06-44dd-b667-6837780f6114",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "screenshot",
+      "label": "Diff: / (desktop) - high",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\visual-diffs\\index\\diff-desktop.png",
+      "createdAt": "2026-04-07T20:42:56.194Z"
+    },
+    {
+      "id": "5b7e9bd0-5fa5-4ebc-a179-8f976edec6b2",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "screenshot",
+      "label": "Heatmap: / (desktop)",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\visual-diffs\\index\\heatmap-desktop.png",
+      "createdAt": "2026-04-07T20:42:56.194Z"
+    },
+    {
+      "id": "f5c53538-dd1b-4603-aaae-c1e4a01bb33d",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "screenshot",
+      "label": "Diff: / (tablet) - high",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\visual-diffs\\index\\diff-tablet.png",
+      "createdAt": "2026-04-07T20:42:57.901Z"
+    },
+    {
+      "id": "a4d4d0c3-61b5-474c-afe7-e0ae2d39beda",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "screenshot",
+      "label": "Heatmap: / (tablet)",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\visual-diffs\\index\\heatmap-tablet.png",
+      "createdAt": "2026-04-07T20:42:57.901Z"
+    },
+    {
+      "id": "615d06b5-abd2-42be-b9ab-868fb8a6acfe",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "screenshot",
+      "label": "Diff: / (mobile) - high",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\visual-diffs\\index\\diff-mobile.png",
+      "createdAt": "2026-04-07T20:42:58.334Z"
+    },
+    {
+      "id": "55d17d23-a76c-4029-a632-29853f870404",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
+      "type": "screenshot",
+      "label": "Heatmap: / (mobile)",
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\visual-diffs\\index\\heatmap-mobile.png",
+      "createdAt": "2026-04-07T20:42:58.334Z"
+    },
+    {
+      "id": "3609a7a0-12ba-4e1a-a2d3-21ca482e873f",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
       "type": "report",
       "label": "AI Reasoning Results",
-      "path": "data/artifacts\\a7fe7adb-475a-4a3c-8ad9-148039a7e843\\ai-reasoning-results.json",
-      "createdAt": "2026-04-07T12:05:43.917Z"
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\ai-reasoning-results.json",
+      "createdAt": "2026-04-07T20:42:35.046Z"
     },
     {
-      "id": "a70799a4-6d2e-4871-9b39-30e96a1b1102",
-      "runId": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "id": "8518234b-5407-4b32-9eaf-d1187c65d6dc",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
       "type": "report",
       "label": "Migration Test Report (JSON)",
-      "path": "data/artifacts\\a7fe7adb-475a-4a3c-8ad9-148039a7e843\\reports\\report.json",
-      "createdAt": "2026-04-07T12:05:43.917Z"
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\reports\\report.json",
+      "createdAt": "2026-04-07T20:42:35.046Z"
     },
     {
-      "id": "5c7ba1f2-3edd-443f-87dd-0b45807ca621",
-      "runId": "a7fe7adb-475a-4a3c-8ad9-148039a7e843",
+      "id": "a19cb199-594c-4f09-8743-69ad14e4812a",
+      "runId": "bea5cbd1-7b48-4eda-bfe6-04716402d3fb",
       "type": "report",
       "label": "Migration Test Report (Markdown)",
-      "path": "data/artifacts\\a7fe7adb-475a-4a3c-8ad9-148039a7e843\\reports\\report.md",
-      "createdAt": "2026-04-07T12:05:43.917Z"
+      "path": "data/artifacts\\bea5cbd1-7b48-4eda-bfe6-04716402d3fb\\reports\\report.md",
+      "createdAt": "2026-04-07T20:42:35.046Z"
     },
     {
-      "id": "c56323ed-616d-48bc-ab63-a0e4f50eb016",
-      "runId": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "id": "1273a7a2-c402-4e90-ad76-10878f8d28a6",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
       "type": "report",
       "label": "Baseline Crawl Results",
-      "path": "data/artifacts\\7db065b0-87e1-4666-84f7-0afc749387c9\\baseline-crawl.json",
-      "createdAt": "2026-04-07T12:07:42.369Z"
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\baseline-crawl.json",
+      "createdAt": "2026-04-07T20:44:34.817Z"
     },
     {
-      "id": "872d6add-e9c6-4989-bb91-64893546c761",
-      "runId": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "id": "6d6e728a-f8ef-4dbd-8c9d-7004555afb54",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
       "type": "report",
       "label": "Candidate Crawl Results",
-      "path": "data/artifacts\\7db065b0-87e1-4666-84f7-0afc749387c9\\candidate-crawl.json",
-      "createdAt": "2026-04-07T12:07:42.369Z"
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\candidate-crawl.json",
+      "createdAt": "2026-04-07T20:44:34.817Z"
     },
     {
-      "id": "10d499d0-e970-48e0-99ca-6046819b462d",
-      "runId": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "id": "b4d6dc7a-38ee-46f7-b965-36295b651109",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
       "type": "report",
       "label": "Matched Pages",
-      "path": "data/artifacts\\7db065b0-87e1-4666-84f7-0afc749387c9\\matched-pages.json",
-      "createdAt": "2026-04-07T12:07:42.369Z"
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\matched-pages.json",
+      "createdAt": "2026-04-07T20:44:34.817Z"
     },
     {
-      "id": "c61565c8-2fee-4236-96bc-195d707f2d63",
-      "runId": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "id": "64364186-4ba6-4e0f-9aaa-1509866fac9a",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
       "type": "report",
       "label": "Generated Page Map",
-      "path": "data/artifacts\\7db065b0-87e1-4666-84f7-0afc749387c9\\generated-pageMap.json",
-      "createdAt": "2026-04-07T12:07:42.369Z"
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\generated-pageMap.json",
+      "createdAt": "2026-04-07T20:44:34.817Z"
     },
     {
-      "id": "13843987-838c-474c-99b5-c0150ab06674",
-      "runId": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "id": "af49c8ae-5a41-4ec2-8d1d-eeb0540ce09a",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
       "type": "log",
       "label": "Crawl Log",
-      "path": "data/artifacts\\7db065b0-87e1-4666-84f7-0afc749387c9\\crawl.log",
-      "createdAt": "2026-04-07T12:07:42.369Z"
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\crawl.log",
+      "createdAt": "2026-04-07T20:44:34.817Z"
     },
     {
-      "id": "ce86b673-e42f-4114-a270-0d2aa9b8b279",
-      "runId": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "id": "fbff1131-7ca7-4a1c-901f-3376ef8eb9c0",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
       "type": "report",
       "label": "Crawl Summary",
-      "path": "data/artifacts/7db065b0-87e1-4666-84f7-0afc749387c9/crawl-summary.json",
-      "createdAt": "2026-04-07T12:07:42.369Z"
+      "path": "data/artifacts/bb76d396-56e0-44b2-a598-017a7245c72a/crawl-summary.json",
+      "createdAt": "2026-04-07T20:44:34.817Z"
     },
     {
-      "id": "6a4551de-9b37-462a-b0b4-3de21fb62ea9",
-      "runId": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "id": "1af11385-1eec-43e9-8ac9-8b15b63e3205",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "report",
+      "label": "baseline execution",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\baseline-execution.json",
+      "createdAt": "2026-04-07T20:44:34.817Z"
+    },
+    {
+      "id": "7064a107-656e-480f-a5e9-9d678bd29e83",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "report",
+      "label": "candidate execution",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\candidate-execution.json",
+      "createdAt": "2026-04-07T20:44:34.817Z"
+    },
+    {
+      "id": "b21ba434-1f9a-4596-a10f-3e3141693c07",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "report",
+      "label": "console messages",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\console-messages.json",
+      "createdAt": "2026-04-07T20:44:34.817Z"
+    },
+    {
+      "id": "5431b684-2efd-4807-b2b2-1f41b90883b8",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "report",
+      "label": "network requests",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\network-requests.json",
+      "createdAt": "2026-04-07T20:44:34.817Z"
+    },
+    {
+      "id": "8a2b1e3c-59ad-4a7a-a0bb-8ee14c7c900b",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "report",
+      "label": "dom snapshots summary",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\dom-snapshots-summary.json",
+      "createdAt": "2026-04-07T20:44:34.817Z"
+    },
+    {
+      "id": "3b6a948c-987e-495c-93eb-bc962c9e6171",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "log",
+      "label": "execution",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\execution.log",
+      "createdAt": "2026-04-07T20:44:34.817Z"
+    },
+    {
+      "id": "6d109ba0-3c99-4314-807f-217c24397b4c",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "screenshot",
+      "label": "Baseline: / (desktop)",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\baseline\\index\\screenshot-desktop.png",
+      "createdAt": "2026-04-07T20:44:41.830Z"
+    },
+    {
+      "id": "541eae37-6f28-4262-9e5c-5bf49f0f25f3",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "screenshot",
+      "label": "Baseline: / (tablet)",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\baseline\\index\\screenshot-tablet.png",
+      "createdAt": "2026-04-07T20:44:42.747Z"
+    },
+    {
+      "id": "51c64c88-0a6e-4327-829d-bc1f2bba17c5",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "screenshot",
+      "label": "Baseline: / (mobile)",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\baseline\\index\\screenshot-mobile.png",
+      "createdAt": "2026-04-07T20:44:43.400Z"
+    },
+    {
+      "id": "dda28ff2-09a5-49d7-b792-bf80f6e1ab2e",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "screenshot",
+      "label": "Candidate: / (desktop)",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\candidate\\index\\screenshot-desktop.png",
+      "createdAt": "2026-04-07T20:44:42.303Z"
+    },
+    {
+      "id": "9dce658a-c982-4317-87ce-8997b63e805a",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "screenshot",
+      "label": "Candidate: / (tablet)",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\candidate\\index\\screenshot-tablet.png",
+      "createdAt": "2026-04-07T20:44:42.993Z"
+    },
+    {
+      "id": "fc61cddb-01c6-4dc1-8734-570c602e696c",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "screenshot",
+      "label": "Candidate: / (mobile)",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\candidate\\index\\screenshot-mobile.png",
+      "createdAt": "2026-04-07T20:44:43.619Z"
+    },
+    {
+      "id": "28b1d14f-5c19-4531-94ad-9150d5e8fb4e",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "report",
+      "label": "Functional QA Results",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\functional-qa-results.json",
+      "createdAt": "2026-04-07T20:44:34.817Z"
+    },
+    {
+      "id": "fe236e37-4f35-4246-b106-35acad81dbc4",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "report",
+      "label": "Baseline HAR: /",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\har\\baseline\\index.har",
+      "createdAt": "2026-04-07T20:44:34.817Z"
+    },
+    {
+      "id": "32486508-904a-467d-bb06-74833ef469f2",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "report",
+      "label": "Candidate HAR: /",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\har\\candidate\\index.har",
+      "createdAt": "2026-04-07T20:44:34.817Z"
+    },
+    {
+      "id": "ef34a130-d25c-4ee4-825d-fb0ab7bbb8ad",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "log",
+      "label": "Data Integrity Error",
+      "path": "data/artifacts/bb76d396-56e0-44b2-a598-017a7245c72a/data-integrity-error.log",
+      "createdAt": "2026-04-07T20:44:34.817Z"
+    },
+    {
+      "id": "b4212287-318a-4a43-b34b-fd208826b8de",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "report",
+      "label": "SEO: /",
+      "path": "data/artifacts/bb76d396-56e0-44b2-a598-017a7245c72a/seo/index.json",
+      "createdAt": "2026-04-07T20:44:34.817Z"
+    },
+    {
+      "id": "31021604-b656-4d26-b461-047555633d10",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "report",
+      "label": "Performance: /",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\performance\\index.json",
+      "createdAt": "2026-04-07T20:44:34.817Z"
+    },
+    {
+      "id": "161dbe92-7fae-45d6-a004-dd3041817c90",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "report",
+      "label": "Visual Diff Results",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\visual-diff-results.json",
+      "createdAt": "2026-04-07T20:44:34.817Z"
+    },
+    {
+      "id": "329f5c8e-7222-4d14-b4b2-9995ea03cf1c",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "screenshot",
+      "label": "Diff: / (desktop) - high",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\visual-diffs\\index\\diff-desktop.png",
+      "createdAt": "2026-04-07T20:44:56.017Z"
+    },
+    {
+      "id": "e4244a4b-226f-4959-8468-fb9b4bccf3b8",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "screenshot",
+      "label": "Heatmap: / (desktop)",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\visual-diffs\\index\\heatmap-desktop.png",
+      "createdAt": "2026-04-07T20:44:56.017Z"
+    },
+    {
+      "id": "264717b5-9783-402e-8117-3e45f278189b",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "screenshot",
+      "label": "Diff: / (tablet) - high",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\visual-diffs\\index\\diff-tablet.png",
+      "createdAt": "2026-04-07T20:44:57.624Z"
+    },
+    {
+      "id": "a52bb980-1fff-4c2b-abd1-44fcfd8d1fb2",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "screenshot",
+      "label": "Heatmap: / (tablet)",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\visual-diffs\\index\\heatmap-tablet.png",
+      "createdAt": "2026-04-07T20:44:57.624Z"
+    },
+    {
+      "id": "f16daaa3-98ec-421b-b50d-5141ff6bffbf",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "screenshot",
+      "label": "Diff: / (mobile) - high",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\visual-diffs\\index\\diff-mobile.png",
+      "createdAt": "2026-04-07T20:44:58.059Z"
+    },
+    {
+      "id": "8226101d-e4e7-41c2-98a5-87de39e7fdef",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "screenshot",
+      "label": "Heatmap: / (mobile)",
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\visual-diffs\\index\\heatmap-mobile.png",
+      "createdAt": "2026-04-07T20:44:58.059Z"
+    },
+    {
+      "id": "e494499f-1029-47e6-9c55-d9c77488249c",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
       "type": "report",
       "label": "AI Reasoning Results",
-      "path": "data/artifacts\\7db065b0-87e1-4666-84f7-0afc749387c9\\ai-reasoning-results.json",
-      "createdAt": "2026-04-07T12:07:42.369Z"
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\ai-reasoning-results.json",
+      "createdAt": "2026-04-07T20:44:34.817Z"
     },
     {
-      "id": "6de7e160-e9dc-4a38-8de7-a0a4868a40a3",
-      "runId": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "id": "a59c8733-6aff-4ebf-9505-5e31aaaf45c2",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
       "type": "report",
       "label": "Migration Test Report (JSON)",
-      "path": "data/artifacts\\7db065b0-87e1-4666-84f7-0afc749387c9\\reports\\report.json",
-      "createdAt": "2026-04-07T12:07:42.369Z"
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\reports\\report.json",
+      "createdAt": "2026-04-07T20:44:34.817Z"
     },
     {
-      "id": "bfe640b6-22bb-421f-8223-4cb4e44a1738",
-      "runId": "7db065b0-87e1-4666-84f7-0afc749387c9",
+      "id": "fff1ebc0-55b1-4096-a680-086005ef1413",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
       "type": "report",
       "label": "Migration Test Report (Markdown)",
-      "path": "data/artifacts\\7db065b0-87e1-4666-84f7-0afc749387c9\\reports\\report.md",
-      "createdAt": "2026-04-07T12:07:42.369Z"
+      "path": "data/artifacts\\bb76d396-56e0-44b2-a598-017a7245c72a\\reports\\report.md",
+      "createdAt": "2026-04-07T20:44:34.817Z"
     },
     {
-      "id": "ceb7d634-e4a4-4b85-8228-27c6ed19c9ab",
-      "runId": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "id": "e7fa15fc-d3e2-47b5-b6be-e9a41879ea92",
+      "runId": "bb76d396-56e0-44b2-a598-017a7245c72a",
+      "type": "report",
+      "label": "Security: /",
+      "path": "data/artifacts/bb76d396-56e0-44b2-a598-017a7245c72a/security/index.json",
+      "createdAt": "2026-04-07T20:51:44.046Z"
+    },
+    {
+      "id": "692d8994-6d45-4405-8f70-c9566ae71773",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
       "label": "Baseline Crawl Results",
-      "path": "data/artifacts\\081097d5-4922-474f-bbb4-c1628f8a3847\\baseline-crawl.json",
-      "createdAt": "2026-04-07T12:09:01.146Z"
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline-crawl.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "a4f11250-fcd3-4828-a83f-336c36337745",
-      "runId": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "id": "ee221359-2797-494f-a17b-58061549f251",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
       "label": "Candidate Crawl Results",
-      "path": "data/artifacts\\081097d5-4922-474f-bbb4-c1628f8a3847\\candidate-crawl.json",
-      "createdAt": "2026-04-07T12:09:01.146Z"
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate-crawl.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "66103596-9ffc-43a6-9c6e-5868c9ba34a3",
-      "runId": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "id": "d8045e10-493a-4da8-944f-3e92684d053b",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
       "label": "Matched Pages",
-      "path": "data/artifacts\\081097d5-4922-474f-bbb4-c1628f8a3847\\matched-pages.json",
-      "createdAt": "2026-04-07T12:09:01.146Z"
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\matched-pages.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "3845f042-2442-4772-b2a2-e5871b1cb1e7",
-      "runId": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "id": "b5a50837-4b89-4785-a76e-9e6ce5a12801",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
       "label": "Generated Page Map",
-      "path": "data/artifacts\\081097d5-4922-474f-bbb4-c1628f8a3847\\generated-pageMap.json",
-      "createdAt": "2026-04-07T12:09:01.146Z"
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\generated-pageMap.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "9d811740-e79e-4182-bdfa-ba5d4d758fad",
-      "runId": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "id": "1b4f200b-0293-4c92-8bcc-bff8bb206ee6",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "log",
       "label": "Crawl Log",
-      "path": "data/artifacts\\081097d5-4922-474f-bbb4-c1628f8a3847\\crawl.log",
-      "createdAt": "2026-04-07T12:09:01.146Z"
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\crawl.log",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "0b22bd14-9a65-4c93-b4b0-ff7101328de1",
-      "runId": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "id": "530b905e-71a9-4c34-a208-0ad243252df3",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
       "label": "Crawl Summary",
-      "path": "data/artifacts/081097d5-4922-474f-bbb4-c1628f8a3847/crawl-summary.json",
-      "createdAt": "2026-04-07T12:09:01.146Z"
+      "path": "data/artifacts/a76f121d-a8be-486f-a446-54bcfbfa5ae3/crawl-summary.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "03f7e322-7f3d-4c7a-ae73-339824961560",
-      "runId": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "id": "2e59f3f0-62bd-4819-b68f-dbc8083d1e0c",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
-      "label": "AI Reasoning Results",
-      "path": "data/artifacts\\081097d5-4922-474f-bbb4-c1628f8a3847\\ai-reasoning-results.json",
-      "createdAt": "2026-04-07T12:09:01.146Z"
+      "label": "baseline execution",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline-execution.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "7b061f51-f9bc-42ca-a48a-142100ee57ef",
-      "runId": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "id": "bdcb1c9e-3470-411d-9099-8fbd13f60faf",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
-      "label": "Migration Test Report (JSON)",
-      "path": "data/artifacts\\081097d5-4922-474f-bbb4-c1628f8a3847\\reports\\report.json",
-      "createdAt": "2026-04-07T12:09:01.146Z"
+      "label": "candidate execution",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate-execution.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "79362f3b-517b-4fc2-8fb6-f6ffcd828af0",
-      "runId": "081097d5-4922-474f-bbb4-c1628f8a3847",
+      "id": "ff3117fe-c1f0-4402-a821-b68d473b35ad",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
-      "label": "Migration Test Report (Markdown)",
-      "path": "data/artifacts\\081097d5-4922-474f-bbb4-c1628f8a3847\\reports\\report.md",
-      "createdAt": "2026-04-07T12:09:01.146Z"
+      "label": "console messages",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\console-messages.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "829901ad-f59f-45d7-a4a4-0a482f76cf14",
-      "runId": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
+      "id": "fa046c3c-ea68-47a6-8243-c4feea795ecf",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
-      "label": "Baseline Crawl Results",
-      "path": "data/artifacts\\22acd8dc-0710-4f63-9ffa-154f28e49ff6\\baseline-crawl.json",
-      "createdAt": "2026-04-07T12:09:56.648Z"
+      "label": "network requests",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\network-requests.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "8dc63637-a21b-4b35-b300-a874d85ad5ed",
-      "runId": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
+      "id": "613769b4-cf9f-4ac6-88b5-ceadd8df36a6",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
-      "label": "Candidate Crawl Results",
-      "path": "data/artifacts\\22acd8dc-0710-4f63-9ffa-154f28e49ff6\\candidate-crawl.json",
-      "createdAt": "2026-04-07T12:09:56.648Z"
+      "label": "dom snapshots summary",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\dom-snapshots-summary.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "a33cb12a-606c-479e-969e-01a668b6f7b5",
-      "runId": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
-      "type": "report",
-      "label": "Matched Pages",
-      "path": "data/artifacts\\22acd8dc-0710-4f63-9ffa-154f28e49ff6\\matched-pages.json",
-      "createdAt": "2026-04-07T12:09:56.648Z"
-    },
-    {
-      "id": "302d3e83-1af7-43cd-8b0e-f62eeb6a66f7",
-      "runId": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
-      "type": "report",
-      "label": "Generated Page Map",
-      "path": "data/artifacts\\22acd8dc-0710-4f63-9ffa-154f28e49ff6\\generated-pageMap.json",
-      "createdAt": "2026-04-07T12:09:56.648Z"
-    },
-    {
-      "id": "761065d9-6631-4f22-8e72-674d0b34496f",
-      "runId": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
+      "id": "aa02dde4-39ff-4fd3-9dd4-d171612912ce",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "log",
-      "label": "Crawl Log",
-      "path": "data/artifacts\\22acd8dc-0710-4f63-9ffa-154f28e49ff6\\crawl.log",
-      "createdAt": "2026-04-07T12:09:56.648Z"
+      "label": "execution",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\execution.log",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "2adcf139-d9f9-43f8-9a3b-4727bec5d277",
-      "runId": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
+      "id": "15400b10-7c06-4798-a432-ab5a9b5eaba2",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Baseline: / (desktop)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline\\index\\screenshot-desktop.png",
+      "createdAt": "2026-04-09T22:03:58.519Z"
+    },
+    {
+      "id": "f785b34f-7fb0-4147-b0cd-27927ce9d633",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Baseline: / (tablet)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline\\index\\screenshot-tablet.png",
+      "createdAt": "2026-04-09T22:04:00.196Z"
+    },
+    {
+      "id": "eb923008-e45c-493c-93a5-c65b031df884",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Baseline: / (mobile)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline\\index\\screenshot-mobile.png",
+      "createdAt": "2026-04-09T22:04:01.242Z"
+    },
+    {
+      "id": "7c08a839-83d9-4d80-940d-b723f0ff1394",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Baseline: /home (desktop)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline\\home\\screenshot-desktop.png",
+      "createdAt": "2026-04-09T22:04:06.578Z"
+    },
+    {
+      "id": "32de6881-e27c-4214-8cbd-fea819d66932",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Baseline: /home (tablet)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline\\home\\screenshot-tablet.png",
+      "createdAt": "2026-04-09T22:04:08.319Z"
+    },
+    {
+      "id": "8285e895-3ff2-4e89-8b31-6320e40bc905",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Baseline: /home (mobile)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline\\home\\screenshot-mobile.png",
+      "createdAt": "2026-04-09T22:04:09.429Z"
+    },
+    {
+      "id": "0b7a9c50-7c3c-4ec2-b152-7ef0847e3f54",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Baseline: /tv-gids-nederland (desktop)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline\\tv-gids-nederland\\screenshot-desktop.png",
+      "createdAt": "2026-04-09T22:04:12.742Z"
+    },
+    {
+      "id": "3dbbd7ab-016a-433d-8e9a-2aabd91226b5",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Baseline: /tv-gids-nederland (tablet)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline\\tv-gids-nederland\\screenshot-tablet.png",
+      "createdAt": "2026-04-09T22:04:13.595Z"
+    },
+    {
+      "id": "22034677-9bb0-4fd6-bd67-57adffdcfe6f",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Baseline: /tv-gids-nederland (mobile)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline\\tv-gids-nederland\\screenshot-mobile.png",
+      "createdAt": "2026-04-09T22:04:14.514Z"
+    },
+    {
+      "id": "7557d595-c4fd-4d02-8bcf-9974de7c8259",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Baseline: /bbc-first-nieuws (desktop)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline\\bbc-first-nieuws\\screenshot-desktop.png",
+      "createdAt": "2026-04-09T22:04:18.567Z"
+    },
+    {
+      "id": "fec604ef-1c79-4c02-b864-983392c599bc",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Baseline: /bbc-first-nieuws (tablet)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline\\bbc-first-nieuws\\screenshot-tablet.png",
+      "createdAt": "2026-04-09T22:04:19.779Z"
+    },
+    {
+      "id": "2fc2bf41-3f78-4d4d-bd5e-478a555e13ca",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Baseline: /bbc-first-nieuws (mobile)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline\\bbc-first-nieuws\\screenshot-mobile.png",
+      "createdAt": "2026-04-09T22:04:20.627Z"
+    },
+    {
+      "id": "eebacf00-8044-4cb9-813d-4335dcc75643",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Baseline: /berichten (desktop)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline\\berichten\\screenshot-desktop.png",
+      "createdAt": "2026-04-09T22:04:25.809Z"
+    },
+    {
+      "id": "b2883ab2-ddf2-457e-b821-0d79346e1455",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Baseline: /berichten (tablet)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline\\berichten\\screenshot-tablet.png",
+      "createdAt": "2026-04-09T22:04:27.012Z"
+    },
+    {
+      "id": "6af255c3-79be-4d19-8255-b4701c1db594",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Baseline: /berichten (mobile)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline\\berichten\\screenshot-mobile.png",
+      "createdAt": "2026-04-09T22:04:27.791Z"
+    },
+    {
+      "id": "bf5bfb5b-3517-4c7a-8bad-8e8e549713b2",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Baseline: /contact (desktop)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline\\contact\\screenshot-desktop.png",
+      "createdAt": "2026-04-09T22:04:31.543Z"
+    },
+    {
+      "id": "07be31d8-9a08-4da4-85c4-537c1110624d",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Baseline: /contact (tablet)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline\\contact\\screenshot-tablet.png",
+      "createdAt": "2026-04-09T22:04:32.376Z"
+    },
+    {
+      "id": "4f3dba9d-79ea-401c-bd48-64d9576fb96d",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Baseline: /contact (mobile)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\baseline\\contact\\screenshot-mobile.png",
+      "createdAt": "2026-04-09T22:04:33.120Z"
+    },
+    {
+      "id": "ceefa6a3-8c6b-48ee-b654-38997830fbd0",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Candidate: / (desktop)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate\\index\\screenshot-desktop.png",
+      "createdAt": "2026-04-09T22:03:58.373Z"
+    },
+    {
+      "id": "0a730af7-9e20-49af-890d-81f161b0e7bc",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Candidate: / (tablet)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate\\index\\screenshot-tablet.png",
+      "createdAt": "2026-04-09T22:03:59.442Z"
+    },
+    {
+      "id": "4fb79f05-328f-4367-a4c2-99015eecf5d8",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Candidate: / (mobile)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate\\index\\screenshot-mobile.png",
+      "createdAt": "2026-04-09T22:04:00.307Z"
+    },
+    {
+      "id": "0e6b5402-8596-4e40-b7c2-f8705dc5627c",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Candidate: /home (desktop)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate\\home\\screenshot-desktop.png",
+      "createdAt": "2026-04-09T22:04:05.625Z"
+    },
+    {
+      "id": "88d80397-9a41-4971-b2f8-02bb01a11277",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Candidate: /home (tablet)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate\\home\\screenshot-tablet.png",
+      "createdAt": "2026-04-09T22:04:06.719Z"
+    },
+    {
+      "id": "8c52874e-3137-4493-b8fc-5257600c2ab5",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Candidate: /home (mobile)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate\\home\\screenshot-mobile.png",
+      "createdAt": "2026-04-09T22:04:07.565Z"
+    },
+    {
+      "id": "d8f1242d-5ce5-49a6-81af-2ade8dc857b7",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Candidate: /tv-gids-nederland (desktop)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate\\tv-gids-nederland\\screenshot-desktop.png",
+      "createdAt": "2026-04-09T22:04:10.663Z"
+    },
+    {
+      "id": "be5344d8-951e-493b-92f4-1fccb4fcb5ba",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Candidate: /tv-gids-nederland (tablet)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate\\tv-gids-nederland\\screenshot-tablet.png",
+      "createdAt": "2026-04-09T22:04:11.506Z"
+    },
+    {
+      "id": "6ca988a8-e1ba-493d-9f9f-6267cff6fa0f",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Candidate: /tv-gids-nederland (mobile)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate\\tv-gids-nederland\\screenshot-mobile.png",
+      "createdAt": "2026-04-09T22:04:12.401Z"
+    },
+    {
+      "id": "37d33bbc-f1df-47f0-a35c-35ebaadc04b0",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Candidate: /bbc-first-nieuws (desktop)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate\\bbc-first-nieuws\\screenshot-desktop.png",
+      "createdAt": "2026-04-09T22:04:16.958Z"
+    },
+    {
+      "id": "34580a10-0782-4259-a740-d87d5c0ad163",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Candidate: /bbc-first-nieuws (tablet)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate\\bbc-first-nieuws\\screenshot-tablet.png",
+      "createdAt": "2026-04-09T22:04:18.144Z"
+    },
+    {
+      "id": "fa5e5d9d-6504-4f7e-8de3-224068750c1b",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Candidate: /bbc-first-nieuws (mobile)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate\\bbc-first-nieuws\\screenshot-mobile.png",
+      "createdAt": "2026-04-09T22:04:18.993Z"
+    },
+    {
+      "id": "a4374688-63f3-4333-8d4c-c0703cfdac1b",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Candidate: /berichten (desktop)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate\\berichten\\screenshot-desktop.png",
+      "createdAt": "2026-04-09T22:04:22.530Z"
+    },
+    {
+      "id": "ad12995f-a93d-4a61-80aa-817b2f406362",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Candidate: /berichten (tablet)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate\\berichten\\screenshot-tablet.png",
+      "createdAt": "2026-04-09T22:04:23.755Z"
+    },
+    {
+      "id": "d04bd297-468d-4479-932f-94049f176729",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Candidate: /berichten (mobile)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate\\berichten\\screenshot-mobile.png",
+      "createdAt": "2026-04-09T22:04:24.560Z"
+    },
+    {
+      "id": "60cfa370-8d50-4864-a11a-3fd5e1337e78",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Candidate: /contact (desktop)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate\\contact\\screenshot-desktop.png",
+      "createdAt": "2026-04-09T22:04:28.432Z"
+    },
+    {
+      "id": "c2a48788-b528-4a4c-b6d7-76bb0140351b",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Candidate: /contact (tablet)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate\\contact\\screenshot-tablet.png",
+      "createdAt": "2026-04-09T22:04:29.263Z"
+    },
+    {
+      "id": "57165f7b-b7a0-44ad-8f33-8563c99921eb",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Candidate: /contact (mobile)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\candidate\\contact\\screenshot-mobile.png",
+      "createdAt": "2026-04-09T22:04:30.012Z"
+    },
+    {
+      "id": "f7f39ec3-e936-4cf3-b648-7bdf186b0a1b",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
-      "label": "Crawl Summary",
-      "path": "data/artifacts/22acd8dc-0710-4f63-9ffa-154f28e49ff6/crawl-summary.json",
-      "createdAt": "2026-04-07T12:09:56.648Z"
+      "label": "Functional QA Results",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\functional-qa-results.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "52845874-024b-456c-ba12-5f3461cd3392",
-      "runId": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
+      "id": "dc46143d-ced5-425f-94ae-c32f5e04e526",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
-      "label": "AI Reasoning Results",
-      "path": "data/artifacts\\22acd8dc-0710-4f63-9ffa-154f28e49ff6\\ai-reasoning-results.json",
-      "createdAt": "2026-04-07T12:09:56.648Z"
+      "label": "Baseline HAR: /",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\har\\baseline\\index.har",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "754b552b-955d-4b55-979e-fb286a92f3ca",
-      "runId": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
+      "id": "bee49527-bede-4202-a36c-53f29a4c9fa0",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
-      "label": "Migration Test Report (JSON)",
-      "path": "data/artifacts\\22acd8dc-0710-4f63-9ffa-154f28e49ff6\\reports\\report.json",
-      "createdAt": "2026-04-07T12:09:56.648Z"
+      "label": "Baseline HAR: /home",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\har\\baseline\\home.har",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "e505c6e4-e642-4e2c-9617-24613b1c27d9",
-      "runId": "22acd8dc-0710-4f63-9ffa-154f28e49ff6",
+      "id": "8bcad674-c1f1-4683-9503-315648e16d43",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
-      "label": "Migration Test Report (Markdown)",
-      "path": "data/artifacts\\22acd8dc-0710-4f63-9ffa-154f28e49ff6\\reports\\report.md",
-      "createdAt": "2026-04-07T12:09:56.648Z"
+      "label": "Baseline HAR: /tv-gids-nederland",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\har\\baseline\\tv-gids-nederland.har",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "e986438f-ac93-47a4-8193-dc6afef210fb",
-      "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "id": "55dc1a52-1e4c-4bec-ab78-38b78450a696",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
-      "label": "Baseline Crawl Results",
-      "path": "data/artifacts\\7c01eac6-995f-4265-b377-8b6db5ea4024\\baseline-crawl.json",
-      "createdAt": "2026-04-07T12:12:15.115Z"
+      "label": "Baseline HAR: /bbc-first-nieuws",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\har\\baseline\\bbc-first-nieuws.har",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "8fde7823-5e1b-432a-a5a3-8a70c5f10723",
-      "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "id": "5d9b2be0-f158-4549-aa1e-19ea4b23c2b3",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
-      "label": "Candidate Crawl Results",
-      "path": "data/artifacts\\7c01eac6-995f-4265-b377-8b6db5ea4024\\candidate-crawl.json",
-      "createdAt": "2026-04-07T12:12:15.115Z"
+      "label": "Baseline HAR: /berichten",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\har\\baseline\\berichten.har",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "58067208-0171-4c69-ba31-2f64012d9b85",
-      "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "id": "9d2cd42a-1e76-4ef3-a6f7-c71c6d7c4e79",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
-      "label": "Matched Pages",
-      "path": "data/artifacts\\7c01eac6-995f-4265-b377-8b6db5ea4024\\matched-pages.json",
-      "createdAt": "2026-04-07T12:12:15.115Z"
+      "label": "Baseline HAR: /contact",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\har\\baseline\\contact.har",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "d5f0cda3-775c-4dcb-baef-86677d3de1a5",
-      "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "id": "afea29b2-8665-44c1-86c6-052ed7dd30ca",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
-      "label": "Generated Page Map",
-      "path": "data/artifacts\\7c01eac6-995f-4265-b377-8b6db5ea4024\\generated-pageMap.json",
-      "createdAt": "2026-04-07T12:12:15.115Z"
+      "label": "Candidate HAR: /",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\har\\candidate\\index.har",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "1bb2caaa-8e6c-4b60-af58-442a2ee56822",
-      "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "id": "6aa55237-d522-41c2-935d-feed7caf051e",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "Candidate HAR: /home",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\har\\candidate\\home.har",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "5e315f25-9985-4dcc-888e-22d46055ecc7",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "Candidate HAR: /tv-gids-nederland",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\har\\candidate\\tv-gids-nederland.har",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "bc3d705d-c2c3-4955-b8d2-bfab2b7f2507",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "Candidate HAR: /bbc-first-nieuws",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\har\\candidate\\bbc-first-nieuws.har",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "f9e406ea-c90c-47d8-a536-b33685ace4e7",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "Candidate HAR: /berichten",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\har\\candidate\\berichten.har",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "a0fb3204-38dd-4b51-b557-306912e2ac09",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "Candidate HAR: /contact",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\har\\candidate\\contact.har",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "353d76c4-e2a6-4862-abf7-002a99ff9c4d",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "log",
-      "label": "Crawl Log",
-      "path": "data/artifacts\\7c01eac6-995f-4265-b377-8b6db5ea4024\\crawl.log",
-      "createdAt": "2026-04-07T12:12:15.115Z"
+      "label": "Data Integrity Error",
+      "path": "data/artifacts/a76f121d-a8be-486f-a446-54bcfbfa5ae3/data-integrity-error.log",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "c451ccff-86b1-447f-aaf2-ef55a6d59068",
-      "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "id": "a7d2736d-cb0f-49ef-ae65-128f4f77210d",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
-      "label": "Crawl Summary",
-      "path": "data/artifacts/7c01eac6-995f-4265-b377-8b6db5ea4024/crawl-summary.json",
-      "createdAt": "2026-04-07T12:12:15.115Z"
+      "label": "SEO: /",
+      "path": "data/artifacts/a76f121d-a8be-486f-a446-54bcfbfa5ae3/seo/index.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "a0d2427b-d9a0-4085-b4ac-c63ac2fb96e6",
-      "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "id": "bc8aee1e-53ad-41ca-8816-b69be5e1e443",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "SEO: /home",
+      "path": "data/artifacts/a76f121d-a8be-486f-a446-54bcfbfa5ae3/seo/home.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "c24c1124-18d0-4624-8300-3faa92314336",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "SEO: /tv-gids-nederland",
+      "path": "data/artifacts/a76f121d-a8be-486f-a446-54bcfbfa5ae3/seo/tv-gids-nederland.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "7cb586ad-7923-4aee-87ea-22da9d804efc",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "SEO: /bbc-first-nieuws",
+      "path": "data/artifacts/a76f121d-a8be-486f-a446-54bcfbfa5ae3/seo/bbc-first-nieuws.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "69fea493-cb96-462d-8191-0c41023c4575",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "SEO: /berichten",
+      "path": "data/artifacts/a76f121d-a8be-486f-a446-54bcfbfa5ae3/seo/berichten.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "ad6dd90c-180e-4ebb-897c-d3ede6495912",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "SEO: /contact",
+      "path": "data/artifacts/a76f121d-a8be-486f-a446-54bcfbfa5ae3/seo/contact.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "7304e7c5-38eb-4f00-ac69-9dc182262eeb",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "Security: /",
+      "path": "data/artifacts/a76f121d-a8be-486f-a446-54bcfbfa5ae3/security/index.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "afcf2d76-7a25-401e-951b-128bfc048372",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "Security: /home",
+      "path": "data/artifacts/a76f121d-a8be-486f-a446-54bcfbfa5ae3/security/home.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "026217d8-467c-4514-907d-0dfd34aff883",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "Security: /tv-gids-nederland",
+      "path": "data/artifacts/a76f121d-a8be-486f-a446-54bcfbfa5ae3/security/tv-gids-nederland.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "1441c8ea-1009-4d49-8f70-0fbb3bed1c4b",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "Security: /bbc-first-nieuws",
+      "path": "data/artifacts/a76f121d-a8be-486f-a446-54bcfbfa5ae3/security/bbc-first-nieuws.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "801be4db-05b0-48e8-ada6-d9d2809e1949",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "Security: /berichten",
+      "path": "data/artifacts/a76f121d-a8be-486f-a446-54bcfbfa5ae3/security/berichten.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "f2a68d9f-c325-4dc1-ac0b-6c408615e6f3",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "Security: /contact",
+      "path": "data/artifacts/a76f121d-a8be-486f-a446-54bcfbfa5ae3/security/contact.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "2afe75c3-821f-4a1b-81d7-29b2a2f53b5f",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "Performance: /",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\performance\\index.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "17af979f-d1da-4bf3-b956-e332df39fbd8",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "Performance: /home",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\performance\\home.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "c6d6ed8a-5465-4cee-9309-479380328ba0",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "Performance: /tv-gids-nederland",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\performance\\tv-gids-nederland.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "720f6612-8f85-4c9f-8a20-ae630b5a80b6",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "Performance: /bbc-first-nieuws",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\performance\\bbc-first-nieuws.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "da94712b-59df-4755-9229-2776fecd4992",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "Performance: /berichten",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\performance\\berichten.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "fbadcd87-eb2c-497f-9bdd-28c01b513d8f",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "Performance: /contact",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\performance\\contact.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "e183b9fe-d419-44e7-85c5-38aa1f190d9b",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "UI Integrity Results",
+      "path": "data/artifacts/a76f121d-a8be-486f-a446-54bcfbfa5ae3/ui-integrity.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "90344c81-ad6a-4f30-9da2-5cd9b98792e3",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "UI Integrity Suggestions",
+      "path": "data/artifacts/a76f121d-a8be-486f-a446-54bcfbfa5ae3/ui-integrity-suggestions.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "14f87f76-c2cc-4938-be01-4e2025009fa6",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "UI Integrity Fixes CSS",
+      "path": "data/artifacts/a76f121d-a8be-486f-a446-54bcfbfa5ae3/ui-integrity-fixes.css",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "904483cb-178a-41b9-929f-d93e5c71f10a",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "report",
+      "label": "Visual Diff Results",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diff-results.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
+    },
+    {
+      "id": "931788b0-2db2-4d39-9fb6-3e3d0fec03f9",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Diff: / (desktop) - high",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\index\\diff-desktop.png",
+      "createdAt": "2026-04-09T22:13:49.697Z"
+    },
+    {
+      "id": "83d17574-64ce-4e8f-9f7f-c276e829a57c",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Heatmap: / (desktop)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\index\\heatmap-desktop.png",
+      "createdAt": "2026-04-09T22:13:49.697Z"
+    },
+    {
+      "id": "683b2793-f0ef-47a6-8978-2baa51794c2b",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Diff: / (tablet) - high",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\index\\diff-tablet.png",
+      "createdAt": "2026-04-09T22:14:10.343Z"
+    },
+    {
+      "id": "73b46cdf-5758-4c07-8ab1-e6bcf68a4391",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Heatmap: / (tablet)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\index\\heatmap-tablet.png",
+      "createdAt": "2026-04-09T22:14:10.343Z"
+    },
+    {
+      "id": "9dbe45d5-4901-4dd7-86d5-53edbb872b08",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Diff: / (mobile) - high",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\index\\diff-mobile.png",
+      "createdAt": "2026-04-09T22:14:18.927Z"
+    },
+    {
+      "id": "0f3518f0-04c9-4f79-ab65-b7903298abd9",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Heatmap: / (mobile)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\index\\heatmap-mobile.png",
+      "createdAt": "2026-04-09T22:14:18.927Z"
+    },
+    {
+      "id": "5ca5d584-9c38-4388-b9b2-a466f50a9467",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Diff: /home (desktop) - high",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\home\\diff-desktop.png",
+      "createdAt": "2026-04-09T22:14:35.358Z"
+    },
+    {
+      "id": "5a0915eb-54b1-4475-90a5-9b1697ba4193",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Heatmap: /home (desktop)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\home\\heatmap-desktop.png",
+      "createdAt": "2026-04-09T22:14:35.358Z"
+    },
+    {
+      "id": "0c8f4f40-ffbe-455e-bfd1-ce875cf67b2c",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Diff: /home (tablet) - high",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\home\\diff-tablet.png",
+      "createdAt": "2026-04-09T22:14:55.807Z"
+    },
+    {
+      "id": "2c234a01-3de7-49ab-bf64-65ed426ef7a7",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Heatmap: /home (tablet)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\home\\heatmap-tablet.png",
+      "createdAt": "2026-04-09T22:14:55.807Z"
+    },
+    {
+      "id": "5396687a-fbc8-40c5-9744-c551d7f70f71",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Diff: /home (mobile) - high",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\home\\diff-mobile.png",
+      "createdAt": "2026-04-09T22:15:04.494Z"
+    },
+    {
+      "id": "3adee2ce-aafe-4ee3-9c16-894b0d3314e8",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Heatmap: /home (mobile)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\home\\heatmap-mobile.png",
+      "createdAt": "2026-04-09T22:15:04.494Z"
+    },
+    {
+      "id": "8ececc95-c250-477b-ab13-8f6fd670f846",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Diff: /tv-gids-nederland (desktop) - high",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\tv-gids-nederland\\diff-desktop.png",
+      "createdAt": "2026-04-09T22:15:10.617Z"
+    },
+    {
+      "id": "9976c3b7-2a4d-474f-b449-f0c0a0118688",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Heatmap: /tv-gids-nederland (desktop)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\tv-gids-nederland\\heatmap-desktop.png",
+      "createdAt": "2026-04-09T22:15:10.617Z"
+    },
+    {
+      "id": "2f129134-9984-4722-9f9f-19be683deeca",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Diff: /tv-gids-nederland (tablet) - high",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\tv-gids-nederland\\diff-tablet.png",
+      "createdAt": "2026-04-09T22:15:14.546Z"
+    },
+    {
+      "id": "82e7d2bf-b041-44a9-ad8e-6f371db21ee9",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Heatmap: /tv-gids-nederland (tablet)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\tv-gids-nederland\\heatmap-tablet.png",
+      "createdAt": "2026-04-09T22:15:14.546Z"
+    },
+    {
+      "id": "99d73d8c-7ae2-4525-9bfc-ba0cae2b5b9b",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Diff: /tv-gids-nederland (mobile) - high",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\tv-gids-nederland\\diff-mobile.png",
+      "createdAt": "2026-04-09T22:15:19.141Z"
+    },
+    {
+      "id": "cb6928ec-c89f-4b16-83f5-e3b156ba2642",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Heatmap: /tv-gids-nederland (mobile)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\tv-gids-nederland\\heatmap-mobile.png",
+      "createdAt": "2026-04-09T22:15:19.141Z"
+    },
+    {
+      "id": "7989dd07-146c-452b-a89b-d5c7abbd7c2d",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Diff: /bbc-first-nieuws (desktop) - high",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\bbc-first-nieuws\\diff-desktop.png",
+      "createdAt": "2026-04-09T22:15:30.301Z"
+    },
+    {
+      "id": "768d9f3d-e705-402e-bc6b-f195ab833174",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Heatmap: /bbc-first-nieuws (desktop)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\bbc-first-nieuws\\heatmap-desktop.png",
+      "createdAt": "2026-04-09T22:15:30.301Z"
+    },
+    {
+      "id": "d545cbe6-122b-449a-88c4-1f205cbc6953",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Diff: /bbc-first-nieuws (tablet) - high",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\bbc-first-nieuws\\diff-tablet.png",
+      "createdAt": "2026-04-09T22:15:42.035Z"
+    },
+    {
+      "id": "d0bb5d74-64f7-4326-ae0f-5e8a9184c263",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Heatmap: /bbc-first-nieuws (tablet)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\bbc-first-nieuws\\heatmap-tablet.png",
+      "createdAt": "2026-04-09T22:15:42.035Z"
+    },
+    {
+      "id": "40987bbd-ccb6-4348-a4dd-9f06b4cdc1e5",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Diff: /bbc-first-nieuws (mobile) - high",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\bbc-first-nieuws\\diff-mobile.png",
+      "createdAt": "2026-04-09T22:15:46.820Z"
+    },
+    {
+      "id": "eeeba4f9-3cdb-4c31-96c3-f0705254680b",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Heatmap: /bbc-first-nieuws (mobile)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\bbc-first-nieuws\\heatmap-mobile.png",
+      "createdAt": "2026-04-09T22:15:46.820Z"
+    },
+    {
+      "id": "36c0fcaf-f024-4ca7-bb74-3f3ddd9b1623",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Diff: /berichten (desktop) - high",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\berichten\\diff-desktop.png",
+      "createdAt": "2026-04-09T22:15:53.782Z"
+    },
+    {
+      "id": "9755e534-7191-46ca-b937-34493d4d3c76",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Heatmap: /berichten (desktop)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\berichten\\heatmap-desktop.png",
+      "createdAt": "2026-04-09T22:15:53.782Z"
+    },
+    {
+      "id": "debcfb75-055a-4941-aba8-8d8258492042",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Diff: /berichten (tablet) - high",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\berichten\\diff-tablet.png",
+      "createdAt": "2026-04-09T22:15:58.739Z"
+    },
+    {
+      "id": "798c29de-1aa2-47e5-9d56-7729f8e10968",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Heatmap: /berichten (tablet)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\berichten\\heatmap-tablet.png",
+      "createdAt": "2026-04-09T22:15:58.739Z"
+    },
+    {
+      "id": "fb94f6c0-6c2a-44fa-8530-66004e5875b9",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Diff: /berichten (mobile) - high",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\berichten\\diff-mobile.png",
+      "createdAt": "2026-04-09T22:16:00.362Z"
+    },
+    {
+      "id": "88090eeb-20d6-4214-8697-bdc3b8322969",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Heatmap: /berichten (mobile)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\berichten\\heatmap-mobile.png",
+      "createdAt": "2026-04-09T22:16:00.362Z"
+    },
+    {
+      "id": "13651fe4-b047-4451-9635-4d642985bc99",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Diff: /contact (desktop) - high",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\contact\\diff-desktop.png",
+      "createdAt": "2026-04-09T22:16:07.317Z"
+    },
+    {
+      "id": "51a528d7-3942-4ca8-965c-0cd2501b4366",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Heatmap: /contact (desktop)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\contact\\heatmap-desktop.png",
+      "createdAt": "2026-04-09T22:16:07.317Z"
+    },
+    {
+      "id": "d11dff01-5420-44e5-aa63-b205a5392c53",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Diff: /contact (tablet) - high",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\contact\\diff-tablet.png",
+      "createdAt": "2026-04-09T22:16:10.365Z"
+    },
+    {
+      "id": "bdce1e6e-19e5-48c8-b4d3-22ac0a0485f5",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Heatmap: /contact (tablet)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\contact\\heatmap-tablet.png",
+      "createdAt": "2026-04-09T22:16:10.365Z"
+    },
+    {
+      "id": "a4c1543d-3295-4632-bbcb-dd77717a2144",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Diff: /contact (mobile) - high",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\contact\\diff-mobile.png",
+      "createdAt": "2026-04-09T22:16:11.914Z"
+    },
+    {
+      "id": "5715c749-1e70-44c9-955e-7859f344297d",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
+      "type": "screenshot",
+      "label": "Heatmap: /contact (mobile)",
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\visual-diffs\\contact\\heatmap-mobile.png",
+      "createdAt": "2026-04-09T22:16:11.914Z"
+    },
+    {
+      "id": "0a4c5131-2a5b-436d-81fe-db0e7f2fc8c9",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
       "label": "AI Reasoning Results",
-      "path": "data/artifacts\\7c01eac6-995f-4265-b377-8b6db5ea4024\\ai-reasoning-results.json",
-      "createdAt": "2026-04-07T12:12:15.115Z"
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\ai-reasoning-results.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "773440a6-1327-4f5d-ae7c-ae7476c611bb",
-      "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "id": "d50dd756-d24f-4030-8df4-040737d699ca",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
       "label": "Migration Test Report (JSON)",
-      "path": "data/artifacts\\7c01eac6-995f-4265-b377-8b6db5ea4024\\reports\\report.json",
-      "createdAt": "2026-04-07T12:12:15.115Z"
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\reports\\report.json",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     },
     {
-      "id": "ed06f096-900c-4de5-87c5-9341b32fd4ed",
-      "runId": "7c01eac6-995f-4265-b377-8b6db5ea4024",
+      "id": "1a16abb4-2098-4d13-9181-9101a7c5ca25",
+      "runId": "a76f121d-a8be-486f-a446-54bcfbfa5ae3",
       "type": "report",
       "label": "Migration Test Report (Markdown)",
-      "path": "data/artifacts\\7c01eac6-995f-4265-b377-8b6db5ea4024\\reports\\report.md",
-      "createdAt": "2026-04-07T12:12:15.115Z"
-    },
-    {
-      "id": "ba1a310a-f154-4569-802d-f06e6c5fa204",
-      "runId": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
-      "type": "report",
-      "label": "Baseline Crawl Results",
-      "path": "data/artifacts\\c6d23ed5-93f8-43ae-9180-65b3600f0f62\\baseline-crawl.json",
-      "createdAt": "2026-04-07T12:14:07.041Z"
-    },
-    {
-      "id": "0c152f52-2b6f-4171-a485-7015e8ba2bd6",
-      "runId": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
-      "type": "report",
-      "label": "Candidate Crawl Results",
-      "path": "data/artifacts\\c6d23ed5-93f8-43ae-9180-65b3600f0f62\\candidate-crawl.json",
-      "createdAt": "2026-04-07T12:14:07.041Z"
-    },
-    {
-      "id": "9ac195ab-8c21-4b49-ab42-377bf5638ef6",
-      "runId": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
-      "type": "report",
-      "label": "Matched Pages",
-      "path": "data/artifacts\\c6d23ed5-93f8-43ae-9180-65b3600f0f62\\matched-pages.json",
-      "createdAt": "2026-04-07T12:14:07.041Z"
-    },
-    {
-      "id": "b4413a43-82ef-4bf0-9980-642f9ef45b53",
-      "runId": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
-      "type": "report",
-      "label": "Generated Page Map",
-      "path": "data/artifacts\\c6d23ed5-93f8-43ae-9180-65b3600f0f62\\generated-pageMap.json",
-      "createdAt": "2026-04-07T12:14:07.041Z"
-    },
-    {
-      "id": "1b2c8fc9-7712-4136-843c-f5a058f8d9e6",
-      "runId": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
-      "type": "log",
-      "label": "Crawl Log",
-      "path": "data/artifacts\\c6d23ed5-93f8-43ae-9180-65b3600f0f62\\crawl.log",
-      "createdAt": "2026-04-07T12:14:07.041Z"
-    },
-    {
-      "id": "324b7a08-da51-436a-a0a2-e884cb48552e",
-      "runId": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
-      "type": "report",
-      "label": "Crawl Summary",
-      "path": "data/artifacts/c6d23ed5-93f8-43ae-9180-65b3600f0f62/crawl-summary.json",
-      "createdAt": "2026-04-07T12:14:07.041Z"
-    },
-    {
-      "id": "c462d91e-7ca9-46fd-8722-3bd6f51c866e",
-      "runId": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
-      "type": "report",
-      "label": "AI Reasoning Results",
-      "path": "data/artifacts\\c6d23ed5-93f8-43ae-9180-65b3600f0f62\\ai-reasoning-results.json",
-      "createdAt": "2026-04-07T12:14:07.041Z"
-    },
-    {
-      "id": "359494b4-e24e-4419-8265-df1715a38054",
-      "runId": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
-      "type": "report",
-      "label": "Migration Test Report (JSON)",
-      "path": "data/artifacts\\c6d23ed5-93f8-43ae-9180-65b3600f0f62\\reports\\report.json",
-      "createdAt": "2026-04-07T12:14:07.041Z"
-    },
-    {
-      "id": "57d831f6-2726-44d2-ab64-8830be13e226",
-      "runId": "c6d23ed5-93f8-43ae-9180-65b3600f0f62",
-      "type": "report",
-      "label": "Migration Test Report (Markdown)",
-      "path": "data/artifacts\\c6d23ed5-93f8-43ae-9180-65b3600f0f62\\reports\\report.md",
-      "createdAt": "2026-04-07T12:14:07.041Z"
-    },
-    {
-      "id": "95dd146e-5ea7-4683-aac7-c8d44a7216d8",
-      "runId": "530ba959-812b-4cca-861a-a7d2e93dbd68",
-      "type": "report",
-      "label": "Baseline Crawl Results",
-      "path": "data/artifacts\\530ba959-812b-4cca-861a-a7d2e93dbd68\\baseline-crawl.json",
-      "createdAt": "2026-04-07T12:15:46.779Z"
-    },
-    {
-      "id": "2337433f-f410-4e4a-910f-22d9162385d8",
-      "runId": "530ba959-812b-4cca-861a-a7d2e93dbd68",
-      "type": "report",
-      "label": "Candidate Crawl Results",
-      "path": "data/artifacts\\530ba959-812b-4cca-861a-a7d2e93dbd68\\candidate-crawl.json",
-      "createdAt": "2026-04-07T12:15:46.779Z"
-    },
-    {
-      "id": "e35cea0e-2a90-4175-8898-fc9024690073",
-      "runId": "530ba959-812b-4cca-861a-a7d2e93dbd68",
-      "type": "report",
-      "label": "Matched Pages",
-      "path": "data/artifacts\\530ba959-812b-4cca-861a-a7d2e93dbd68\\matched-pages.json",
-      "createdAt": "2026-04-07T12:15:46.779Z"
-    },
-    {
-      "id": "977ed284-9060-4919-aa0f-7daeaa3bf494",
-      "runId": "530ba959-812b-4cca-861a-a7d2e93dbd68",
-      "type": "report",
-      "label": "Generated Page Map",
-      "path": "data/artifacts\\530ba959-812b-4cca-861a-a7d2e93dbd68\\generated-pageMap.json",
-      "createdAt": "2026-04-07T12:15:46.779Z"
-    },
-    {
-      "id": "b26a9e32-f88c-456a-9ed4-aecf73fcb6fe",
-      "runId": "530ba959-812b-4cca-861a-a7d2e93dbd68",
-      "type": "log",
-      "label": "Crawl Log",
-      "path": "data/artifacts\\530ba959-812b-4cca-861a-a7d2e93dbd68\\crawl.log",
-      "createdAt": "2026-04-07T12:15:46.779Z"
-    },
-    {
-      "id": "ca1cba3d-d7e4-4a31-bf9f-1a4ce18a9ea4",
-      "runId": "530ba959-812b-4cca-861a-a7d2e93dbd68",
-      "type": "report",
-      "label": "Crawl Summary",
-      "path": "data/artifacts/530ba959-812b-4cca-861a-a7d2e93dbd68/crawl-summary.json",
-      "createdAt": "2026-04-07T12:15:46.779Z"
-    },
-    {
-      "id": "c8baec3a-76a7-4d3e-9455-734c38f3c30e",
-      "runId": "530ba959-812b-4cca-861a-a7d2e93dbd68",
-      "type": "report",
-      "label": "AI Reasoning Results",
-      "path": "data/artifacts\\530ba959-812b-4cca-861a-a7d2e93dbd68\\ai-reasoning-results.json",
-      "createdAt": "2026-04-07T12:15:46.779Z"
-    },
-    {
-      "id": "992d7ed5-7156-4b26-89a4-5954f581f622",
-      "runId": "530ba959-812b-4cca-861a-a7d2e93dbd68",
-      "type": "report",
-      "label": "Migration Test Report (JSON)",
-      "path": "data/artifacts\\530ba959-812b-4cca-861a-a7d2e93dbd68\\reports\\report.json",
-      "createdAt": "2026-04-07T12:15:46.779Z"
-    },
-    {
-      "id": "6a01e1d0-0db4-417f-bbaa-e052a6754376",
-      "runId": "530ba959-812b-4cca-861a-a7d2e93dbd68",
-      "type": "report",
-      "label": "Migration Test Report (Markdown)",
-      "path": "data/artifacts\\530ba959-812b-4cca-861a-a7d2e93dbd68\\reports\\report.md",
-      "createdAt": "2026-04-07T12:15:46.779Z"
-    },
-    {
-      "id": "d568e10b-4169-4e9c-b20d-4482c14a1aa9",
-      "runId": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
-      "type": "report",
-      "label": "Baseline Crawl Results",
-      "path": "data/artifacts\\abad47e1-b0c9-40c1-a496-ffa3268d14b2\\baseline-crawl.json",
-      "createdAt": "2026-04-07T12:16:42.829Z"
-    },
-    {
-      "id": "e3adfd86-4ffa-4696-a6c3-1c19e33878c0",
-      "runId": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
-      "type": "report",
-      "label": "Candidate Crawl Results",
-      "path": "data/artifacts\\abad47e1-b0c9-40c1-a496-ffa3268d14b2\\candidate-crawl.json",
-      "createdAt": "2026-04-07T12:16:42.829Z"
-    },
-    {
-      "id": "a9c5941a-0599-42d0-bf26-854ba14db81b",
-      "runId": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
-      "type": "report",
-      "label": "Matched Pages",
-      "path": "data/artifacts\\abad47e1-b0c9-40c1-a496-ffa3268d14b2\\matched-pages.json",
-      "createdAt": "2026-04-07T12:16:42.829Z"
-    },
-    {
-      "id": "759ef36a-e30b-49ce-9777-3391c543f5e1",
-      "runId": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
-      "type": "report",
-      "label": "Generated Page Map",
-      "path": "data/artifacts\\abad47e1-b0c9-40c1-a496-ffa3268d14b2\\generated-pageMap.json",
-      "createdAt": "2026-04-07T12:16:42.829Z"
-    },
-    {
-      "id": "c524dd69-0ead-47b2-94ca-dd738eb31717",
-      "runId": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
-      "type": "log",
-      "label": "Crawl Log",
-      "path": "data/artifacts\\abad47e1-b0c9-40c1-a496-ffa3268d14b2\\crawl.log",
-      "createdAt": "2026-04-07T12:16:42.829Z"
-    },
-    {
-      "id": "33c0abe0-b40f-4e0d-8f0d-40ecc90d52ae",
-      "runId": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
-      "type": "report",
-      "label": "Crawl Summary",
-      "path": "data/artifacts/abad47e1-b0c9-40c1-a496-ffa3268d14b2/crawl-summary.json",
-      "createdAt": "2026-04-07T12:16:42.829Z"
-    },
-    {
-      "id": "d973622a-a39d-432f-8210-745e748a0952",
-      "runId": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
-      "type": "report",
-      "label": "AI Reasoning Results",
-      "path": "data/artifacts\\abad47e1-b0c9-40c1-a496-ffa3268d14b2\\ai-reasoning-results.json",
-      "createdAt": "2026-04-07T12:16:42.829Z"
-    },
-    {
-      "id": "7b080368-c72c-4823-85c6-3862ff029537",
-      "runId": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
-      "type": "report",
-      "label": "Migration Test Report (JSON)",
-      "path": "data/artifacts\\abad47e1-b0c9-40c1-a496-ffa3268d14b2\\reports\\report.json",
-      "createdAt": "2026-04-07T12:16:42.829Z"
-    },
-    {
-      "id": "5da1996d-3271-4271-9ebd-cd5aa30cea01",
-      "runId": "abad47e1-b0c9-40c1-a496-ffa3268d14b2",
-      "type": "report",
-      "label": "Migration Test Report (Markdown)",
-      "path": "data/artifacts\\abad47e1-b0c9-40c1-a496-ffa3268d14b2\\reports\\report.md",
-      "createdAt": "2026-04-07T12:16:42.829Z"
-    },
-    {
-      "id": "c7eba6bc-19a1-472c-a8e6-7d0dcca5f651",
-      "runId": "dc266f23-5468-4dce-86cf-4c8f287eda26",
-      "type": "report",
-      "label": "Baseline Crawl Results",
-      "path": "data/artifacts\\dc266f23-5468-4dce-86cf-4c8f287eda26\\baseline-crawl.json",
-      "createdAt": "2026-04-07T13:15:14.086Z"
-    },
-    {
-      "id": "842777fc-1d8c-4f0b-86d3-426ef1055fba",
-      "runId": "dc266f23-5468-4dce-86cf-4c8f287eda26",
-      "type": "report",
-      "label": "Candidate Crawl Results",
-      "path": "data/artifacts\\dc266f23-5468-4dce-86cf-4c8f287eda26\\candidate-crawl.json",
-      "createdAt": "2026-04-07T13:15:14.086Z"
-    },
-    {
-      "id": "73b8e0ff-7200-49fc-b6e6-a36c29e43d1e",
-      "runId": "dc266f23-5468-4dce-86cf-4c8f287eda26",
-      "type": "report",
-      "label": "Matched Pages",
-      "path": "data/artifacts\\dc266f23-5468-4dce-86cf-4c8f287eda26\\matched-pages.json",
-      "createdAt": "2026-04-07T13:15:14.086Z"
-    },
-    {
-      "id": "4076459a-1f42-49ba-9582-054a2c728d13",
-      "runId": "dc266f23-5468-4dce-86cf-4c8f287eda26",
-      "type": "report",
-      "label": "Generated Page Map",
-      "path": "data/artifacts\\dc266f23-5468-4dce-86cf-4c8f287eda26\\generated-pageMap.json",
-      "createdAt": "2026-04-07T13:15:14.086Z"
-    },
-    {
-      "id": "ca481e9e-9ad9-4e5b-9dc6-2bbcfe9c94f4",
-      "runId": "dc266f23-5468-4dce-86cf-4c8f287eda26",
-      "type": "log",
-      "label": "Crawl Log",
-      "path": "data/artifacts\\dc266f23-5468-4dce-86cf-4c8f287eda26\\crawl.log",
-      "createdAt": "2026-04-07T13:15:14.086Z"
-    },
-    {
-      "id": "84ba31c8-6c3c-4098-86a7-277b5739df02",
-      "runId": "dc266f23-5468-4dce-86cf-4c8f287eda26",
-      "type": "report",
-      "label": "Crawl Summary",
-      "path": "data/artifacts/dc266f23-5468-4dce-86cf-4c8f287eda26/crawl-summary.json",
-      "createdAt": "2026-04-07T13:15:14.086Z"
-    },
-    {
-      "id": "58c0b85b-bea4-4842-96d6-2ca64c88ba79",
-      "runId": "dc266f23-5468-4dce-86cf-4c8f287eda26",
-      "type": "report",
-      "label": "AI Reasoning Results",
-      "path": "data/artifacts\\dc266f23-5468-4dce-86cf-4c8f287eda26\\ai-reasoning-results.json",
-      "createdAt": "2026-04-07T13:15:14.086Z"
-    },
-    {
-      "id": "44819b01-24b2-4d9a-9cdf-9c82d5c700cb",
-      "runId": "dc266f23-5468-4dce-86cf-4c8f287eda26",
-      "type": "report",
-      "label": "Migration Test Report (JSON)",
-      "path": "data/artifacts\\dc266f23-5468-4dce-86cf-4c8f287eda26\\reports\\report.json",
-      "createdAt": "2026-04-07T13:15:14.086Z"
-    },
-    {
-      "id": "3cb25f2a-e7fc-44cb-b1d4-8a2983bd1009",
-      "runId": "dc266f23-5468-4dce-86cf-4c8f287eda26",
-      "type": "report",
-      "label": "Migration Test Report (Markdown)",
-      "path": "data/artifacts\\dc266f23-5468-4dce-86cf-4c8f287eda26\\reports\\report.md",
-      "createdAt": "2026-04-07T13:15:14.086Z"
+      "path": "data/artifacts\\a76f121d-a8be-486f-a446-54bcfbfa5ae3\\reports\\report.md",
+      "createdAt": "2026-04-09T22:03:24.933Z"
     }
   ],
   "metadata": {}

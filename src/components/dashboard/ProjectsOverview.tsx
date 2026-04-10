@@ -57,7 +57,7 @@ export function ProjectsOverview() {
             <div className="flex items-start justify-between mb-3">
               <div>
                 <h4 className="font-medium text-sm">{project.name}</h4>
-                <div className="flex items-center gap-2 mt-1 text-xs text-muted-foreground">
+                <div className="flex items-center gap-2 mt-1 text-xs text-foreground">
                   <Calendar className="w-3 h-3" />
                   <span>Cutover: {format(new Date(project.cutoverDate), 'MMM d, yyyy')}</span>
                 </div>

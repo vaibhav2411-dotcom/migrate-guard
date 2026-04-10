@@ -8,7 +8,7 @@ describe('SeoAgent', () => {
     const baseline: SeoSnapshot = {
       title: 'Example Domain',
       metaDescription: 'Baseline description',
-      canonical: 'https://example.com/',
+      canonical: '',
       robots: 'index,follow',
       ogTitle: 'Example OG',
       ogDescription: 'OG desc',

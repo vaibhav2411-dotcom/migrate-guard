@@ -16,7 +16,15 @@ export class FileStorage implements StoragePort {
   async load(): Promise<StorageSnapshot> {
     try {
       const buf = await fs.readFile(SNAPSHOT_FILE, 'utf-8');
-      const parsed = JSON.parse(buf) as StorageSnapshot;
+      let parsed: StorageSnapshot;
+      try {
+        parsed = JSON.parse(buf) as StorageSnapshot;
+      } catch (parseErr) {
+        // Recover from malformed snapshot data by reinitializing storage.
+        await this.ensureDir();
+        await this.save(emptySnapshot);
+        return emptySnapshot;
+      }
       
       // Migrate old format if needed
       if (!parsed.version || parsed.version !== CURRENT_VERSION) {
@@ -68,6 +76,10 @@ export class FileStorage implements StoragePort {
           functional: true,
           data: true,
           seo: true,
+          performance: true,
+          security: true,
+          uiIntegrity: true,
+          accessibility: true,
         },
         status: job.status,
         createdAt: job.createdAt,

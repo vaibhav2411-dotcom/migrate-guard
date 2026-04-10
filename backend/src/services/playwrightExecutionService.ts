@@ -76,6 +76,7 @@ export interface PageExecutionResult {
   normalizedPath: string;
   screenshots: ScreenshotArtifact[];
   domSnapshots: DOMSnapshot[];
+  styles?: Array<{ selector: string; computed: Record<string, string> }>;
   consoleMessages: ConsoleMessage[];
   networkRequests: NetworkRequest[];
   networkFailures: NetworkRequest[];
@@ -321,6 +322,31 @@ export class PlaywrightExecutionService {
           timestamp: new Date().toISOString(),
           viewport: { width: viewport.width, height: viewport.height },
         });
+
+          // Capture computed styles for key selectors to help evidence UI/branding differences
+          try {
+            const selectors = ['body', 'header', 'nav', 'footer', '.branding', '.logo'];
+            const styles = await page.evaluate((sels) => {
+              const out: any[] = [];
+              for (const s of sels) {
+                const el = document.querySelector(s);
+                if (!el) continue;
+                const comp = window.getComputedStyle(el as Element);
+                const props: any = {};
+                // capture a small, relevant subset
+                ['backgroundColor', 'color', 'fontFamily', 'fontSize', 'display', 'width', 'height'].forEach((p) => {
+                  try { props[p] = comp.getPropertyValue(p); } catch { props[p] = '' }
+                });
+                out.push({ selector: s, computed: props });
+              }
+              return out;
+            }, selectors);
+            if (Array.isArray(styles) && styles.length > 0) {
+              result.styles = (result.styles || []).concat(styles as any);
+            }
+          } catch (err) {
+            // ignore style capture errors
+          }
       }
 
       // Reset to default viewport

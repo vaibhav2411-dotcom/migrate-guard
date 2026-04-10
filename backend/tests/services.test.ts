@@ -34,8 +34,8 @@ describe('JobService and RunService', () => {
     const created = await jobService.createJob({
       name: 'Test Job',
       description: 'A job for testing',
-      sourceUrl: 'https://old.example.com',
-      targetUrl: 'https://new.example.com',
+      sourceUrl: 'http://localhost',
+      targetUrl: 'http://localhost:8080',
     });
 
     expect(created.id).toBeDefined();
@@ -50,8 +50,8 @@ describe('JobService and RunService', () => {
     const job = await jobService.createJob({
       name: 'Job with run',
       description: 'Job to trigger run',
-      sourceUrl: 'https://old.example.com',
-      targetUrl: 'https://new.example.com',
+      sourceUrl: 'http://localhost',
+      targetUrl: 'http://localhost:8080',
     });
 
     const run = await runService.triggerRun(job.id, 'tester');

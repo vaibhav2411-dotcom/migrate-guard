@@ -196,6 +196,51 @@ Pull requests and issues are always welcome!
 - Extend the API in `backend/src/routes/api.ts` using strong schema validation
 - Follow conventions in `DEVELOPERS.md` for testability, feature flags, and separation of concerns
 
+## 🤖 AI Configuration
+
+### AI Governance & Disable Mode
+
+Migrate Guard supports two modes of operation:
+
+- **Deterministic mode (AI OFF):** All core validation runs without calling any AI endpoints; deterministic rules, diffs, accessibility, and performance checks are the source of truth. This is the default.
+- **AI-assisted mode (AI ON):** AI may be used for semantic summarization, visual interpretation, root-cause suggestions, and report polishing. AI is only an augmentation — deterministic checks remain authoritative.
+
+Controls (in order of precedence):
+
+- Per-run toggle: include `runSettings: { useAI: true|false }` in the run request body to enable AI for that run only.
+- Environment variable override: set `ENABLE_AI_REASONING=true` to force-enable AI for runs.
+- Global config flag: set `FEATURE_AI_REASONING=true` in the environment or `backend/src/config/config.ts` to enable AI by default.
+
+Default behavior: AI is OFF unless explicitly enabled via one of the controls above. When AI is disabled:
+
+- No calls to AI endpoints are made.
+- No prompts are generated or stored.
+- Reports are generated using deterministic rule-based logic and raw test outputs.
+- Final reports include the label: **"AI disabled — deterministic analysis only"**.
+
+Fallback behavior: If AI is enabled but the endpoint fails or returns invalid data, the runner logs the error, marks AI as degraded for the run, and continues with deterministic analysis. AI results are treated as advisory and must be validated against measured data.
+
+Implementation notes:
+
+- All AI calls are routed through `backend/src/services/aiReasoningService.ts`. Toggle checks are centralized in `AiReasoningService.shouldUseAI()`.
+- Environment examples updated: see `backend/.env.example` and `./.env.example` (default: AI OFF).
+
+
+- Copy the example env file to `backend/.env` and fill in your AI credentials:
+  - `backend/.env.example` contains Azure OpenAI and generic OpenAI-compatible variables.
+- Azure OpenAI variables (recommended): `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_KEY`, `AZURE_OPENAI_DEPLOYMENT_NAME`, `AZURE_OPENAI_API_VERSION`.
+- Generic OpenAI-compatible variables (alternative): `AI_BASE_URL`, `AI_API_KEY`, `AI_MODEL`.
+- Enable or disable AI features with feature flags in your environment or config (e.g. `FEATURE_AI_REASONING=true`).
+
+Control AI usage:
+- Global feature flag: `FEATURE_AI_REASONING=true|false` (in `backend/src/config/config.ts`)
+- Env override: `ENABLE_AI_REASONING=true|false` (takes precedence if set)
+- Per-run toggle: include `runSettings: { useAI: true|false }` in the `POST /api/jobs/:id/run` body to enable AI for that run only.
+
+Default behavior: AI is OFF unless explicitly enabled via one of the mechanisms above. When AI is disabled, the system uses deterministic, rule-based analysis and labels reports accordingly.
+
+See `backend/.env.example` for a template.
+
 ## 📦 Artifacts & Outputs
 
 - All run outputs (screenshots, HAR, logs, reports) are stored under `backend/data/artifacts/{runId}`

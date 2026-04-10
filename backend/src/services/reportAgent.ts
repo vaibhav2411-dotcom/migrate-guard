@@ -1,8 +1,9 @@
 import { promises as fs } from 'fs';
+import { spawn } from 'child_process';
 import path from 'path';
 import { DATA_DIR } from '../config/config';
 import { ComparisonJob, Run } from '../models';
-import { AIReasoningResult } from './aiReasoningService';
+import { AIReasoningResult, AiReasoningService } from './aiReasoningService';
 import { VisualDiffResult } from './visualDiffService';
 import { FunctionalQAResult } from './functionalQaAgent';
 import { DataIntegrityResult } from './dataIntegrityAgent';
@@ -82,10 +83,33 @@ export interface Report {
  * Supports markdown and JSON output formats
  */
 export class ReportAgent {
+  private withTimeout<T>(promise: Promise<T>, timeoutMs: number, stage: string): Promise<T> {
+    const timeout = new Promise<never>((_, reject) => {
+      setTimeout(() => reject(new Error(`${stage} timed out after ${timeoutMs}ms`)), timeoutMs);
+    });
+    return Promise.race([promise, timeout]);
+  }
+
   private readonly artifactsDir: string;
 
   constructor() {
     this.artifactsDir = path.join(DATA_DIR, 'artifacts');
+  }
+
+  private getFunctionalMetrics(functionalResult: FunctionalQAResult) {
+    const baseline = functionalResult.baseline.summary;
+    const candidate = functionalResult.candidate.summary;
+
+    return {
+      totalPages: Math.max(baseline.totalPages, candidate.totalPages),
+      baselineBrokenLinks: baseline.totalBrokenLinks,
+      candidateBrokenLinks: candidate.totalBrokenLinks,
+      baselineJSErrors: baseline.totalJSErrors,
+      candidateJSErrors: candidate.totalJSErrors,
+      baselinePagesWithNavigationIssues: baseline.pagesWithNavigationIssues,
+      candidatePagesWithNavigationIssues: candidate.pagesWithNavigationIssues,
+      candidateIssueCount: candidate.totalBrokenLinks + candidate.totalJSErrors,
+    };
   }
 
   /**
@@ -104,12 +128,34 @@ export class ReportAgent {
       low: 0,
       none: 0,
     };
+    // If AI is disabled or unavailable/degraded, derive severities from deterministic results
+    if (aiResult.aiMode === 'OFF' || aiResult.aiAvailable === false || aiResult.aiDegraded === true) {
+      const visualSeverity = visualResult ? this.calculateSeverityFromVisual(visualResult) : 'none';
+      const functionalSeverity = functionalResult ? this.calculateSeverityFromFunctional(functionalResult) : 'none';
+      const dataSeverity = dataResult ? this.calculateSeverityFromData(dataResult) : 'none';
 
-    // Count severities from category analyses
-    for (const analysis of aiResult.categoryAnalyses) {
-      breakdown[analysis.severity]++;
+      breakdown[visualSeverity]++;
+      breakdown[functionalSeverity]++;
+      breakdown[dataSeverity]++;
+
+      const visualRisk = this.severityToRiskScore(visualSeverity);
+      const functionalRisk = this.severityToRiskScore(functionalSeverity);
+      const dataRisk = this.severityToRiskScore(dataSeverity);
+      const seoRisk = 0;
+
+      const overallRisk = (visualRisk + functionalRisk + dataRisk + seoRisk) / 3;
+
+      return {
+        overall: Math.round(overallRisk),
+        visual: Math.round(visualRisk),
+        functional: Math.round(functionalRisk),
+        data: Math.round(dataRisk),
+        seo: Math.round(seoRisk),
+        breakdown,
+      };
     }
 
+    // Count severities from AI category analyses (AI mode)
     // Calculate category-specific risk scores
     let visualRisk = 0;
     let functionalRisk = 0;
@@ -117,6 +163,7 @@ export class ReportAgent {
     let seoRisk = 0;
 
     for (const analysis of aiResult.categoryAnalyses) {
+      breakdown[analysis.severity]++;
       const risk = this.severityToRiskScore(analysis.severity);
       switch (analysis.category) {
         case 'visual':
@@ -134,7 +181,6 @@ export class ReportAgent {
       }
     }
 
-    // Calculate overall risk score (weighted average)
     const categoryCount = aiResult.categoryAnalyses.length;
     const overallRisk = categoryCount > 0
       ? (visualRisk + functionalRisk + dataRisk + seoRisk) / categoryCount
@@ -150,6 +196,33 @@ export class ReportAgent {
     };
   }
 
+  // Deterministic severity calculators (mirror AiReasoningService logic)
+  private calculateSeverityFromVisual(result: VisualDiffResult): 'none' | 'low' | 'medium' | 'high' | 'critical' {
+    if (result.summary.criticalIssues > 0) return 'critical';
+    if (result.summary.highIssues > 0) return 'high';
+    if (result.summary.averageDiffPercentage > 5) return 'medium';
+    if (result.summary.averageDiffPercentage > 1) return 'low';
+    return 'none';
+  }
+
+  private calculateSeverityFromFunctional(result: FunctionalQAResult): 'none' | 'low' | 'medium' | 'high' | 'critical' {
+    const candidateSummary = result.candidate.summary;
+    const totalIssues = (candidateSummary.totalBrokenLinks || 0) + (candidateSummary.totalJSErrors || 0);
+    if (totalIssues > 20) return 'critical';
+    if (totalIssues > 10) return 'high';
+    if (totalIssues > 5) return 'medium';
+    if (totalIssues > 0) return 'low';
+    return 'none';
+  }
+
+  private calculateSeverityFromData(result: DataIntegrityResult): 'none' | 'low' | 'medium' | 'high' | 'critical' {
+    if (result.summary.criticalMismatches > 0) return 'critical';
+    if (result.summary.totalFieldDiffs > 50) return 'high';
+    if (result.summary.totalFieldDiffs > 20) return 'medium';
+    if (result.summary.totalFieldDiffs > 0) return 'low';
+    return 'none';
+  }
+
   /**
    * Convert severity to risk score (0-100)
    */
@@ -161,7 +234,7 @@ export class ReportAgent {
       high: 75,
       critical: 100,
     };
-    return map[severity] || 50;
+    return Object.prototype.hasOwnProperty.call(map, severity) ? map[severity] : 50;
   }
 
   /**
@@ -198,14 +271,20 @@ export class ReportAgent {
     if (functionalResult) {
       const functionalAnalysis = aiResult.categoryAnalyses.find((a) => a.category === 'functional');
       if (functionalAnalysis && !functionalAnalysis.pass) {
+        const functionalMetrics = this.getFunctionalMetrics(functionalResult);
+        const candidateAffectedPages = functionalResult.candidate.pages
+          .filter((page) => !page.navigation.success || page.brokenLinks.length > 0 || page.jsErrors.length > 0)
+          .map((page) => page.normalizedPath);
+
         findings.push({
           category: 'functional',
           severity: functionalAnalysis.severity as TechnicalFinding['severity'],
           title: 'Functional Issues Detected',
           description: functionalAnalysis.explanation,
-          impact: `${functionalResult.baseline.summary.totalBrokenLinks} broken links and ${functionalResult.baseline.summary.totalJSErrors} JavaScript errors found`,
+          impact: `Candidate site recorded ${functionalMetrics.candidateBrokenLinks} broken requests/links and ${functionalMetrics.candidateJSErrors} JavaScript errors. Baseline reference recorded ${functionalMetrics.baselineBrokenLinks} broken requests/links and ${functionalMetrics.baselineJSErrors} JavaScript errors.`,
           recommendation: 'Fix broken links and resolve JavaScript errors before deployment',
-          evidence: `Navigation issues: ${functionalResult.baseline.summary.pagesWithNavigationIssues} pages`,
+          affectedPages: candidateAffectedPages,
+          evidence: `Candidate navigation issues: ${functionalMetrics.candidatePagesWithNavigationIssues} pages. Baseline navigation issues: ${functionalMetrics.baselinePagesWithNavigationIssues} pages.`,
         });
       }
     }
@@ -244,14 +323,15 @@ export class ReportAgent {
     functionalResult?: FunctionalQAResult,
     dataResult?: DataIntegrityResult
   ): ExecutiveSummary {
+    const functionalMetrics = functionalResult ? this.getFunctionalMetrics(functionalResult) : undefined;
     const totalPages = visualResult?.summary.totalPages || 
-                      functionalResult?.baseline.summary.totalPages || 
+                      functionalMetrics?.totalPages || 
                       dataResult?.summary.totalPages || 
                       0;
 
     const issuesFound = (visualResult?.summary.pagesWithDiffs || 0) +
-                       (functionalResult?.baseline.summary.totalBrokenLinks || 0) +
-                       (functionalResult?.baseline.summary.totalJSErrors || 0) +
+                       (functionalMetrics?.candidateBrokenLinks || 0) +
+                       (functionalMetrics?.candidateJSErrors || 0) +
                        (dataResult?.summary.totalFieldDiffs || 0);
 
     const criticalIssues = (visualResult?.summary.criticalIssues || 0) +
@@ -281,6 +361,11 @@ export class ReportAgent {
       criticalIssues
     );
 
+    // If AI was disabled for this run, clearly label the report
+    const labeledSummary = (aiResult.aiMode === 'OFF' || aiResult.aiAvailable === false)
+      ? `AI disabled — deterministic analysis only. ${summary}`
+      : summary;
+
     // Top findings
     const topFindings = aiResult.categoryAnalyses
       .filter((a) => !a.pass)
@@ -295,7 +380,7 @@ export class ReportAgent {
       overallStatus,
       riskScore: riskScore.overall,
       goNoGo,
-      summary,
+      summary: labeledSummary,
       keyMetrics: {
         pagesTested: totalPages,
         issuesFound,
@@ -372,6 +457,36 @@ export class ReportAgent {
         version: '1.0',
       },
     };
+
+    // If AI is enabled and available, run the classifier once (batched) to refine technical finding severities
+    try {
+      if (aiResult.aiMode === 'ON' && aiResult.aiAvailable === true) {
+        const aiSvc = new AiReasoningService();
+        const { classifications, falsePositives } = await this.withTimeout(
+          aiSvc.classifyFindings(report.technicalFindings, runId),
+          30000,
+          'reportClassifier'
+        );
+        // Apply classifications back to technical findings
+        classifications.forEach((c: any, idx: number) => {
+          if (!report.technicalFindings[idx]) return;
+          if (c.falsePositive) {
+            // mark as none and add to aiResult false positives
+            report.technicalFindings[idx].severity = 'none';
+            aiResult.falsePositives = Array.from(new Set([...(aiResult.falsePositives || []), (c.note || report.technicalFindings[idx].title)]));
+          } else if (c.severity) {
+            report.technicalFindings[idx].severity = c.severity as any;
+          }
+        });
+
+        // Merge false positives into aiAnalysis
+        if (falsePositives && falsePositives.length > 0) {
+          aiResult.falsePositives = Array.from(new Set([...(aiResult.falsePositives || []), ...falsePositives]));
+        }
+      }
+    } catch (e) {
+      console.error('Error running batched classifier:', e);
+    }
 
     return report;
   }
@@ -544,7 +659,7 @@ export class ReportAgent {
   async saveReport(
     report: Report,
     runId: string
-  ): Promise<{ jsonPath: string; markdownPath: string }> {
+  ): Promise<{ jsonPath: string; markdownPath: string; htmlPath?: string }> {
     const reportsDir = path.join(this.artifactsDir, runId, 'reports');
     await fs.mkdir(reportsDir, { recursive: true });
 
@@ -557,10 +672,27 @@ export class ReportAgent {
     const markdownPath = path.join(reportsDir, 'report.md');
     await fs.writeFile(markdownPath, markdownContent);
 
+    const htmlPath = path.join(reportsDir, 'report.html');
+
+    // Attempt to generate interactive HTML report asynchronously (non-blocking)
+    try {
+      const script = path.join(__dirname, '..', '..', 'scripts', 'generate-report-html.cjs');
+      const child = spawn('node', [script, path.join(this.artifactsDir, runId)], {
+        detached: false,
+        stdio: 'ignore',
+        windowsHide: true,
+      });
+      child.unref();
+    } catch (err) {
+      console.warn('Could not spawn HTML generator:', err);
+    }
+
     return {
       jsonPath: jsonPath.replace(/^.*[\\/]data[\\/]/, 'data/'),
       markdownPath: markdownPath.replace(/^.*[\\/]data[\\/]/, 'data/'),
+      htmlPath: htmlPath.replace(/^.*[\\/]data[\\/]/, 'data/'),
     };
   }
 }
+
 
